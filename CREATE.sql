@@ -18,7 +18,8 @@ CREATE TABLE Users (
 
 CREATE TABLE Category (
     category_id INT(8) AUTO_INCREMENT PRIMARY KEY,
-    category VARCHAR(20) NOT NULL
+    category VARCHAR(20) NOT NULL,
+    category_img VARCHAR(30) NOT NULL
 );
 
 
