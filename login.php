@@ -1,32 +1,31 @@
 <?php require 'db-connect.php'; ?>
-<?php session_start() ?>
 <?php require 'header.php'; ?>
 <?php
-if(isset($_SESSION['customer'])){
-    echo $_SESSION['customer']['name'],'さんで、ログイン済みです。';
+if(isset($_SESSION['Users'])){
+    echo $_SESSION['Users']['user_name'],'さんで、ログイン済みです。';
 }else{
     if(isset($_POST['judge'])){
-        unset($_SESSION['customer']);
+        unset($_SESSION['Users']);
         $pdo = new PDO($connect,USER,PASS);
-        $sql=$pdo->prepare('select * from customer where login=?');
+        $sql=$pdo->prepare('select * from Users where user_id=?');
         $sql->execute([$_POST['id']]);
         foreach($sql as $row){
-            if(password_verify($_POST['password'],$row['password'])){
-            $_SESSION['customer']=[
-                'id'=>$row['id'], 'name'=>$row['name'],
-                'address'=>$row['address'], 'login'=>$row['login'],
+            //if(password_verify($_POST['password'],$row['password'])){ ハッシュ化するか協議
+            $_SESSION['Users']=[
+                'user_name'=>$row['user_name'],
+                'address'=>$row['address'], 'user_id'=>$row['user_id'],
                 'password'=>$row['password']];
-            }
+            //}
         }
-        if(isset($_SESSION['customer'])) {
-            echo 'いらっしゃいませ、', $_SESSION['customer']['name'], 'さん';
-            echo '<form action="syouhinkensaku.php">';
+        if(isset($_SESSION['Users'])) {
+            echo 'いらっしゃいませ、', $_SESSION['Users']['user_name'], 'さん';
+            echo '<form action="product-show.php">';
             echo '<button type="submit">商品一覧へ</button>';
             echo '</form>';
             $judge=1;
         }else{
             echo '<h1>ログイン名またはパスワードが違います。</h1>';
-            unset($_SESSION['customer']);
+            unset($_SESSION['Users']);
             $judge=0;
         }
     }
@@ -35,7 +34,7 @@ if(isset($_SESSION['customer'])){
     } /*未入力の時の表示を考えたいにゃ　*/
     if($judge!=1){
         echo '<form method="post">';
-        echo 'ID  <input type="text" name="id"><br/>';
+        echo 'ログイン名  <input type="text" name="id"><br/>';
         echo 'パスワード  <input type="password" name="password"><br/>';
         echo '<input type="hidden" name="judge" value=1>';
         echo '<button type="submit">ログイン</button>';
