@@ -1,5 +1,4 @@
 <?php require 'header.php'; ?>
-
 <?php require 'db-connect.php'; ?>
 <hr>
 <?php
@@ -43,7 +42,7 @@ if (!empty($_SESSION['product'])) {
     $total = 0;
     foreach ($_SESSION['product'] as $id => $product) {
         echo '<tr>';
-        echo '<td><img src="image/', $product['image'], 'width="100"></td>';
+        echo '<td><img src="image/', $product['image'], '" style="width: 100px;"></td>';
         echo '<td><a href="detail.php?id=', $id, '">',
             $product['name'], '</a></td>';
         echo '<td>', $product['price'], '</td>';
@@ -75,5 +74,3 @@ if (isset($_SESSION['Users'])) {
 </form>
 
 <?php require 'footer.php'; ?>
-
-<img src="" alt="">
