@@ -10,20 +10,20 @@
 </head>
 <body>
 <div class="">
-<a href="user-top.php"><img src="../image/ranch.png" height="100px" width="100px">miyosi farm</a>
-<form action="product-show.php" method="post">
+<a href="G1-1-1.php"><img src="image/ranch.png" height="100px" width="100px">miyosi farm</a>
+<form action="G1-5-1.php" method="post">
 <input type="text" name="keyword">
 <button type="submit">検索</button>
 </form>
-<a href="favorite-show.php">お気に入り</a>
-<a href="history.php">注文履歴</a>
-<a href="cart-show.php">カート</a>
-<a href="column.php">コラム</a>
+<a href="G1-6-1.php">お気に入り</a>
+<a href="G1-7-1.php">注文履歴</a>
+<a href="G1-9-1.php">カート</a>
+<a href="G1-4-2.php">コラム</a>
 <?php
 if(!isset($_SESSION['Users'])){
-    echo '<a href="login.php">ログイン</a>';
+    echo '<a href="G1-2-1.php">ログイン</a>';
 }else{
-    echo '<a href="logout.php">ログアウト</a>';
+    echo '<a href="G1-2-7.php">ログアウト</a>';
 }
 ?>
 </div>
