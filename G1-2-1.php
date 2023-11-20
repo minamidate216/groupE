@@ -14,6 +14,7 @@ if(isset($_SESSION['Users'])){
             $_SESSION['Users']=[
                 'user_name'=>$row['user_name'],
                 'address'=>$row['address'], 'user_id'=>$row['user_id'],
+                'email'=>$row['email'],
                 'password'=>$row['password']];
             //}
         }
