@@ -1,0 +1,26 @@
+.image-container {
+    width: 100%;  /* 希望の幅 */
+    height: 500px; /* 希望の高さ */
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+.img_link {
+    width: 100px;   /* 画像の幅を150pxに設定 */
+    height: auto;   /* アスペクト比を維持するための設定 */
+    display: block; /* 画像をブロック要素として扱い、aタグ内での配置を綺麗にするための設定 */
+}
+
+
+ul {
+    list-style-type: none;  /* リストマーカーを削除 */
+    padding: 0;             /* デフォルトのパディングを削除 */
+    display: flex;          /* フレックスボックスを有効にする */
+}
+
+li {
+    margin-right: 10px;     /* li要素の間にマージンを追加 */
+}
