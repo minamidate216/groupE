@@ -3,7 +3,9 @@
 <?php
 if(isset($_SESSION['Users'])){
     echo '<p>ログアウトしますか？</p>';
-    echo '<a href="logout-output.php">ログアウト</a>';
+    echo '<form action="G1-2-8.php">';
+    echo '<button type="submit">ログアウト</button>';
+    echo '</form>';
 }else{
     echo 'ログインしていません。';
 }

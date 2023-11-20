@@ -6,6 +6,7 @@ if(!isset($_SESSION['product'])){
     $_SESSION['product']=[];
 }
 $count=0;
+
 if(isset($_SESSION['product'][$id])){
     $count=$_SESSION['product'][$id]['count'];
 }
@@ -19,5 +20,5 @@ $_SESSION['product'][$id]=[
 echo '<p>カートに商品を追加しました。</p>';
 echo '<hr>';
 ?>
-<?php require 'cart.php'; ?>
+<?php require 'G1-9-1.php'; ?>
 <?php require 'footer.php'; ?>

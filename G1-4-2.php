@@ -12,7 +12,7 @@ foreach($sql as $row){
     echo $row['content'];
     
 }
-echo '<form action="column.php">';
+echo '<form action="G1-4-1.php">';
 echo '<button type="submit">コラム一覧に戻る</button>';
 echo '</form>';
 ?>

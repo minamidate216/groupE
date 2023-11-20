@@ -19,8 +19,8 @@ if(isset($_SESSION['Users'])){
         }
         if(isset($_SESSION['Users'])) {
             echo 'いらっしゃいませ、', $_SESSION['Users']['user_name'], 'さん';
-            echo '<form action="product-show.php">';
-            echo '<button type="submit">商品一覧へ</button>';
+            echo '<form action="G1-1-1.php">';
+            echo '<button type="submit">トップへ</button>';
             echo '</form>';
             $judge=1;
         }else{
@@ -39,8 +39,8 @@ if(isset($_SESSION['Users'])){
         echo '<input type="hidden" name="judge" value=1>';
         echo '<button type="submit">ログイン</button>';
         echo '</form>';
-        echo '<a href="mail.php">ID・パスワードを忘れた方はこちら</a><br/>';
-        echo '<a href="kaiinntouroku.php">新規登録の方はこちら</a>';
+        echo '<a href="G1-2-2.php">ID・パスワードを忘れた方はこちら</a><br/>';
+        echo '<a href="G1-2-4.php">新規登録の方はこちら</a>';
     
 }
 }

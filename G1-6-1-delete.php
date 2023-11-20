@@ -6,6 +6,6 @@ $sql = $pdo->prepare('delete from Favorites where user_id = ? and product_id = ?
 $sql->execute([$_SESSION['Users']['user_id'],$_POST['id']]);
 echo 'お気に入りから削除しました。';
 echo '<hr>';
-require 'favorite.php';
+require 'G1-6-1.php';
 ?>
 <?php require 'footer.php'; ?>

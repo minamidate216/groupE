@@ -3,7 +3,7 @@
 <?php
 if(!isset($_SESSION['Users'])){
     echo 'お気に入り機能の使用にはログインが必要です。<br>';
-    echo '<a href="login.php">ログインへ</a>';
+    echo '<a href="G1-2-1.php">ログインへ</a>';
 }else{
 $pdo = new PDO($connect, USER, PASS);
 $sql = $pdo->prepare('select * from Favorites where user_id=? and product_id = ?');
@@ -15,6 +15,6 @@ if($sql->rowCount()==0){
 }else{
     echo '既にお気に入りに追加済みです。';
 }
-require 'favorite.php';
+require 'G1-6-1.php';
 }
 ?>

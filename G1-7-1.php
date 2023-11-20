@@ -3,7 +3,7 @@
 <?php
 if(empty($_SESSION['Users'])){
     echo 'ログインしてください。<br>';
-    echo '<a href="login.php">ログインへ';
+    echo '<a href="G1-2-1.php">ログインへ';
 }else{
 $pdo = new PDO($connect, USER, PASS);
 $sql = $pdo->prepare('SELECT p.description, p.product_img, o.date, p.product_id, p.product_name, p.price, od.quantity FROM Orders AS o JOIN OrdersDetails AS od ON o.order_id = od.order_id LEFT OUTER JOIN Products AS p ON od.product_id = p.product_id WHERE o.user_id = ?');
@@ -14,13 +14,13 @@ foreach($sql as $row){
     echo '<table class="table is-striped">';
     echo '<tr><th></th><th>商品名</th><th>値段</th><th>注文日</th><th></th></tr>';
     echo '<tr>';
-    echo '<td><a href="detail.php?id=',$row['product_id'],'">';
+    echo '<td><a href="G1-8-1.php?id=',$row['product_id'],'">';
     echo '<img alt="image" width="100" height="100" src="../image/', $row['product_img'], '"></a></td>';
-    echo '<td><a href="detail.php?id=',$row['product_id'],'">',$row['product_name'],'</a></td>'; 
+    echo '<td><a href="G1-8-1.php?id=',$row['product_id'],'">',$row['product_name'],'</a></td>'; 
     echo '<td>',$price,'</td>';
     echo '<td>',$row['date'],'</td>'; 
     echo '<td>';
-    echo '<form action="cart-insert.php" method="post">';
+    echo '<form action="G1-9-1-insert.php" method="post">';
     echo '<input type="hidden" name=id value="',$row['product_id'], '">';
     echo '<input type="hidden" name=name value="',$row['product_name'], '">';
     echo '<input type="hidden" name=description value="',$row['description'], '">';
