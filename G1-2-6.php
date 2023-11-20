@@ -1,7 +1,7 @@
-<?php
-session_start();
-require 'db-connect.php';
+<?php session_start(); ?>
+<?php require 'db-connect.php'; ?>
 
+<?php
 try {
     // データベースに接続
     $pdo = new PDO($connect, USER, PASS);
