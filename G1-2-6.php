@@ -8,14 +8,14 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // セッションからデータを取得
-    $name = isset($_SESSION['hozon']['name']) ? $_SESSION['hozon']['name'] : '';
+    $user_.name = isset($_SESSION['hozon']['user_name']) ? $_SESSION['hozon']['user_name'] : '';
     $mailladdress = isset($_SESSION['hozon']['password']) ? $_SESSION['hozon']['password'] : '';
     $password = isset($_SESSION['hozon']['email']) ? $_SESSION['hozon']['email'] : '';
     $address = isset($_SESSION['hozon']['address']) ? $_SESSION['hozon']['address'] : '';
 
     // プリペアドステートメントを使用して安全にデータベースに挿入
-    $stmt = $pdo->prepare("INSERT INTO teamE (name, password, email, address) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$name, $password, $password, $address]);
+    $stmt = $pdo->prepare("INSERT INTO Users (user_name, password, email, address) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$user_name, $password, $password, $address]);
 
     // 登録完了メッセージを表示
     echo "登録が完了しました。";
