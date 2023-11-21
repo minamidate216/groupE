@@ -8,9 +8,9 @@ if (isset($_POST['submit'])) {
     $_SESSION['User']['address'] = $_POST['address'];
 }
 
-$id = isset($_SESSION['User']['user_id']) ? $_SESSION['User']['user_id'] : '';
-$name = isset($_SESSION['User']['user_name']) ? $_SESSION['User']['user_name'] : '';
-$mailladdress = isset($_SESSION['User']['email']) ? $_SESSION['User']['email'] : '';
+$user_id = isset($_SESSION['User']['user_id']) ? $_SESSION['User']['user_id'] : '';
+$user_name = isset($_SESSION['User']['user_name']) ? $_SESSION['User']['user_name'] : '';
+$email = isset($_SESSION['User']['email']) ? $_SESSION['User']['email'] : '';
 $password = isset($_SESSION['User']['password']) ? $_SESSION['User']['password'] : '';
 $address = isset($_SESSION['User']['address']) ? $_SESSION['User']['address'] : '';
 

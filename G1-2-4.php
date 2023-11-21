@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = $_POST['address'];
 
     // エラーメッセージ
-    if (empty($name)) {
+    if (empty($user_name)) {
         $errors[] = "氏名を入力してください。";
     }
     if (empty($password)) {"パスワードを入力してください。";
