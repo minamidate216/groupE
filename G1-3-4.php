@@ -4,8 +4,8 @@ $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 入力値を取得
-    $id = isset($_POST['user_id']) ? $_POST['user_id'] : '';
-    $name = isset($_POST['user_name']) ? $_POST['user_name'] : '';
+    $user_id = isset($_POST['user_id']) ? $_POST['user_id'] : '';
+    $user_name = isset($_POST['user_name']) ? $_POST['user_name'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
     $mailladdress = isset($_POST['email']) ? $_POST['email'] : '';
     $address = isset($_POST['address']) ? $_POST['address'] : '';
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // エラーがなければ次の画面に遷移
     if (empty($errors)) {
-        $_SESSION['User']['user_id'] = $id;
+        $_SESSION['User']['user_id'] = $user_id;
         $_SESSION['User']['user_name'] = $user_name;
         $_SESSION['User']['password'] = $password;
         $_SESSION['User']['email'] = $email;
