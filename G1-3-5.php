@@ -2,17 +2,17 @@
 <?php
 
 if (isset($_POST['submit'])) {
-    $_SESSION['hozon']['user_name'] = $_POST['user_name'];
-    $_SESSION['hozon']['email'] = $_POST['email'];
-    $_SESSION['hozon']['password'] = $_POST['password'];
-    $_SESSION['hozon']['address'] = $_POST['address'];
+    $_SESSION['User']['user_name'] = $_POST['user_name'];
+    $_SESSION['User']['email'] = $_POST['email'];
+    $_SESSION['User']['password'] = $_POST['password'];
+    $_SESSION['User']['address'] = $_POST['address'];
 }
 
-$id = isset($_SESSION['hozon']['id']) ? $_SESSION['hozon']['id'] : '';
-$name = isset($_SESSION['hozon']['user_name']) ? $_SESSION['hozon']['user_name'] : '';
-$mailladdress = isset($_SESSION['hozon']['email']) ? $_SESSION['hozon']['email'] : '';
-$password = isset($_SESSION['hozon']['password']) ? $_SESSION['hozon']['password'] : '';
-$address = isset($_SESSION['hozon']['address']) ? $_SESSION['hozon']['address'] : '';
+$id = isset($_SESSION['User']['user_id']) ? $_SESSION['User']['user_id'] : '';
+$name = isset($_SESSION['User']['user_name']) ? $_SESSION['User']['user_name'] : '';
+$mailladdress = isset($_SESSION['User']['email']) ? $_SESSION['User']['email'] : '';
+$password = isset($_SESSION['User']['password']) ? $_SESSION['User']['password'] : '';
+$address = isset($_SESSION['User']['address']) ? $_SESSION['User']['address'] : '';
 
 echo '<p>名前: ', $user_name, '</p>';
 echo '<p>メールアドレス: ', $email, '</p>';
