@@ -32,7 +32,8 @@ if (!isset($_SESSION['Users'])) {
 $deliveryDate = date('Y-m-d', strtotime('+2 days'));
 echo "<h4>配送日</h4>";
 echo "<div>", $deliveryDate, "</div>";
-
+// Vueの条件付きレンダリングを使います多分
+echo '<div id="app">';
 echo "<h4>商品情報</h4>";
 // カート情報の確認
 if (!empty($_SESSION['product'])) {
@@ -43,10 +44,15 @@ if (!empty($_SESSION['product'])) {
     foreach ($_SESSION['product'] as $id => $product) {
         echo '<tr>';
         echo '<td><img src="image/', $product['image'], '" style="width: 100px;"></td>';
-        echo '<td><a href="detail.php?id=', $id, '">',
+        echo '<td><a href="G1-8-1.php?id=', $id, '">',
             $product['name'], '</a></td>';
-        echo '<td>', $product['price'], '</td>';
-        echo '<td>', $product['count'], '</td>';
+            // 個数を計算かつ個数を変更できる
+            echo '<td><select name="count">'; 
+            for($i = 1; $i <= $product['quantity'];$i++){
+                echo '<option value="',$i, '">', $i,'</option>';
+            } 
+            echo '</td>';
+            echo '<td>', $product['price'], '</td>';
         $subtotal = $product['price'] * $product['count'];
         $total += $subtotal;
         echo '<td>', $subtotal, '</td>';
@@ -56,6 +62,7 @@ if (!empty($_SESSION['product'])) {
     echo '<tr><td>合計</td><td></td><td></td><td></td><td>', $total,
         '</td><td></td></tr>';
     echo '</table>';
+    echo '</div>';
 } else {
     echo 'カートに商品がありません。';
 }
