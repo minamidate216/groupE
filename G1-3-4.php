@@ -4,7 +4,7 @@ $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 入力値を取得
-    $id = isset($_POST['id']) ? $_POST['id'] : '';
+    $id = isset($_POST['user_id']) ? $_POST['user_id'] : '';
     $name = isset($_POST['user_name']) ? $_POST['user_name'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
     $mailladdress = isset($_POST['email']) ? $_POST['email'] : '';
@@ -26,11 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // エラーがなければ次の画面に遷移
     if (empty($errors)) {
-        $_SESSION['hozon']['id'] = $id;
-        $_SESSION['hozon']['user_name'] = $user_name;
-        $_SESSION['hozon']['password'] = $password;
-        $_SESSION['hozon']['email'] = $email;
-        $_SESSION['hozon']['address'] = $address;
+        $_SESSION['User']['user_id'] = $id;
+        $_SESSION['User']['user_name'] = $user_name;
+        $_SESSION['User']['password'] = $password;
+        $_SESSION['User']['email'] = $email;
+        $_SESSION['User']['address'] = $address;
 
         header("Location: G1-3-5.php");
         exit();
@@ -69,5 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </tr>
     </table>
     <!-- 送信ボタン -->
+    <input type="hidden" name="id" value="<?= $id ?>">
     <input type="submit" name="submit" value="次へ">
 </form>
