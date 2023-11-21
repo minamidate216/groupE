@@ -7,7 +7,6 @@ $sql = $pdo->prepare('select * from Products where product_id=?');
 $sql->execute([$_GET['id']]);
 foreach($sql as $row) {
     echo '<p><img alt="image" src="image/', $row['product_img'], '" style="height:100px;"></p>';
-    // echo '<img alt="image" src="image/', $row['product_img1'], '.jpg" style="height:100px;">
     echo '<form action="G1-9-1-insert.php" method="post">';
 
     echo '<p>商品説明:',$row['description'],'</p>';
