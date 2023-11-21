@@ -13,12 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($user_name)) {
         $errors[] = "氏名を入力してください。";
     }
-    if (empty($password)) {"パスワードを入力してください。";
-    }
-        $errors[] = 
+    if (empty($password)) {
+        $errors[] = "パスワードを入力してください。";
     }
     if (empty($email)) {
         $errors[] = "メールアドレスを入力してください。";
+    }
     if (empty($address)) {
         $errors[] = "住所を入力してください。";
     }
