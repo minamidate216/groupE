@@ -47,6 +47,15 @@ if (!empty($_SESSION['product'])) {
         echo '<td><a href="G1-8-1.php?id=', $id, '">',
             $product['name'], '</a></td>';
             // 個数を計算かつ個数を変更できる
+            echo '<div id="app">';
+            echo '<p>{{ count }}';
+            echo '<button class="button is-warning is-outlined is-small"
+                        @click="increment"
+                        >+1</button>';
+            echo '<button class="button is-link is-outkined is-small"
+                        @click="decrement"
+                        >-1</button></p>';
+            echo '</div>';
             echo '<td><select name="count">'; 
             for($i = 1; $i <= $product['quantity'];$i++){
                 echo '<option value="',$i, '">', $i,'</option>';
@@ -79,5 +88,6 @@ if (isset($_SESSION['Users'])) {
 <form action="G1-10-2.php">
     <input type="submit" value="購入">
 </form>
-
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./script/G1-10-1.js"></script>
 <?php require 'footer.php'; ?>
