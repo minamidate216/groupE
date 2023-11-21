@@ -4,7 +4,7 @@ $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 入力値を取得
-    $name = $_POST['name'];
+    $user_name = $_POST['user_name'];
     $password = $_POST['password'];
     $email = $_POST['email'];
     $address = $_POST['address'];
@@ -25,10 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // エラーがなければ次の画面に遷移
     if (empty($errors)) {
-        $_SESSION['hozon']['name'] = $name;
-        $_SESSION['hozon']['password'] = $password;
-        $_SESSION['hozon']['email'] = $email;
-        $_SESSION['hozon']['address'] = $address;
+        $_SESSION['User']['user_name'] = $user_name;
+        $_SESSION['User']['password'] = $password;
+        $_SESSION['User']['email'] = $email;
+        $_SESSION['User']['address'] = $address;
 
         header("Location: G1-2-5.php");
         exit();
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <table>
         <tr>
             <td>氏名</td>
-            <td><input type="text" name="name"></td>
+            <td><input type="text" name="user_name"></td>
         </tr>
         <tr>
             <td>メールアドレス</td>
