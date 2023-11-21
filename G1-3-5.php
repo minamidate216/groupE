@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
 
 $user_id = isset($_SESSION['User']['user_id']) ? $_SESSION['User']['user_id'] : '';
 $user_name = isset($_SESSION['User']['user_name']) ? $_SESSION['User']['user_name'] : '';
-$mailladdress = isset($_SESSION['User']['email']) ? $_SESSION['User']['email'] : '';
+$email = isset($_SESSION['User']['email']) ? $_SESSION['User']['email'] : '';
 $password = isset($_SESSION['User']['password']) ? $_SESSION['User']['password'] : '';
 $address = isset($_SESSION['User']['address']) ? $_SESSION['User']['address'] : '';
 
