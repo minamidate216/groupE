@@ -3,17 +3,17 @@
 
 // フォームデータをセッションに保存
 if (isset($_POST['submit'])) {
-    $_SESSION['hozon']['user_name'] = $_POST['user_name'];
-    $_SESSION['hozon']['password'] = $_POST['password'];
-    $_SESSION['hozon']['email'] = $_POST['email'];
-    $_SESSION['hozon']['address'] = $_POST['address'];
+    $_SESSION['User']['user_name'] = $_POST['user_name'];
+    $_SESSION['User']['password'] = $_POST['password'];
+    $_SESSION['User']['email'] = $_POST['email'];
+    $_SESSION['User']['address'] = $_POST['address'];
 }
 
 // セッションからデータを取得
-$user_name = isset($_SESSION['hozon']['user_name']) ? $_SESSION['hozon']['user_name'] : '';
-$password = isset($_SESSION['hozon']['password']) ? $_SESSION['hozon']['password'] : '';
-$email = isset($_SESSION['hozon']['email']) ? $_SESSION['hozon']['email'] : '';
-$address = isset($_SESSION['hozon']['address']) ? $_SESSION['hozon']['address'] : '';
+$user_name = isset($_SESSION['User']['user_name']) ? $_SESSION['User']['user_name'] : '';
+$password = isset($_SESSION['User']['password']) ? $_SESSION['User']['password'] : '';
+$email = isset($_SESSION['User']['email']) ? $_SESSION['User']['email'] : '';
+$address = isset($_SESSION['User']['address']) ? $_SESSION['User']['address'] : '';
 
 // セッションから取得したデータを表示
 echo '<p>名前: ', $user_name, '</p>';
