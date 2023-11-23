@@ -5,16 +5,17 @@ $pdo = new PDO($connect, USER, PASS);
 
 // セッションに保存されている商品idの取得
 $productIds = array_keys($_SESSION['product']);
+echo $productIds;
 
 
 // insert文（理想としては処理が上手くいったらこのページを表示させたい今はsqlの実行とセッションからのカート情報を同じファイルにしてまう）
 // Ordersテーブル
 // セッションからユーザーIDを取得
-$userId = $_SESSION['user_id'];
+$userId = $_SESSION['Users']['user_id'];
 echo var_dump($_SESSION['Users']);
 // 現在の日時
 $currentDateTime = date('Y-m-d H:i:s');
-
+// sql文のセット
 $sql = "INSERT INTO Orders (user_id, date) VALUES (?, ?)";
 $stmt = $pdo->prepare($sql);
 // SQL文を実行
@@ -28,6 +29,7 @@ if ($stmt) {
     echo "注文に失敗しました。";
     '<a href="G1-10-1.php">購入確認画面に戻る</a>';
 }
+// orderテーブルここまで
 
 
 // OrdersDetailsテーブル
@@ -40,9 +42,9 @@ foreach ($_SESSION['product'] as $productId => $product) {
     $detailStmt->execute([$orderId, $productId, $quantity]);
 
     if ($detailStmt) {
-        echo "注文詳細が成功しました。";
+        echo "注文詳細のデータ挿入が成功しました。";
     } else {
-        echo "注文詳細に失敗しました。";
+        echo "注文詳細のデータ挿入が失敗しました。";
     }
 }
 
