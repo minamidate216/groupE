@@ -14,7 +14,7 @@ foreach($sql as $row) {
     echo '<p>商品名:',$row['product_name'],'</p>';
     echo '<p>価格:',$row['price'],'</p>';
     echo '<p>内容量:',$row['capacity'],'</p>';
-    echo '<p><a href="G1-6-1.php?id=',$row['product_id'],
+    echo '<p><a href="G1-6-1-show.php?id=',$row['product_id'],
     '">お気に入りに追加</a></p>';
     echo '<p><select name="count">';
     for ($i=1; $i<= $row['quantity']; $i++) {
