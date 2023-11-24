@@ -15,10 +15,11 @@ if(!empty($_SESSION['product'])){
             echo '<td>', $product['price'], '</td>';
             $subtotal=$product['price']*$product['count'];
             $total+=$subtotal;
-            echo '<td>', $total, '</td>';
+            echo '<td>', $subtotal, '</td>';
             echo '<td><a href="G1-9-1-delete.php?id=', $id, '">削除</a></td>';
             echo '</tr>';
         }
+        echo '<tr><td></td><td></td><td></td><td></td><td>合計</td><td>',$total,'</td></tr>';
         echo '</table>';
         echo '<form action="G1-10-1.php">';
         echo '<button type="submit">お会計に進む</button>';
