@@ -28,11 +28,13 @@ if (!isset($_SESSION['Users'])) {
     // ユーザーがログインしていない場合は、ログインを促す
     echo 'ログインしろや';
 }
+// jsに個数のデータを送る
 
 $deliveryDate = date('Y-m-d', strtotime('+2 days'));
 echo "<h4>配送日</h4>";
 echo "<div>", $deliveryDate, "</div>";
-
+// Vueの条件付きレンダリングを使います多分
+echo '<div id="app">';
 echo "<h4>商品情報</h4>";
 // カート情報の確認
 if (!empty($_SESSION['product'])) {
@@ -41,21 +43,34 @@ if (!empty($_SESSION['product'])) {
     echo '<th>個数</th><th>価格</th><th>小計</th><th></th></tr>';
     $total = 0;
     foreach ($_SESSION['product'] as $id => $product) {
+        $quan = $_SESSION['product'][$id]['count'];
+        $price = $_SESSION['product'][$id]['price'];
         echo '<tr>';
         echo '<td><img src="image/', $product['image'], '" style="width: 100px;"></td>';
-        echo '<td><a href="detail.php?id=', $id, '">',
+        echo '<td><a href="G1-8-1.php?id=', $id, '">',
             $product['name'], '</a></td>';
-        echo '<td>', $product['price'], '</td>';
-        echo '<td>', $product['count'], '</td>';
-        $subtotal = $product['price'] * $product['count'];
-        $total += $subtotal;
-        echo '<td>', $subtotal, '</td>';
+            // 個数を計算かつ個数を変更できる
+            
+            echo '<td>';
+            echo '
+                    <p>
+                    <button class="button is-outlined is-small"
+                        @click="increment"
+                        >+1</button>
+                        {{ count }}
+                    <button class="button is-outlined is-small"
+                        @click="decrement"
+                        >-1</button></p>';
+            echo '</td>';
+            echo '<td>', $product['price'], '</td>';
+        echo '<td><p>{{ isPrice }}</p></td>';
         echo '<td><a href="cart-delete.php?id=', $id, '">削除</a></td>';
         echo '</tr>';
     }
     echo '<tr><td>合計</td><td></td><td></td><td></td><td>', $total,
         '</td><td></td></tr>';
     echo '</table>';
+    echo '</div>';
 } else {
     echo 'カートに商品がありません。';
 }
@@ -66,11 +81,39 @@ if (isset($_SESSION['Users'])) {
     echo '<p>名前：', $_SESSION['Users']['user_name'], '</p>';
     echo '<p>住所：', $_SESSION['Users']['address'], '</p>';
     echo '<p>連絡先：', $_SESSION['Users']['email'], '</p>';
-    echo '<div>';
+    echo '</div>';
 }
 ?>
 <form action="G1-10-2.php">
     <input type="submit" value="購入">
 </form>
-
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+let ccc = <?php echo $quan; ?>;
+let pro_price = <?php echo $price; ?>;
+console.log(pro_price);
+new Vue({
+    el: '#app',
+    data(){
+        return{
+            count: ccc,
+            price: pro_price,
+            sum: 0
+        };
+    },
+    methods: {
+        increment() {
+            this.count++;
+        },
+        decrement() {
+            this.count--;
+        }
+    },
+    computed: {
+        isPrice() {
+            return this.price * this.count;
+        }
+    }
+});
+</script>
 <?php require 'footer.php'; ?>
