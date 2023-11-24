@@ -11,8 +11,8 @@ if(!empty($_SESSION['product'])){
             echo '<td><a href="G1-8-1.php?id=', $id, '">',
                  $product['name'], '</a></td>';
             echo '<td>', $product['description'], '</td>';
-            echo '<td>', $product['price'], '</td>';
             echo '<td>', $product['count'], '</td>';
+            echo '<td>', $product['price'], '</td>';
             $subtotal=$product['price']*$product['count'];
             $total+=$subtotal;
             echo '<td>', $total, '</td>';
