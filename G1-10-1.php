@@ -10,6 +10,11 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute($productIds);
 $products = $stmt->fetchAll();
 // 在庫の確認をします
+
+if (!isset($_SESSION['Users'])) {
+    // ユーザーがログインしていない場合は、ログインを促す
+    echo '<a href="G1-2-1.php">ログイン</a>';
+} else {
 foreach ($_SESSION['product'] as $id => $cartItem) {
     foreach ($products as $product) {
         if ($product['product_id'] == $id) {
@@ -24,44 +29,41 @@ foreach ($_SESSION['product'] as $id => $cartItem) {
 }
 
 
-if (!isset($_SESSION['Users'])) {
-    // ユーザーがログインしていない場合は、ログインを促す
-    echo 'ログインしろや';
-}
-
-$deliveryDate = date('Y-m-d', strtotime('+2 days'));
-echo "<h4>配送日</h4>";
-echo "<div>", $deliveryDate, "</div>";
-// Vueの条件付きレンダリングを使います多分
-echo '<div id="app">';
-echo "<h4>商品情報</h4>";
-// カート情報の確認
-if (!empty($_SESSION['product'])) {
-    echo '<table>';
-    echo '<tr><th>商品画像</th><th>商品名</th>';
-    echo '<th>個数</th><th>価格</th><th>小計</th><th></th></tr>';
-    $total = 0;
-    foreach ($_SESSION['product'] as $id => $product) {
-        echo '<tr>';
+    
+    echo '<form action="G1-10-2.php">';
+    $deliveryDate = date('Y-m-d', strtotime('+2 days'));
+    echo "<h4>配送日</h4>";
+    echo "<div>", $deliveryDate, "</div>";
+    // Vueの条件付きレンダリングを使います多分
+    echo '<div id="app">';
+    echo "<h4>商品情報</h4>";
+    // カート情報の確認
+    if (!empty($_SESSION['product'])) {
+        echo '<table>';
+        echo '<tr><th>商品画像</th><th>商品名</th>';
+        echo '<th>個数</th><th>価格</th><th>小計</th><th></th></tr>';
+        $total = 0;
+        foreach ($_SESSION['product'] as $id => $product) {
+            echo '<tr>';
         echo '<td><img src="image/', $product['image'], '" style="width: 100px;"></td>';
         echo '<td><a href="G1-8-1.php?id=', $id, '">',
-            $product['name'], '</a></td>';
-            // 個数を計算かつ個数を変更できる
-            echo '<div id="app">';
-            echo '<p>{{ count }}';
-            echo '<button class="button is-warning is-outlined is-small"
-                        @click="increment"
-                        >+1</button>';
-            echo '<button class="button is-link is-outkined is-small"
-                        @click="decrement"
-                        >-1</button></p>';
-            echo '</div>';
-            echo '<td><select name="count">'; 
-            for($i = 1; $i <= $product['quantity'];$i++){
-                echo '<option value="',$i, '">', $i,'</option>';
-            } 
-            echo '</td>';
-            echo '<td>', $product['price'], '</td>';
+        $product['name'], '</a></td>';
+        // 個数を計算かつ個数を変更できる
+        echo '<div id="app">';
+        echo '<p>{{ count }}';
+        echo '<button class="button is-warning is-outlined is-small"
+        @click="increment"
+        >+1</button>';
+        echo '<button class="button is-link is-outkined is-small"
+        @click="decrement"
+        >-1</button></p>';
+        echo '</div>';
+        echo '<td><select name="count">'; 
+        for($i = 1; $i <= $product['quantity'];$i++){
+            echo '<option value="',$i, '">', $i,'</option>';
+        } 
+        echo '</td>';
+        echo '<td>', $product['price'], '</td>';
         $subtotal = $product['price'] * $product['count'];
         $total += $subtotal;
         echo '<td>', $subtotal, '</td>';
@@ -69,7 +71,7 @@ if (!empty($_SESSION['product'])) {
         echo '</tr>';
     }
     echo '<tr><td>合計</td><td></td><td></td><td></td><td>', $total,
-        '</td><td></td></tr>';
+    '</td><td></td></tr>';
     echo '</table>';
     echo '</div>';
 } else {
@@ -84,8 +86,8 @@ if (isset($_SESSION['Users'])) {
     echo '<p>連絡先：', $_SESSION['Users']['email'], '</p>';
     echo '<div>';
 }
+}
 ?>
-<form action="G1-10-2.php">
     <input type="submit" value="購入">
 </form>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
