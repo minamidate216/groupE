@@ -38,9 +38,9 @@ try {
 <body>
     <form action="G2-3-5kakunin.php" method="post">
         <h1>コラム更新</h1>
-        <p>コラムタイトル <input type="text" name="taitor" maxlength="40"></p>
-        <p>画像 <input type="file" name="productImage2"></p>
-        <p>本文 <input type="text" name="aaa"  maxlength="255"></textarea></p>
+        <p>コラムタイトル <input type="text" name="column_title" maxlength="40"></p>
+        <p>画像 <input type="file" name="post_img"></p>
+        <p>本文 <input type="text" name="content"  maxlength="255"></textarea></p>
         <a href="G2-3-1.php">保存せず戻る</a>
         <button type="submit">更新</button>
         
