@@ -1,23 +1,6 @@
 <?php session_start(); ?>
 <?php require 'db-connect.php'; ?>
-
-<?php
-
-try {
-    $connect = new PDO($connect,USER, PASS);
-    $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Connection failed: ' . $e->getMessage());
-}
-
-try {
-    $query = "SELECT * FROM Columns"; 
-    $stmt = $connect->query($query);
-    $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die('Query failed: ' . $e->getMessage());
-}
-?>
+<?php $connect = 'mysql:host='. SERVER . ';dbname='. DBNAME . ';charset=utf8'; ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
