@@ -40,18 +40,18 @@ try {
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
-        $taitor = $_POST["taitor"];
-        $_FILES=$_POST["productImage2"];
-        $aaa = $_POST["aaa"];
+        $column_title = $_POST["column_title"];
+        $post_img=$_POST["post_img"];
+        $content = $_POST["content"];
 
         echo "<h1>コラム更新確認</h1>";
         echo "<p>コラムタイトル: $taitor</p>";
         echo "<p>画像: $_FILES</p>";
         echo "<p>本文: $aaa</p>";
 
-        if (isset($_FILES['productImage2'])) {
-            $imageFile= $_FILES['productImage2'];
-            echo "<p>画像ファイル: $imageFile</p>";
+        if (isset($_FILES['post_img'])) {
+            $post_img= $_FILES['post_img'];
+            echo "<p>画像ファイル: $post_img</p>";
         }
     }
     ?>
