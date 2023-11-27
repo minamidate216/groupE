@@ -1,8 +1,10 @@
-<h2>カート一覧</h2>
+<font size="6">カート一覧</font>
 <?php
 if(!empty($_SESSION['product'])){
-    echo '<table class="table is-striped">';
-    echo '<tr><th></th><th>商品名</th><th>説明</th><th>数量</th><th>価格</th></tr>';
+    echo '<div class="columns">';
+    echo '<div class="column is-two-third is-offset-2">';
+    echo '<table class="table is-striped column">';
+    echo '<tr class="has-background-success"><th></th><th>商品名</th><th>説明</th><th>数量</th><th>価格</th><th></th><th></th></tr>';
     $total=0;
         foreach($_SESSION['product'] as $id=>$product){
             echo '<tr>';
@@ -21,7 +23,7 @@ if(!empty($_SESSION['product'])){
         }
         echo '<tr><td></td><td></td><td></td><td></td><td>合計</td><td>',$total,'</td></tr>';
         echo '</table>';
-        echo '<form action="G1-10-1.php">';
+        echo '<form action="G1-10-1.php" style="has-text-centered">';
         echo '<button type="submit">お会計に進む</button>';
         echo '</form>';
 }else{
