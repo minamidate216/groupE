@@ -11,7 +11,7 @@ try {
 }
 
 try {
-    $query = "SELECT * FROM Products"; 
+    $query = "SELECT * FROM Columns"; 
     $stmt = $connect->query($query);
     $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
