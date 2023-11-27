@@ -1,4 +1,3 @@
-
 <?php session_start(); ?>
 <?php require 'db-connect.php'; ?>
 
@@ -12,7 +11,7 @@ try {
 }
 
 try {
-    $query = "SELECT * FROM Products"; 
+    $query = "SELECT * FROM Columns"; 
     $stmt = $connect->query($query);
     $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -45,9 +44,9 @@ try {
         $content = $_POST["content"];
 
         echo "<h1>コラム更新確認</h1>";
-        echo "<p>コラムタイトル: $taitor</p>";
-        echo "<p>画像: $_FILES</p>";
-        echo "<p>本文: $aaa</p>";
+        echo "<p>コラムタイトル: $column_title</p>";
+        echo "<p>画像: $post_img</p>";
+        echo "<p>本文: $content</p>";
 
         if (isset($_FILES['post_img'])) {
             $post_img= $_FILES['post_img'];
