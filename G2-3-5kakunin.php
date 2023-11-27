@@ -1,4 +1,3 @@
-
 <?php session_start(); ?>
 <?php require 'db-connect.php'; ?>
 
@@ -60,4 +59,3 @@ try {
    
 </body>
 </html>
-
