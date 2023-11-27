@@ -3,6 +3,7 @@ if(empty($_SESSION['Users'])){
     echo 'ログインしてください。<br>';
     echo '<a href="G1-2-1.php">ログインへ';
 }else{
+echo '<font size="6">お気に入り商品</font>';
 $pdo = new PDO($connect, USER, PASS);
 $sql = $pdo->prepare('select pro.product_img, pro.product_name,pro.product_id, pro.description, pro.price from Products AS pro INNER JOIN Favorites AS fav ON pro.product_id = fav.product_id WHERE fav.user_id=?');
 $sql->execute([$_SESSION['Users']['user_id']]);
