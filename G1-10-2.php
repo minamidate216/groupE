@@ -28,21 +28,31 @@ if ($stmt) {
 }
 // orderテーブルここまで
 
+// 商品テーブルの在庫を減らす
+foreach ($_SESSION['product'] as $productId => $product){
+    
+    
+    $quantity = $product['count']; // カートの商品の数量
+    $stmt = $pdo->prepare("UPDATE Products SET quantity = quantity - ? WHERE product_id = ?");
+    // クエリを実行します。
+    $stmt->execute([$quantity, $productId]);
+}
+
 
 // OrdersDetailsテーブル
 // 注文詳細をOrdersDetailsテーブルに挿入
-    foreach ($_SESSION['product'] as $productId => $product) {
-        $quantity = $product['count']; // カートの商品の数量
-        $detailSql = "INSERT INTO OrdersDetails (order_id, product_id, quantity) VALUES (?, ?, ?)";
-        $detailStmt = $pdo->prepare($detailSql);
-        $detailStmt->execute([$orderId, $productId, $quantity]);
-    }
-    if ($detailStmt) {
-        echo '注文詳細のデータ挿入が成功しました。';
-    } else {
-        echo "注文詳細のデータ挿入が失敗しました。";
-    }
-    foreach ($_SESSION['product'] as $id => $product) {
+foreach ($_SESSION['product'] as $productId => $product) {
+    $quantity = $product['count']; // カートの商品の数量
+    $detailSql = "INSERT INTO OrdersDetails (order_id, product_id, quantity) VALUES (?, ?, ?)";
+    $detailStmt = $pdo->prepare($detailSql);
+    $detailStmt->execute([$orderId, $productId, $quantity]);
+}
+if ($detailStmt) {
+    echo '注文詳細のデータ挿入が成功しました。';
+} else {
+    echo "注文詳細のデータ挿入が失敗しました。";
+}
+foreach ($_SESSION['product'] as $id => $product) {
     echo '<div class="cart-items">';
     echo '<img src= "image/', $product['image'], '" style="width: 100px";>';
     echo '<p>', $product['name'], '</p>';
