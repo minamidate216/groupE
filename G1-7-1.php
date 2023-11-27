@@ -12,13 +12,15 @@ if($sql->rowCount() > 0){
 foreach($sql as $row){
     $date=date('Y-m-d', strtotime($row['date']));
     $price = $row['price']*$row['quantity'];
+    echo '<div class="columns">';
+    echo '<div class="column is-two-third is-offset-2">';
     echo '<table class="table is-striped column">';
-    echo '<tr><th style="width: 15%">注文番号：',$row['order_id'],'</th><th style="width: 10%"></th><th style="width: 40%">購入日：',$date,'</th><th></th><th></th></tr>';
+    echo '<tr class="has-background-success"><th style="width: 15%">注文番号：',$row['order_id'],'</th><th style="width: 10%"></th><th style="width: 40%">購入日：',$date,'</th><th></th><th></th></tr>';
     echo '<tr>';
     echo '<td>';
     echo '<img alt="image" width="100" height="100" src="../image/', $row['product_img'], '"></a></td>';
     echo '<td></td>';
-    echo '<td>',$row['product_name'];
+    echo '<td style="has-text-centered">',$row['product_name'];
     if($row['COUNT(p.product_id)']>1){
         echo 'など',$row['COUNT(p.product_id)'],'点';
     }
