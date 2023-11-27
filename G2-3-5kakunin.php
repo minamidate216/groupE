@@ -1,0 +1,63 @@
+
+<?php session_start(); ?>
+<?php require 'db-connect.php'; ?>
+
+<?php
+
+try {
+    $connect = new PDO($connect,USER, PASS);
+    $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Connection failed: ' . $e->getMessage());
+}
+
+try {
+    $query = "SELECT * FROM Products"; 
+    $stmt = $connect->query($query);
+    $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die('Query failed: ' . $e->getMessage());
+}
+?><!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コラム更新確認画面</title>
+    <style>
+        body {
+            text-align: center;
+        }
+ 
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <?php
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        
+        $taitor = $_POST["taitor"];
+        $_FILES=$_POST["productImage2"];
+        $aaa = $_POST["aaa"];
+
+        echo "<h1>コラム更新確認</h1>";
+        echo "<p>コラムタイトル: $taitor</p>";
+        echo "<p>画像: $_FILES</p>";
+        echo "<p>本文: $aaa</p>";
+
+        if (isset($_FILES['productImage2'])) {
+            $imageFile= $_FILES['productImage2'];
+            echo "<p>画像ファイル: $imageFile</p>";
+        }
+    }
+    ?>
+    <a href="G2-3-5.php">更新</a>
+    <a href="G2-3-5kousin.php">戻る</a></p>
+   
+</body>
+</html>
+
