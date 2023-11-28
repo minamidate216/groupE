@@ -6,8 +6,8 @@
 $conn = new PDO($connect,USER, PASS);
 
 // 接続確認
-if ($conn) {
-    die("データベース接続エラー: " . $conn->connect_error);
+if (!$conn) {
+    die("データベース接続エラー: " );
 }
 
 // Columnsテーブルからデータ取得
@@ -28,12 +28,13 @@ if ($result->rowCount() > 0) {
             </tr>";
 
     // データ表示
-    while ($row = $result->fetchAll(PDO::FETCH_ASSOC)) {
+    $data = $result->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($data as $row) {
         echo "<tr>
                 <td>" . $row["column_title"] . "</td>
                 <td>" . $row["admin_name"] . "</td>
                 <td>" . $row["post_data"] . "</td>
-                <td><a href='G2-3-5kousin.php?column_id=" . $row["column_id"] . "'>更新</a></td>
+                <td><a href='G2-3-5.php?column_id=" . $row["column_id"] . "'>更新</a></td>
                 <td><a href='delete.php?column_id=" . $row["column_id"] . "'>削除</a></td>
               </tr>";
     }
@@ -42,7 +43,7 @@ if ($result->rowCount() > 0) {
     echo "データがありません";
 }
 
-$conn->close();
+$conn=null;
 ?>
 
 <button onclick="location.href='G2-3-2.php'">登録</button>
