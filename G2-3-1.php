@@ -35,7 +35,7 @@ if ($result->rowCount() > 0) {
                 <td>" . $row["admin_name"] . "</td>
                 <td>" . $row["post_data"] . "</td>
                 <td><a href='G2-3-5.php?column_id=" . $row["column_id"] . "'>更新</a></td>
-                <td><a href='delete.php?column_id=" . $row["column_id"] . "'>削除</a></td>
+                <td><a href='G2-3-8.php?column_id=" . $row["column_id"] . "'>削除</a></td>
               </tr>";
     }
     echo "</table>";
