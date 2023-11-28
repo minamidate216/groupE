@@ -17,7 +17,7 @@ $_SESSION['product'][$id]=[
     'count'=>$count+$_POST['count'],
     'image'=>$_POST['image']
 ];
-echo '<p>カートに商品を追加しました。</p>';
+echo '<p class="has-text-centered">カートに商品を追加しました。</p>';
 echo '<hr>';
 ?>
 <?php require 'G1-9-1.php'; ?>
