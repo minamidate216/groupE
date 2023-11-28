@@ -1,4 +1,4 @@
-<font size="6">カート一覧</font>
+<div class="has-text-centered is-size-2">カート一覧</div>
 <?php
 if(!empty($_SESSION['product'])){
     echo '<div class="columns">';
@@ -24,7 +24,7 @@ if(!empty($_SESSION['product'])){
         echo '<tr><td></td><td></td><td></td><td></td><td>合計</td><td>',$total,'</td></tr>';
         echo '</table>';
         echo '<form action="G1-10-1.php" style="has-text-centered">';
-        echo '<button type="submit">お会計に進む</button>';
+        echo '<button type="submit" class="button is-rounded is-success has-text-centered">お会計に進む</button>';
         echo '</form>';
 }else{
     echo 'カートに商品がありません。';
