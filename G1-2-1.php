@@ -7,15 +7,14 @@ if(isset($_SESSION['Users'])){
     if(isset($_POST['judge'])){
         unset($_SESSION['Users']);
         $pdo = new PDO($connect,USER,PASS);
-        $sql=$pdo->prepare('select * from Users where user_id=?');
-        $sql->execute([$_POST['id']]);
+        $sql=$pdo->prepare('select * from Users where user_name=?');
+        $sql->execute([$_POST['user_name']]);
         foreach($sql as $row){
             //if(password_verify($_POST['password'],$row['password'])){ ハッシュ化するか協議
             $_SESSION['Users']=[
                 'user_name'=>$row['user_name'],
                 'address'=>$row['address'], 'user_id'=>$row['user_id'],
-                'email'=>$row['email'],
-                'password'=>$row['password']];
+                'password'=>$row['password'], 'email'=>$row['email']] ;
             //}
         }
         if(isset($_SESSION['Users'])) {
@@ -35,11 +34,11 @@ if(isset($_SESSION['Users'])){
     } /*未入力の時の表示を考えたいにゃ　*/
     if($judge!=1){
         echo '<form method="post">';
-        echo 'ログイン名  <input type="text" name="id"><br/>';
+        echo 'ユーザーネーム  <input type="text" name="user_name"><br/>';
         echo 'パスワード  <input type="password" name="password"><br/>';
         echo '<input type="hidden" name="judge" value=1>';
         echo '<button type="submit">ログイン</button>';
-        echo '</form>';
+        echo '</form><br>';
         echo '<a href="G1-2-2.php">ID・パスワードを忘れた方はこちら</a><br/>';
         echo '<a href="G1-2-4.php">新規登録の方はこちら</a>';
     
