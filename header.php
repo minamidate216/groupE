@@ -9,23 +9,38 @@
 <title>Document</title>
 </head>
 <body>
-<div class="">
-<a href="G1-1-1.php"><img src="image/top.png" height="100px" width="100px">miyosi farm</a>
+<div class="has-background-success-dark">
+    <div style="display:inline-block">
+<a href="G1-1-1.php"><img src="../image/ranch.png" height="100px" width="100px"><span class="has-text-white">miyosi farm</a>
 <form action="G1-5-1.php" method="post">
 <input type="text" name="keyword">
 <button type="submit">検索</button>
 </form>
-<a href="G1-6-1.php">お気に入り</a>
-<a href="G1-5-1.php">商品</a>
-<a href="G1-7-1.php">注文履歴</a>
-<a href="G1-9-1-show.php">カート</a>
-<a href="G1-4-2.php">コラム</a>
-<?php
-if(!isset($_SESSION['Users'])){
-    echo '<a href="G1-2-1.php">ログイン</a>';
-}else{
-    echo '<a href="G1-2-7.php">ログアウト</a>';
-}
-?>
+</div>
+    <div class="Columns level-right">
+        <div class="column is-offset-one-third level-item">
+            <a href="G1-6-1-show.php"><span class="has-text-white">お気に入り <div class="icon is-size-4"><i class="far fa-heart"></i></div></span></a>
+        </div>
+        <div class="column level-item">
+            <a href="G1-7-1.php"><span class="has-text-white">注文履歴 <div class="icon is-size-4"><i class="fas fa-history"></i></div></span></a>
+        </div>
+        <div class="column level-item">
+            <a href="G1-9-1-show.php"><span class="has-text-white">カート <div class="icon is-size-4"><i class="fas fa-shopping-cart"></i></div></span></a>
+        </div>
+        <div class="column level-item">
+            <a href="G1-4-1.php"><span class="has-text-white">コラム <div class="icon is-size-4"><i class="fas fa-book-open"></i></div></span></a>
+        </div>
+        <div class="column level-item">
+            <a href="G1-3-3.php"><span class="has-text-white icon is-size-3"><i class="fab fa-creative-commons-by"></i></span></a>
+        </div>
+        
+        <?php
+            if(!isset($_SESSION['Users'])){
+                echo '<a href="G1-2-1.php"><button type="submit">ログイン</button></a>';
+            }else{
+                echo '<a href="G1-2-7.php"><button type="submit">ログアウト</button></a>';
+            }
+        ?>
+    </div>
 </div>
 <hr>
