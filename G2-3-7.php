@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <?php require 'db-connect.php'; ?>
-<?php $connect = 'mysql:host='. SERVER . ';dbname='. DBNAME . ';charset=utf8'; ?>
+<?php 
+$connect = 'mysql:host='. SERVER . ';dbname='. DBNAME . ';charset=utf8'; ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
