@@ -1,19 +1,12 @@
 <?php session_start(); ?>
+<?php require 'db-connect.php'; ?>
 <?php require 'midasi.php'; // このファイルの中で、$conn も正しく定義されているものとします
 
-$servername = "mysql215.phy.lolipop.lan";
-$username = "LAA1517365";
-$password = "Pass0916";
-$dbname = "LAA1517365-shop";
  
 // データベースに接続
-$conn = new mysqli($servername, $username, $password, $dbname);
+$pdo=new PDO($connect,USER,PASS);
  
 // 接続確認
-if ($conn->connect_error) {
-    die("データベース接続エラー: " . $conn->connect_error);
-}
-
 // セッションから情報を取得
 $column_title = isset($_SESSION['column_title']) ? $_SESSION['column_title'] : '';
 $content = isset($_SESSION['content']) ? $_SESSION['content'] : '';
@@ -40,14 +33,9 @@ if ($image_data && $image_type) {
         $target_file = $upload_path;
 
         // ここで取得した情報をデータベースに保存する処理を実行する
-        $sql = "INSERT INTO Columns (column_title, content, post_data, post_img, admin_id) VALUES ('$column_title', '$content', '$post_data', '$target_file', '$admin_id')";
-
-        // クエリの実行と結果の確認
-        if ($conn->query($sql) === TRUE) {
-            echo "新しいコラムが登録されました";
-        } else {
-            echo "エラー: " . $sql . "<br>" . $conn->error;
-        }
+        $sql = "INSERT INTO Columns (column_title, content, post_data, post_img, admin_id) VALUES (?, ?, ?, ?, ?)";
+        $result = $pdo->prepare($sql);
+        $result->execute([$column_title, $content, $post_data, $target_file, $admin_id]);
 
         // データベースへの保存が完了したら、不要になったセッション変数を削除する
         unset($_SESSION['column_title']);

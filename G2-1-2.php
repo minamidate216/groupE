@@ -1,7 +1,7 @@
 <?php require 'midasi.php'; ?>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // フォームから送信されたデータを取得
+    //フォームから送信されたデータを取得
     $admin_name = $_POST["admin_name"];
     $email = $_POST["email"];
     $admin_id = $_POST["admin_id"];
