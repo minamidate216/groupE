@@ -1,6 +1,3 @@
-// 金額が変更されるメソッドを追加する
-// 個数が変更された際に次のページに渡されていない
-
 const app = new Vue({
     //<div id="vueApp">範囲がこのvueの管轄領域にあることを定義
     el:'#vueApp',
@@ -8,9 +5,10 @@ const app = new Vue({
     data:{
         message :'',
         // 配列の変数を書いておく
-        allData:productFromPHP,
+        allData: productFromPHP,
         subTotal : 0,
-        total:0
+        total: 0,
+        cartCount: 0
     }
     ,created() {
         // idごとに商品を格納するため　後ほどidを使用した処理が出てくるため
@@ -24,6 +22,7 @@ const app = new Vue({
     },
     
     methods:{
+        // 商品idが該当する商品の個数を減らす
         increment(id) {
         const index = this.getIndexBy(id);
         // 文字列のquantityを数値に変換する
@@ -34,47 +33,29 @@ const app = new Vue({
                 this.message = `商品ID ${id} の在庫が不足しています。`;
             }
         },
+        // 商品idが該当する商品の個数を減らす
         decrement(id) {
             const index = this.getIndexBy(id);
             if(this.allData[index].count > 0){
                 this.allData[index].count--;
             }
         },
+        // 商品idを取得する
         getIndexBy(id) {
             const filteredTodo = this.allData.filter(data => data.id === id)[0];
             const index = this.allData.indexOf(filteredTodo);
             return index;
         }
+        // subTotal(product){
+        //     return product.price * product.count;
+        // }
     },
-
+    computed:{
+        // 合計金額を返す
+        Total(){
+            return this.allData.reduce((sum, product) => sum + product.price * product.count, 0);
+        }
+        //　小計を返す
+        //　計算はここまで
+    }
 });
-// ここから先は元々のコード
-// const app = new Vue({
-//     //<div id="vueApp">範囲がこのvueの管轄領域にあることを定義
-//     el:'#vueApp',
-//     //dataは　vueの中で使われる変数
-//     data:{
-//         allData:[
-//             {id:1, name:"abc", price:400, count:0},
-//             {id:2, name:"def", price:300, count:0},
-//             {id:3, name:"ghi", price:500, count:0},
-//         ],
-//     },
-//     methods:{
-//         increment(id) {
-//             const index = this.getIndexBy(id);
-//             this.allData[index].count++;
-//         },
-//         decrement(id) {
-//             const index = this.getIndexBy(id);
-//             this.allData[index].count--;
-//         },
-//         getIndexBy(id) {
-//             const filteredTodo = this.allData.filter(data => data.id === id)[0];
-//             const index = this.allData.indexOf(filteredTodo);
-//             return index;
-//         }
-
-//     },
-
-// });
