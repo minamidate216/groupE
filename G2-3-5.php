@@ -6,7 +6,7 @@ if(!isset($_GET['column_id'])){
     exit();
 }
 // データベース接続
-$conn = new PDO($connect,USER, PASS);
+$conn = new PDO($connect, USER, PASS);
 // Columnsテーブルからデータ取得
 $sql = "SELECT * FROM Columns WHERE column_id = ?";
 $result = $conn->prepare($sql);
@@ -17,8 +17,7 @@ $row = $result->fetch();
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=de
-    vice-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>コラム更新画面</title>
     <style>
         body {
@@ -41,7 +40,8 @@ $row = $result->fetch();
         <p><textarea name="content" id="" cols="30" rows="10"><?= $row['content'] ?></textarea></p>
         <a href="G2-3-1.php">保存せず戻る</a>
         <button type="submit">更新</button>
-        
     </form>
 </body>
 </html>
+
+
