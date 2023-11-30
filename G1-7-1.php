@@ -1,5 +1,5 @@
-<?php require 'db-connect.php'; ?>
 <?php require 'header.php'; ?>
+<?php require 'db-connect.php'; ?>
 <?php
 if(empty($_SESSION['Users'])){
     echo 'ログインしてください。<br>';
@@ -15,7 +15,7 @@ foreach($sql as $row){
     echo '<tr><th></th><th>商品名</th><th>値段</th><th>注文日</th><th></th></tr>';
     echo '<tr>';
     echo '<td><a href="G1-8-1.php?id=',$row['product_id'],'">';
-    echo '<img alt="image" width="100" height="100" src="../image/', $row['product_img'], '"></a></td>';
+    echo '<img alt="image" width="100" height="100" src="image/', $row['product_img'], '"></a></td>';
     echo '<td><a href="G1-8-1.php?id=',$row['product_id'],'">',$row['product_name'],'</a></td>'; 
     echo '<td>',$price,'</td>';
     echo '<td>',$row['date'],'</td>'; 
