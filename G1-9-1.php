@@ -9,7 +9,7 @@ if(!empty($_SESSION['product'])){
         foreach($_SESSION['product'] as $id=>$product){
             echo '<tr>';
             echo '<td><a href="G1-8-1.php?id=', $id, '">';
-            echo '<img alt="image" width="100" height="100" src="../image/', $product['image'], '"></a></td>';
+            echo '<img alt="image" width="100" height="100" src="image/', $product['image'], '"></a></td>';
             echo '<td><a href="G1-8-1.php?id=', $id, '">',
                  $product['name'], '</a></td>';
             echo '<td>', $product['description'], '</td>';

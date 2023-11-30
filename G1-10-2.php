@@ -28,31 +28,45 @@ if ($stmt) {
 }
 // orderテーブルここまで
 
+// 前ページの$_postを受け取る
+    // 商品の情報を含む配列を初期化
+    $products = array();
+
+    // productIdの各キーに対してループ
+    foreach ($_POST['productId'] as $id => $productId) {
+        // 各商品の情報を配列に格納
+        $products[] = array(
+            'id' => $productId,
+            'name' => $_POST['productName'][$id],
+            'count' => $_POST['productCount'][$id],
+            'image' => $_POST['productImage'][$id],
+            'price' => $_POST['productPrice'][$id]
+        );
+    }
 // 商品テーブルの在庫を減らす
-foreach ($_SESSION['product'] as $productId => $product){
-    
-    
+foreach ($products as $product){    
     $quantity = $product['count']; // カートの商品の数量
     $stmt = $pdo->prepare("UPDATE Products SET quantity = quantity - ? WHERE product_id = ?");
     // クエリを実行します。
-    $stmt->execute([$quantity, $productId]);
+    $stmt->execute([$quantity, $product['id']]);
 }
 
 
 // OrdersDetailsテーブル
 // 注文詳細をOrdersDetailsテーブルに挿入
-foreach ($_SESSION['product'] as $productId => $product) {
+foreach ($products as $product) {
     $quantity = $product['count']; // カートの商品の数量
     $detailSql = "INSERT INTO OrdersDetails (order_id, product_id, quantity) VALUES (?, ?, ?)";
     $detailStmt = $pdo->prepare($detailSql);
-    $detailStmt->execute([$orderId, $productId, $quantity]);
+    $detailStmt->execute([$orderId, $product['id'], $quantity]);
 }
+// insert文はここまで
 if ($detailStmt) {
     echo '注文詳細のデータ挿入が成功しました。';
 } else {
     echo "注文詳細のデータ挿入が失敗しました。";
 }
-foreach ($_SESSION['product'] as $id => $product) {
+foreach ($products as $product) {
     echo '<div class="cart-items">';
     echo '<img src= "image/', $product['image'], '" style="width: 100px";>';
     echo '<p>', $product['name'], '</p>';
@@ -62,11 +76,6 @@ foreach ($_SESSION['product'] as $id => $product) {
 }
 echo '<h3>ご購入ありがとうございます</h3>';
 unset($_SESSION['product'][$productId]);
-// insert文はここまで
-
-// バックエンドの処理はうまくいったが最後に注文内容が表示されない
-// ページを再度読み込むと同じ注文がテーブルに保存されてしまう
-// ⇧インサート文は別ファイルに分けるべきか
 
 ?>
 <a href="G1-1-1.php">サイトトップへ</a>
