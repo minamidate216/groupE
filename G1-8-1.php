@@ -22,6 +22,21 @@ foreach($sql as $row) {
         echo '<option value="', $i, '">',$i,'</option>';
     }
     echo '</select>  個</p>';
+}
+    ?>
+    <div id="vueApp">
+    <!-- 商品情報のループ -->
+    <div v-for="product in products" :key="product.id">
+        <p>{{ product.name }}</p>
+        <!-- お気に入りボタン -->
+        <button @click="toggleFavorite(product)">
+            <img :src="product.isFavorited ? 'image/favorited-heart.png' : 'image/not-favorited-heart.png'" alt="お気に入り">
+        </button>
+    </div>
+</div>
+
+    <?php
+    foreach($sql as $row) {
     echo '<input type="hidden" name="id" value="', $row['product_id'], '">';
     echo '<input type="hidden" name="name" value="', $row['product_name'], '">';
     echo '<input type="hidden" name="price" value="', $row['price'], '">';
@@ -32,5 +47,11 @@ foreach($sql as $row) {
     echo '</form>';
 }
     ?>
+
+<script>var productFromPHP = <?php echo json_encode($_SESSION['product']); ?>;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./script/script.js"></script>
 
 <?php require 'footer.php'; ?>
