@@ -1,5 +1,5 @@
-<?php require 'db-connect.php'; ?>
 <?php require 'header.php'; ?>
+<?php require 'db-connect.php'; ?>
 <?php
 if(empty($_SESSION['Users'])){
     echo 'ログインしてください。<br>';
@@ -27,10 +27,14 @@ foreach($sql as $row){
     echo '</td>'; 
     echo '<td></td>'; 
     echo '<td>';
-    echo '<form action="G1-7-2.php" method="post">';
-    echo '<input type="hidden" name=orderId value="',$row['order_id'], '">';
-    echo '<input type="hidden" name=Date value="',$date, '">';
-    echo '<button type="submit">詳細を表示</button>';
+    echo '<form action="G1-9-1-insert.php" method="post">';
+    echo '<input type="hidden" name=id value="',$row['product_id'], '">';
+    echo '<input type="hidden" name=name value="',$row['product_name'], '">';
+    echo '<input type="hidden" name=description value="',$row['description'], '">';
+    echo '<input type="hidden" name=price value="',$row['price'], '">';
+    echo '<input type="hidden" name=count value="1">';
+    echo '<input type="hidden" name=image value="',$row['product_img'], '">';
+    echo '<button type="submit">カートに追加</button>';
     echo '</form>';
     echo '</td>';
     echo '</tr>';
