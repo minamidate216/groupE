@@ -11,9 +11,9 @@ $sql->execute([$_SESSION['Users']['user_id'],$_GET['id']]);
 if($sql->rowCount()==0){
     $sql = $pdo->prepare('insert into Favorites values (?,?)');
     $sql->execute([$_SESSION['Users']['user_id'],$_GET['id']]);
-    echo 'お気に入りに追加しました。';
+    echo '<div class="has-text-centered">お気に入りに追加しました。</div>';
 }else{
-    echo '既にお気に入りに追加済みです。';
+    echo '<div class="has-text-centered">既にお気に入りに追加済みです。</div>';
 }
 require 'G1-6-1.php';
 }

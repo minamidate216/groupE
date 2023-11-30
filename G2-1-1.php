@@ -1,4 +1,4 @@
-<?php require 'midasi1.php'; ?>
+<?php require 'midasi.php'; ?>
 <h2>管理者登録</h2>
 <form action="G2-1-2.php" method="post">
 <label for="admin_name">氏名:</label>

@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php require 'header.php' ;?>
 <?php
 
 if (isset($_POST['submit'])) {
@@ -14,6 +14,7 @@ $email = isset($_SESSION['User']['email']) ? $_SESSION['User']['email'] : '';
 $password = isset($_SESSION['User']['password']) ? $_SESSION['User']['password'] : '';
 $address = isset($_SESSION['User']['address']) ? $_SESSION['User']['address'] : '';
 
+echo '<p>ID: ', $user_id, '</p>';
 echo '<p>名前: ', $user_name, '</p>';
 echo '<p>メールアドレス: ', $email, '</p>';
 echo '<p>パスワード: ', $password, '</p>';
