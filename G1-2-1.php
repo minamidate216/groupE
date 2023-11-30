@@ -1,8 +1,9 @@
 <?php require 'db-connect.php'; ?>
 <?php require 'header.php'; ?>
 <?php
+echo '<div class="has-text-centered is-size-2">LOGIN PAGE</div>';
 if(isset($_SESSION['Users'])){
-    echo $_SESSION['Users']['user_name'],'さんで、ログイン済みです。';
+    echo '<div class="has-text-centered">',$_SESSION['Users']['user_name'],'さんで、ログイン済みです。</div>';
 }else{
     if(isset($_POST['judge'])){
         unset($_SESSION['Users']);
@@ -18,10 +19,10 @@ if(isset($_SESSION['Users'])){
             //}
         }
         if(isset($_SESSION['Users'])) {
-            echo 'いらっしゃいませ、', $_SESSION['Users']['user_name'], 'さん';
+            echo '<div class="has-text-centered">いらっしゃいませ、', $_SESSION['Users']['user_name'], 'さん';
             echo '<form action="G1-1-1.php">';
             echo '<button type="submit">トップへ</button>';
-            echo '</form>';
+            echo '</form></div>';
             $judge=1;
         }else{
             echo '<h1>ログイン名またはパスワードが違います。</h1>';
