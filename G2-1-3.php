@@ -21,18 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 既に存在するIDの処理を行う場合はここにコードを追加します
     } else {
         // この例では単純なmd5ハッシュを使用していますが、実際のアプリケーションではセキュリティを考慮した方法を使用してください
-        $hashed_password = password_hash($password);
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // データベースにデータを挿入
         $sql = "INSERT INTO Admins (admin_id, admin_name, password, email) VALUES (?, ?, ?, ?)";
-        $result = $conn->prepare($sql);
+        $result = $pdo->prepare($sql);
         $result->execute([$admin_id, $admin_name, $hashed_password, $email]);
-        if ($conn->query($sql) === TRUE) {
             echo "<h2>管理者の登録を完了しました。</h2>";
             echo '<a href="G2-1-1.php">商品管理画面へ</a>';
-        } else {
-            echo "データベースエラー: ";
-        }
     }
 }
 ?>
