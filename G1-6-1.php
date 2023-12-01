@@ -16,10 +16,10 @@ if($sql->rowCount() == 0){
     echo '<tr class="has-background-success"><th></th><th>商品名</th><th>説明</th><th>価格</th><th></td><td></th><th></th><th></th></tr>';
 foreach($sql as $row){
     echo '<tr><td><img src="../image/',$row['product_img'],'" width="100" height="100">';
-    echo '<td><a href="G1-8-1.php?id=',$row['product_id'],'">',$row['product_name'], '</td>';
-    echo '<td>', $row['description'],'</td>';
-    echo '<td>', $row['price'], '</td>';
-    echo '<td>';
+    echo '<td class="is-vcentered"><a href="G1-8-1.php?id=',$row['product_id'],'">',$row['product_name'], '</td>';
+    echo '<td class="is-vcentered">', $row['description'],'</td>';
+    echo '<td class="is-vcentered">', $row['price'], '</td>';
+    echo '<td class="is-vcentered">';
     echo '<form action="G1-9-1-insert.php" method="post">';
     echo '<input type="hidden" name=id value="',$row['product_id'], '">';
     echo '<input type="hidden" name=name value="',$row['product_name'], '">';
@@ -30,7 +30,7 @@ foreach($sql as $row){
     echo '<button type="submit">カートに追加</button>';
     echo '</form>';
     echo '</td>';
-    echo '<td></td><td></td><td>';
+    echo '<td></td><td></td><td class="is-vcentered">';
     echo '<form action="G1-6-1-delete.php" method="post">';
     echo '<input type="hidden" name="id" value="', $row['product_id'],'">';
     echo '<input type="hidden" name=name value="',$row['product_name'], '">';
@@ -46,3 +46,8 @@ foreach($sql as $row){
 }
 }
 ?>
+<style>
+table{
+    margin: auto 20px auto;
+}
+</style>
