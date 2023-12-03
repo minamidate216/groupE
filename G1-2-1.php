@@ -25,7 +25,7 @@ if(isset($_SESSION['Users'])){
             echo '</form></div>';
             $judge=1;
         }else{
-            echo '<h1>ログイン名またはパスワードが違います。</h1>';
+            echo '<h1>ユーザーネームまたはパスワードが違います。</h1>';
             unset($_SESSION['Users']);
             $judge=0;
         }
@@ -40,7 +40,7 @@ if(isset($_SESSION['Users'])){
         echo '<input type="hidden" name="judge" value=1>';
         echo '<button type="submit">ログイン</button>';
         echo '</form><br>';
-        echo '<a href="G1-2-2.php">ID・パスワードを忘れた方はこちら</a><br/>';
+        echo '<a href="G1-2-2.php">パスワードを忘れた方はこちら</a><br/>';
         echo '<a href="G1-2-4.php">新規登録の方はこちら</a>';
     
 }

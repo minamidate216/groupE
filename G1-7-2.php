@@ -10,9 +10,7 @@ $sql = $pdo->prepare('SELECT p.description, p.product_img, p.product_id, p.produ
 $sql->execute([$_SESSION['Users']['user_id'],$_POST['orderId']]);
 if($sql->rowCount() > 0){
     $total=0;
-    echo '<div class="columns ">';
-    echo '<div class="column is-two-third is-offset-2">';
-    echo '<table class="table is-striped column">';
+    echo '<table class="table is-striped ">';
     echo '<tr class="has-background-success"><th>注文番号：',$_POST['orderId'],'</th><th></th><th>購入日：',$_POST['Date'],'</th><th></th><th></th><th></th></tr>';
 foreach($sql as $row){
     $date=date('Y-m-d', strtotime($row['date']));
@@ -24,7 +22,7 @@ foreach($sql as $row){
     echo '<td class="is-vcentered"><a href="G1-8-1.php?id=',$row['product_id'],'">',$row['product_name'],'</a></td>';
     echo '<td class="is-vcentered">',$row['price'],'円</td>';
     echo '<td class="is-vcentered">',$row['quantity'],'点</td>';
-    echo '<td class="is-vcentered">',$price,'円</td>';
+    echo '<td class="is-vcentered has-text-right">',$price,'円</td>';
     echo '<td class="is-vcentered">';
     echo '<form action="G1-9-1-insert.php" method="post">';
     echo '<input type="hidden" name=id value="',$row['product_id'], '">';
@@ -38,7 +36,7 @@ foreach($sql as $row){
     echo '</td>';
     echo '</tr>';
 }
-echo '<tr><th></th><th></th><th></th><th></th><th></th><th>お買い上げ金額：',$total,'円</th></tr>';
+echo '<tr><th></th><th></th><th></th><th></th><th>お買い上げ金額：',$total,'円</th><th></th></tr>';
 echo '</table>';
 }
 else{
@@ -47,6 +45,11 @@ else{
 }
 ?>
 <form action="G1-7-1.php">
-    <button type="submit">履歴一覧に戻る</button>
+    <div class="has-text-centered"><button type="submit">履歴一覧に戻る</button></div>
 </form>
+<style>
+    table{
+        margin: auto;
+    }
+</style>
 <?php require 'footer.php'; ?>

@@ -1,5 +1,5 @@
-<?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
+<?php require 'header.php'; ?>
 <?php
 if(empty($_SESSION['Users'])){
     echo 'ログインしてください。<br>';
@@ -15,26 +15,22 @@ foreach($sql as $row){
     echo '<div class="columns">';
     echo '<div class="column is-two-third is-offset-2">';
     echo '<table class="table is-striped column">';
-    echo '<tr class="has-background-success"><th style="width: 15%">注文番号：',$row['order_id'],'</th><th style="width: 10%"></th><th style="width: 40%">購入日：',$date,'</th><th></th><th></th></tr>';
-    echo '<tr>';
+    echo '<tr class="b-noBottom has-background-success"><th style="width: 15%">注文番号：',$row['order_id'],'</th><th style="width: 10%"></th><th style="width: 40%">購入日：',$date,'</th><th></th><th></th></tr>';
+    echo '<tr class="b-noTop">';
     echo '<td>';
     echo '<img alt="image" width="100" height="100" src="../image/', $row['product_img'], '"></a></td>';
     echo '<td></td>';
-    echo '<td style="has-text-centered">',$row['product_name'];
+    echo '<td style="has-text-centered"  class="is-vcentered">',$row['product_name'];
     if($row['COUNT(p.product_id)']>1){
         echo 'など',$row['COUNT(p.product_id)'],'点';
     }
     echo '</td>'; 
     echo '<td></td>'; 
-    echo '<td>';
-    echo '<form action="G1-9-1-insert.php" method="post">';
-    echo '<input type="hidden" name=id value="',$row['product_id'], '">';
-    echo '<input type="hidden" name=name value="',$row['product_name'], '">';
-    echo '<input type="hidden" name=description value="',$row['description'], '">';
-    echo '<input type="hidden" name=price value="',$row['price'], '">';
-    echo '<input type="hidden" name=count value="1">';
-    echo '<input type="hidden" name=image value="',$row['product_img'], '">';
-    echo '<button type="submit">カートに追加</button>';
+    echo '<td class="is-vcentered">';
+    echo '<form action="G1-7-2.php" method="post">';
+    echo '<input type="hidden" name=orderId value="',$row['order_id'], '">';
+    echo '<input type="hidden" name=Date value="',$date, '">';
+    echo '<button type="submit">詳細を表示</button>';
     echo '</form>';
     echo '</td>';
     echo '</tr>';
@@ -46,4 +42,16 @@ else{
 }
 }
 ?>
+<style>
+.b-noBottom{
+    border-right: 2px solid #adffad; 
+    border-top: 2px solid #adffad; 
+    border-left: 2px solid #adffad; 
+}
+.b-noTop {
+    border-right: 2px solid #adffad; 
+    border-bottom: 2px solid #adffad; 
+    border-left: 2px solid #adffad; 
+}
+</style>
 <?php require 'footer.php'; ?>
