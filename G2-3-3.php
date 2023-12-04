@@ -13,12 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<h2>入力内容の確認</h2>
+<h2></h2>
 <form action="G2-3-4.php" method="post">
-    <p>コラムタイトル: <?php echo isset($_SESSION['column']['column_title']) ? $_SESSION['column_title'] : ''; ?></p>
-    <p>本文: <?php echo isset($_SESSION['column']['content']) ? $_SESSION['column']['content'] : ''; ?></p>
-
-    <!-- 画像の表示 -->
 <?php
     if (isset($_SESSION['column']['post_img_data']) && isset($_SESSION['column']['post_img_type'])) {
        $img_data = $_SESSION['column']['post_img_data'];
@@ -28,8 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        echo '<img src="' . $base64_img . '" alt="Uploaded Image" width="300" height="200">';
     }
 ?>
+    <p><?php echo isset($_SESSION['column']['column_title']) ? $_SESSION['column']['column_title'] : ''; ?></p>
+    <p><?php echo isset($_SESSION['column']['content']) ? $_SESSION['column']['content'] : ''; ?></p>
     <!-- 登録ボタン -->
+    <p>登録しますか？</p>
     <p><input type="submit" value="登録">
+    <a href="G2-3-1.php"><button type="button">戻る</button></a>
 </form>
-<button onclick = "location.href='G2-3-1.php'">戻る</button></p>
 <?php require 'footer.php'; ?>

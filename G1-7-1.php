@@ -13,14 +13,14 @@ foreach($sql as $row){
     $date=date('Y-m-d', strtotime($row['date']));
     $price = $row['price']*$row['quantity'];
     echo '<div class="columns">';
-    echo '<div class="column is-two-third is-offset-2">';
+    echo '<div class="column is-two-third ">';
     echo '<table class="table is-striped column">';
-    echo '<tr class="b-noBottom has-background-success"><th style="width: 15%">注文番号：',$row['order_id'],'</th><th style="width: 10%"></th><th style="width: 40%">購入日：',$date,'</th><th></th><th></th></tr>';
+    echo '<tr class="b-noBottom has-background-success"><th style="width: 20%">注文番号：',$row['order_id'],'</th><th></th><th style="width: 40%">購入日：',$date,'</th><th></th><th></th></tr>';
     echo '<tr class="b-noTop">';
     echo '<td>';
-    echo '<img alt="image" width="100" height="100" src="../image/', $row['product_img'], '"></a></td>';
+    echo '<img alt="image" width="100" height="100" src="image/', $row['product_img'], '"></a></td>';
     echo '<td></td>';
-    echo '<td style="has-text-centered"  class="is-vcentered">',$row['product_name'];
+    echo '<td style="has-text-centered"  class="textBr is-vcentered">',$row['product_name'];
     if($row['COUNT(p.product_id)']>1){
         echo 'など',$row['COUNT(p.product_id)'],'点';
     }
@@ -43,6 +43,9 @@ else{
 }
 ?>
 <style>
+    table{
+        margin: auto 225px auto ;
+    }
 .b-noBottom{
     border-right: 2px solid #adffad; 
     border-top: 2px solid #adffad; 
@@ -52,6 +55,9 @@ else{
     border-right: 2px solid #adffad; 
     border-bottom: 2px solid #adffad; 
     border-left: 2px solid #adffad; 
+}
+.textBr{
+    width: 320px;
 }
 </style>
 <?php require 'footer.php'; ?>

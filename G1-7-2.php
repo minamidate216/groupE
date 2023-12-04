@@ -18,7 +18,7 @@ foreach($sql as $row){
     $total += $price;
     echo '<tr>';
     echo '<td><a href="G1-8-1.php?id=',$row['product_id'],'">';
-    echo '<img alt="image" width="100" height="100" src="../image/', $row['product_img'], '"></a></td>';
+    echo '<img alt="image" width="100" height="100" src="image/', $row['product_img'], '"></a></td>';
     echo '<td class="is-vcentered"><a href="G1-8-1.php?id=',$row['product_id'],'">',$row['product_name'],'</a></td>';
     echo '<td class="is-vcentered">',$row['price'],'円</td>';
     echo '<td class="is-vcentered">',$row['quantity'],'点</td>';
@@ -31,6 +31,7 @@ foreach($sql as $row){
     echo '<input type="hidden" name=price value="',$row['price'], '">';
     echo '<input type="hidden" name=count value="1">';
     echo '<input type="hidden" name=image value="',$row['product_img'], '">';
+    echo '<input type="hidden" name=quantity value="',$row['quantity'], '">';
     echo '<button type="submit">カートに追加</button>';
     echo '</form>';
     echo '</td>';
@@ -45,11 +46,14 @@ else{
 }
 ?>
 <form action="G1-7-1.php">
-    <div class="has-text-centered"><button type="submit">履歴一覧に戻る</button></div>
+    <div class="btn has-text-centered"><button type="submit">履歴一覧に戻る</button></div>
 </form>
 <style>
     table{
         margin: auto;
+    }
+    .btn{
+        margin: 30px;
     }
 </style>
 <?php require 'footer.php'; ?>

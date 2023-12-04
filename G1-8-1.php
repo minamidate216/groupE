@@ -8,10 +8,10 @@ $favoriteSql = $pdo->prepare('select count(*) from Favorites where user_id=? and
 $favoriteSql->execute([$_SESSION['Users']['user_id'], $_GET['id']]);
 $count = $favoriteSql->fetchColumn();
 if ($count > 0) {
-    $isFavorited = true;
+    $isFavorite = true;
 
 } else {
-    $isFavorited = false;
+    $isFavorite = false;
 }
 
 
@@ -57,7 +57,7 @@ foreach ($productSql as $row) {
 ?>
 <div id="vueApp">
     <!-- お気に入りボタン -->
-    <i :class="{'fas fa-heart': isFavorited, 'far fa-heart': !isFavorited}" @click="toggleFavorite"></i>
+    <i :class="{'fas fa-heart': isFavorite, 'far fa-heart': !isFavorite}" @click="toggleFavorite"></i>
 </div>
 
 
@@ -65,7 +65,7 @@ foreach ($productSql as $row) {
 <!-- script.jsに商品とお気に入りの情報を渡す⇩ -->
 <script>
     var productFromPHP = <?php echo json_encode($productId); ?>;
-    var favoriteFromPHP = <?php echo json_encode($isFavorited); ?>;
+    var favoriteFromPHP = <?php echo json_encode($isFavorite); ?>;
 </script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

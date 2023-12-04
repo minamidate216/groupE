@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
 <?php 
 if(!isset($_GET['column_id'])){
@@ -44,5 +44,3 @@ $row = $result->fetch();
     </form>
 </body>
 </html>
-
-
