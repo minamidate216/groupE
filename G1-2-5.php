@@ -26,5 +26,6 @@ echo '<input type="submit" name="submit" value="登録する">';
 echo '</form>';
 echo '<form action="G1-2-4.php" method="post">';
 echo '<input type="submit" value="戻る">';
+echo '<input type="button" onclick="history.back()" value="戻る1">';
 echo '</form>';
 ?>

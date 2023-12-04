@@ -2,10 +2,10 @@
 <?php require 'db-connect.php'; ?>
 <?php
 $errors = [];
-
-$password = isset($_SESSION['User']['password']) ? $_SESSION['User']['password'] : '';
-$email = isset($_SESSION['User']['email']) ? $_SESSION['User']['email'] : '';
-$address = isset($_SESSION['User']['address']) ? $_SESSION['User']['address'] : '';
+$user_name='';
+$password = '';
+$email =  '';
+$address = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 入力値を取得
@@ -62,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php
 echo '<form action="" method="post">';
 echo '<h3>会員登録</h3>';
+echo '<input type="hidden" name="user_id" value="', $user_id, '">';
 echo '<table>';
 echo '<tr>';
 echo '<td>氏名</td>';
