@@ -1,4 +1,4 @@
-<?php require 'header.php'; ?>
+<?php session_start(); ?>
 <?php require 'db-connect.php'; ?>
 
 <?php
@@ -19,7 +19,7 @@ try {
 
     // 登録完了メッセージを表示
     echo "登録が完了しました。";
-    echo '<form action="G1-2-1.php" method="post">';
+    echo '<form action="G1-1-1.php" method="post">';
     echo '<input type="submit" value="トップへ">';
     echo '</form>';
 } catch (PDOException $e) {
