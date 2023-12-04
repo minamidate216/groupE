@@ -36,12 +36,12 @@ try {
                 exit();
             }
         } else {
-            echo 'ログイン名またはパスワードが違います。<br>';
+            echo '未入力項目があります。<br>';
             echo '<p><button onclick = "location.href=\'G2-1-4login-input.php\'">戻る</button></p>';
             exit(); // ログイン失敗時はここでスクリプトを終了
         }
     } else {
-        echo 'エラー: ログインIDまたはパスワードが提供されていません。';
+        echo '不正な入力の項目があります。';
     }
 } catch (PDOException $e) {
     echo 'エラー: ' . $e->getMessage();
