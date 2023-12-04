@@ -11,7 +11,7 @@
 <body>
 <div class="has-background-success-dark">
     <div style="display:inline-block">
-<a href="G1-1-1.php"><img src="../image/ranch.png" height="100px" width="100px"><span class="has-text-white">miyosi farm</a>
+<a href="G1-1-1.php"><img src="image/ranch.png" height="100px" width="100px"><span class="has-text-white">miyosi farm</a>
 <form action="G1-5-1.php" method="post">
 <input type="text" name="keyword">
 <button type="submit">検索</button>
