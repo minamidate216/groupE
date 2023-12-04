@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -39,4 +39,3 @@
     </form>
 </body>
 </html>
-

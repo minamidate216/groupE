@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->rowCount() > 0) {
         echo "<p>このIDは既に使われています</p>";
-        echo '<a href="G2-1-1.php">戻る</a>';
+        echo '<a href="G2-1-1.php"><button type="button">戻る</button></a>';
         // 既に存在するIDの処理を行う場合はここにコードを追加します
     } else {
         // この例では単純なmd5ハッシュを使用していますが、実際のアプリケーションではセキュリティを考慮した方法を使用してください
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $pdo->prepare($sql);
         $result->execute([$admin_id, $admin_name, $hashed_password, $email]);
             echo "<h2>管理者の登録を完了しました。</h2>";
-            echo '<a href="G2-2-1.php">商品管理画面へ</a>';
+            echo '<a href="G2-2-1.php"><button type="button">商品管理画面へ</button></a>';
     }
 }
 ?>

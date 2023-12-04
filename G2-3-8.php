@@ -22,14 +22,15 @@ $row = $result->fetch();
     <title>コラム削除画面</title>
 </head>
 <body>
-<h2>コラム削除</h2>
+<h2></h2>
     <form action="G2-3-9.php" method="post" enctype="multipart/form-data" >
         <p><img src="<?= $row['post_img'] ?>" alt="コラム画像" width="200px">
         <input type="hidden" name="post_img" value="<?= $row['post_img'] ?>"></p>
-        <p>コラムタイトル <div><?= $row['column_title'] ?></div></p>
-        <p>本文 <div><?= $row['content'] ?></div></p>
-        <p><button type="submit">削除</button>
+        <p><div><?= $row['column_title'] ?></div></p>
+        <p><div><?= $row['content'] ?></div></p>
+        <p>削除しますか？</p>
+        <input type="submit" value="削除">
+        <a href="G2-3-1.php"><button type="button">戻る</button></a>
     </form>
-    <button onclick = "location.href='G2-3-1.php'">戻る</button></P>
 </body>
 </html>

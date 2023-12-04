@@ -1,5 +1,5 @@
+<?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
-<?php require 'midasi.php'; ?>
 
 <?php
 // データベース接続
@@ -23,8 +23,8 @@ if ($result->rowCount() > 0) {
                 <th>コラム名</th>
                 <th>追加者</th>
                 <th>更新日時</th>
-                <th>更新</th>
-                <th>削除</th>
+                <th></th>
+                <th></th>
             </tr>";
 
     // データ表示
