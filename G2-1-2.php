@@ -22,6 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="hidden" name="password" value="<?php echo $password; ?>">
     <p>上記の内容で登録します。</p>
     <input type="submit" value="登録">
-    <a href="G2-1-1.php">戻る</a>
+    <a href="G2-1-1.php"><button type="button">戻る</button></a>
 </form>
 <?php require 'footer.php'; ?>
