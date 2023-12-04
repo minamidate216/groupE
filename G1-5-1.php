@@ -40,10 +40,12 @@ function displayCategoryProducts($pdo, $categoryId)
     $products = $sql->fetchAll();
 
     if (count($products) > 0) {
-        echo '<h2>カテゴリ: ' . $products[0]['category'] . '</h2>';
+        echo '<h2 class="title has-text-centered has-text-primary-dark">' . $products[0]['category'] . '</h2>';
+        echo '<ul style="display: flex; flex-wrap: wrap;">';
         foreach ($products as $product) {
             displayProduct($product);
         }
+        echo '</ul>';
     }
 }
 
@@ -54,28 +56,30 @@ function displayKeywordProducts($pdo, $keyword)
     $keyword = '%' . $keyword . '%';
     $sql->execute([$keyword]);
     $products = $sql->fetchAll();
-
+    echo '<ul style="display: flex; flex-wrap: wrap;">';
     foreach ($products as $product) {
         displayProduct($product);
     }
+    echo '</ul>';
 }
 
 // 商品を表示する関数
 function displayProduct($product)
 {
-    echo '<div>';
+    echo '<li class="card m-6 " style="border-radius: 40px";>';
     echo '<a href="G1-8-1.php?id=', $product['product_id'], '">';
-    echo '<form action="G1-8-1.php" method="post">';
-    echo '<input type="hidden" name="id" value="', $product['product_id'], '">';
-    echo '<img src="image/' . $product['product_img'] . '" style="height:100px;"><br>';
-    echo '<p>' . $product['product_name'] . '</p>';
-    echo $product['price'];
+    echo '<div class="card-image">';
+    echo '<figure class="image">';
+    echo '<img src="image/' . $product['product_img'] . '" style="width: 250px; border-radius: 40px 40px 0px 0px"; ><br>';
+    echo '</figure>';
+    echo '<div class="card-content ">';
+    echo '<div class="content"><h6 class="has-text-right has-text-primary-dark">' . $product['product_name'] . '</h6><br>';
+    echo '<p class="has-text-right has-text-success-dark">'. $product['price'] . '円</p></div></div>';
     if (!isset($product['quantity']) || $product['quantity'] <= 0) {
         echo '<p><strong>売り切れ</strong></p>';
     }
-    echo '</form>';
     echo '</a>';
-    echo '</div>';
+    echo '</li>';
 }
 
 ?>
