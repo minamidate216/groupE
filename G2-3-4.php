@@ -9,7 +9,6 @@ $column_title = isset($_SESSION['column']['column_title']) ? $_SESSION['column']
 $content = isset($_SESSION['column']['content']) ? $_SESSION['column']['content'] : '';
 $post_data = date("Y-m-d");
 $admin_id = isset($_SESSION['admin']['id']) ? $_SESSION['admin']['id'] : '';
-echo "admin_id[", $admin_id, "]";
 
 // アップロード用ディレクトリ
 $upload_directory = 'uploads/';
@@ -25,7 +24,6 @@ if ($image_data && $image_type) {
 
     // ファイルを保存
     if (file_put_contents($upload_path, $image_data) !== false) {
-        echo '<p>画像をアップロードしました: ' . $file_name;
 
         // データベースに保存するファイルパス
         $target_file = $upload_path;
@@ -39,8 +37,8 @@ if ($image_data && $image_type) {
         unset($_SESSION['column']);
 
         // データベースへの保存が完了したことをユーザーに表示するなどの処理を行う
-        echo "データベースへの保存が完了しました";
+        echo "コラムの登録を完了しました";
     }
 }
 ?>
-<p><button onclick = "location.href='G2-3-1.php'">トップへ戻る</button></p>
+<p><button onclick = "location.href='G2-3-1.php'">コラム管理画面へ</button></p>
