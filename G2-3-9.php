@@ -1,5 +1,4 @@
-<?php session_start(); ?>
-<?php require 'midasi.php'; ?>
+<?php require 'header.php'; ?>
 <?php require 'db-connect.php';
 
 // データベース接続
@@ -33,4 +32,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 ?>
-<p><button onclick = "location.href='G2-3-1.php'">トップへ戻る</button></p>
+<p><button onclick = "location.href='G2-3-1.php'">コラム管理画面へ</button></p>

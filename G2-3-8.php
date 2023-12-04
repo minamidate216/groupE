@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
 <?php 
 if(!isset($_GET['column_id'])){
@@ -22,7 +22,6 @@ $row = $result->fetch();
     <title>コラム削除画面</title>
 </head>
 <body>
-<?php require 'midasi.php'; ?>
 <h2>コラム削除</h2>
     <form action="G2-3-9.php" method="post" enctype="multipart/form-data" >
         <p><img src="<?= $row['post_img'] ?>" alt="コラム画像" width="200px">
@@ -31,6 +30,6 @@ $row = $result->fetch();
         <p>本文 <div><?= $row['content'] ?></div></p>
         <p><button type="submit">削除</button>
     </form>
-    <button onclick = "location.href='G2-3-1.php'">削除せずに戻る</button></P>
+    <button onclick = "location.href='G2-3-1.php'">戻る</button></P>
 </body>
 </html>

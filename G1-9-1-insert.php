@@ -1,5 +1,5 @@
-<?php require 'db-connect.php'; ?>
 <?php require 'header.php'; ?>
+<?php require 'db-connect.php'; ?>
 <?php
 $id=$_POST['id'];
 if(!isset($_SESSION['product'])){
@@ -15,7 +15,8 @@ $_SESSION['product'][$id]=[
     'price'=>$_POST['price'],
     'description'=>$_POST['description'],
     'count'=>$count+$_POST['count'],
-    'image'=>$_POST['image']
+    'image'=>$_POST['image'],
+    'quantity'=>$_POST['quantity'],
 ];
 echo '<p class="has-text-centered">カートに商品を追加しました。</p>';
 echo '<hr>';

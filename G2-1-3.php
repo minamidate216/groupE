@@ -1,4 +1,4 @@
-<?php require 'midasi.php'; ?>
+<?php session_start(); ?>
 <?php require 'db-connect.php'; ?>
 <?php
 // データベースの接続情報
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $pdo->prepare($sql);
         $result->execute([$admin_id, $admin_name, $hashed_password, $email]);
             echo "<h2>管理者の登録を完了しました。</h2>";
-            echo '<a href="G2-1-1.php">商品管理画面へ</a>';
+            echo '<a href="G2-2-1.php">商品管理画面へ</a>';
     }
 }
 ?>
