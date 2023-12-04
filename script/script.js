@@ -2,13 +2,11 @@ new Vue({
   el: '#vueApp',
   data: {
       product: productFromPHP,
-      isFavorite: favoriteFromPHP,
-      favorite_icon: favoriteFromPHP ? 'fas fa-heart' : 'far fa-heart'
+      isFavorite: favoriteFromPHP
       },
   methods: {
       toggleFavorite() {
           this.isFavorite = !this.isFavorite;
-          this.favorite_icon = this.isFavorite ? 'fas fa-heart' : 'far fa-heart';
           
 
           // API呼び出しでお気に入り状態をサーバーに送信
