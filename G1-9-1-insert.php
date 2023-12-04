@@ -1,6 +1,10 @@
 <?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
 <?php
+if(empty($_SESSION['Users'])){
+    echo '<p class="has-text-centered">ログインしていないためご利用になれません。</p>';
+    echo '<hr>';
+}else{
 $id=$_POST['id'];
 if(!isset($_SESSION['product'])){
     $_SESSION['product']=[];
@@ -20,6 +24,7 @@ $_SESSION['product'][$id]=[
 ];
 echo '<p class="has-text-centered">カートに商品を追加しました。</p>';
 echo '<hr>';
+}
 ?>
 <?php require 'G1-9-1.php'; ?>
 <?php require 'footer.php'; ?>
