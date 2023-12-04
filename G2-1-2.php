@@ -1,4 +1,4 @@
-<?php require 'midasi.php'; ?>
+<?php session_start(); ?>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //フォームから送信されたデータを取得

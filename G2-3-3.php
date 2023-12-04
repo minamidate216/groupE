@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 ?>
     <!-- 登録ボタン -->
-    <p><input type="submit" value="登録する">
+    <p><input type="submit" value="登録">
 </form>
-<button onclick = "location.href='G2-3-1.php'">登録せずに戻る</button></p>
+<button onclick = "location.href='G2-3-1.php'">戻る</button></p>
 <?php require 'footer.php'; ?>
