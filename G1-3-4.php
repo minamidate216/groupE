@@ -47,7 +47,7 @@ if ($user_id) {
             if (empty($password)) {
                 $errors[] = "パスワードを入力してください。";
             }elseif (strlen($password) > 20) {
-                $errors[] = 'パスワードは8文字以上で入力してください。';
+                $errors[] = 'パスワードは20文字以下で入力してください。';
             }
             if (empty($email)) {
                 $errors[] = "メールアドレスを入力してください。";
