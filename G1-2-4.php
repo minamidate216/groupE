@@ -32,19 +32,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = '入力されたメールアドレスは既に使用されています。';
     }   
     if (empty($user_name)) {
-        $errors[] = '氏名を入力してください。';
-    }
-    if (empty($email)) {
-        $errors[] = 'メールアドレスを入力してください。';
-    }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = '正しい形式のメールアドレスを入力してください。';
+        $errors[] = "氏名を入力してください。";
+    }elseif (mb_strlen($user_name, 'UTF-8') > 20) {
+        $errors[] = '氏名は20文字以内で入力してください。';
     }
     if (empty($password)) {
-        $errors[] = 'パスワードを入力してください。';
+        $errors[] = "パスワードを入力してください。";
+    }elseif (strlen($password) > 20) {
+        $errors[] = 'パスワードは20字以下で入力してください。';
+    }
+    if (empty($email)) {
+        $errors[] = "メールアドレスを入力してください。";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "正しい形式のメールアドレスを入力してください。";
     }
     if (empty($address)) {
-        $errors[] = '住所を入力してください。';
+        $errors[] = "住所を入力してください。";
+    }elseif (mb_strlen($address, 'UTF-8') > 50) {
+        $errors[] = '住所は50文字以内で入力してください。';
     }
 
     // エラーがなければ次の処理へ
@@ -59,7 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <?php require 'header.php'; ?>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 <?php
+echo '<div class="content">';
+echo '<div class="container">';
 echo '<form action="" method="post">';
 echo '<h3>会員登録</h3>';
 echo '<input type="hidden" name="user_id" value="', $user_id, '">';
@@ -92,4 +100,6 @@ if (!empty($errors)) {
 
 echo '<input type="submit" name="submit" value="次へ">';
 echo '</form>';
+echo '</div>';
+echo '</div>';
 ?>
