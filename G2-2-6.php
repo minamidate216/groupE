@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
 <?php
     
@@ -42,9 +42,9 @@
     echo '<input type="hidden" name="category" value="',$category, '">';
     echo '<input type="hidden" name="quantity" value="', $quantity ,'"></p>';
     ?>
-    <button type="submit">更新</button></form>
-    <a href="G2-2-1.php">戻る</a></p>
-   
+    <button class="button is-primary">更新</button>
+    <a href="G2-2-1.php" ><button type="button"class="button is-primary" >戻る</button></a>
+
 </body>
 </html>
 
