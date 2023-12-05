@@ -34,10 +34,9 @@ $sql = "INSERT INTO Products (product_name, price, product_img, description, cap
 $result = $connect->prepare($sql);
 $result->execute([$product_name, $price, $product_img, $description,$category, $capacity, $quantity, $admin_id]);
 ?>
-<form action="G2-3-1.php" method="post">
+<form action="G2-2-1.php" method="post">
     <h3>登録を完了しました</h3>
     <button type="submit">商品管理画面へ</button>
 </form>
 </body>
 </html>
-
