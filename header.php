@@ -1,11 +1,4 @@
-<?php 
-//セッション開始を確認
-if ((function_exists('session_status')
-    && session_status() !== PHP_SESSION_ACTIVE) || !session_id()) {
-        // セッション開始していなければスタート
-    session_start();
-}
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -42,11 +35,13 @@ if ((function_exists('session_status')
         </div>
         
         <?php
+            echo '<div class="mr-2">';
             if(!isset($_SESSION['Users'])){
                 echo '<a href="G1-2-1.php"><button type="submit">ログイン</button></a>';
             }else{
                 echo '<a href="G1-2-7.php"><button type="submit">ログアウト</button></a>';
             }
+            echo '</div>';
         ?>
     </div>
 </div>
