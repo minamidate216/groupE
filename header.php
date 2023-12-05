@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php 
+//セッション開始を確認
+if ((function_exists('session_status')
+    && session_status() !== PHP_SESSION_ACTIVE) || !session_id()) {
+        // セッション開始していなければスタート
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
