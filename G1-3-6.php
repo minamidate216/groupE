@@ -7,11 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdo = new PDO($connect, USER, PASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // フォームから送信された情報を取得
-        $user_id = isset($_POST['user_id']) ? $_POST['user_id'] : '';
-        $user_name = isset($_POST['user_name']) ? $_POST['user_name'] : '';
-        $email = isset($_POST['email']) ? $_POST['email'] : '';
-        $password = isset($_POST['password']) ? $_POST['password'] : '';
-        $address = isset($_POST['address']) ? $_POST['address'] : '';
+        $user_id = isset($_SESSION['User']['user_id']) ? $_SESSION['User']['user_id'] : '';
+        $user_name = isset($_SESSION['User']['user_name']) ? $_SESSION['User']['user_name'] : '';
+        $email = isset($_SESSION['User']['email']) ? $_SESSION['User']['email'] : '';
+        $password = isset($_SESSION['User']['password']) ? $_SESSION['User']['password'] : '';
+        $address = isset($_SESSION['User']['address']) ? $_SESSION['User']['address'] : '';
 
         $pdo->beginTransaction();
 
