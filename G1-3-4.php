@@ -1,7 +1,8 @@
 <?php session_start(); ?>
 <?php require 'db-connect.php'; ?>
 <?php
-$user_id = isset($_SESSION['Users']['user_id']) ? $_SESSION['Users']['user_id']:null;
+$user_id = isset($_SESSION['Users']['user_id']) ? $_SESSION['Users']['user_id'] : null;
+$errors = [];
 
 if ($user_id) {
     try {
@@ -13,13 +14,13 @@ if ($user_id) {
         $stmt = $pdo->prepare("SELECT * FROM Users WHERE user_id = ?");
         $stmt->execute([$user_id]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        //入力された情報を取得
-        $user_name = isset($_POST['user_name']) ? $_POST['user_name'] : $user['user_name'];
-        $email = isset($_POST['email']) ? $_POST['email'] : $user['email'];
-        $password = isset($_POST['password']) ? $_POST['password'] : $user['password'];
-        $address = isset($_POST['address']) ? $_POST['address'] : $user['address'];
-        $errors = [];
-        if(isset($_POST['confirm'])){
+
+        // フォームが送信された場合の処理
+        if (isset($_POST['confirm'])) {
+            $user_name = isset($_POST['user_name']) ? $_POST['user_name'] : $user['user_name'];
+            $email = isset($_POST['email']) ? $_POST['email'] : $user['email'];
+            $password = isset($_POST['password']) ? $_POST['password'] : $user['password'];
+            $address = isset($_POST['address']) ? $_POST['address'] : $user['address'];
 
             // ユーザー名の重複チェック
             $stmt = $pdo->prepare("SELECT COUNT(*) FROM Users WHERE user_id != ? and user_name = ?");
@@ -37,33 +38,36 @@ if ($user_id) {
             if ($emailCount > 0) {
                 $errors[] = "このメールアドレスは既に使用されています。";
             }
-            // 未入力の項目があるか
-            $errors = [];
+            // 未入力の項目があるか確認
             if (empty($user_name)) {
                 $errors[] = "氏名を入力してください。";
+            }elseif (mb_strlen($user_name, 'UTF-8') > 20) {
+                $errors[] = '氏名は20文字以内で入力してください。';
             }
             if (empty($password)) {
                 $errors[] = "パスワードを入力してください。";
+            }elseif (strlen($password) > 20) {
+                $errors[] = 'パスワードは8文字以上で入力してください。';
             }
             if (empty($email)) {
                 $errors[] = "メールアドレスを入力してください。";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $errors[] = "正しい形式のメールアドレスを入力してください。";
-                // 判別されないもの
-                // コメントを含むメルアド
-                // 空白が折りたたまれたメルアド
-                // ドットのないドメイン名
             }
             if (empty($address)) {
                 $errors[] = "住所を入力してください。";
+            }elseif (mb_strlen($address, 'UTF-8') > 50) {
+                $errors[] = '住所は50文字以内で入力してください。';
             }
-            // エラーがなければ次の画面に遷移
+
             if (empty($errors)) {
+                // エラーがなければ次の画面に遷移
                 $_SESSION['User']['user_name'] = $user_name;
                 $_SESSION['User']['password'] = $password;
                 $_SESSION['User']['email'] = $email;
                 $_SESSION['User']['address'] = $address;
-            
+                header('Location: G1-3-5.php');
+                exit;
             }
         }
     } catch (PDOException $e) {
@@ -78,7 +82,7 @@ if ($user_id) {
 if ($user) {
     // 更新前のユーザー情報を表示
     echo 'マイページ情報変更';
-    echo '<form action="G1-3-5.php" method="post">';
+    echo '<form action="" method="post">';
     if (!empty($errors)) {
         echo '<ul style="color: red;">';
         foreach ($errors as $error) {
@@ -88,25 +92,17 @@ if ($user) {
     }
     echo '<table>';
     echo '<input type="hidden" name="user_id" value="', $user_id, '">';
+    echo '<tr><td>ID</td><td>', $user_id, '</td></tr>';
     echo '<tr><td>氏名</td><td><input type="text" name="user_name" value="', $user['user_name'], '"></td></tr>';
     echo '<tr><td>メールアドレス</td><td><input type="text" name="email" value="', $user['email'], '"></td></tr>';
     echo '<tr><td>パスワード</td><td><input type="password" name="password" value="', $user['password'], '"></td></tr>';
     echo '<tr><td>住所</td><td><input type="text" name="address" value="', $user['address'], '"></td></tr>';
     echo '</table>';
 
-        // 入力された情報をセッションに保存
-        $_SESSION['User']['user_id'] = $user['user_id'];
-        $_SESSION['User']['user_name'] = $user['user_name'];
-        $_SESSION['User']['email'] = $user['email'];
-        $_SESSION['User']['password'] = $user['password'];
-        $_SESSION['User']['address'] = $user['address'];
-
-    echo '<input type="submit" value="確認する" name="comfirm">';
+    echo '<input type="submit" value="確認する" name="confirm">';
     echo '</form>';
-
 } else {
     echo 'ユーザーが見つかりません。';
 }
-
 require 'footer.php';
 ?>
