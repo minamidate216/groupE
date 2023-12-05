@@ -92,7 +92,6 @@ if ($user) {
     }
     echo '<table>';
     echo '<input type="hidden" name="user_id" value="', $user_id, '">';
-    echo '<tr><td>ID</td><td>', $user_id, '</td></tr>';
     echo '<tr><td>氏名</td><td><input type="text" name="user_name" value="', $user['user_name'], '"></td></tr>';
     echo '<tr><td>メールアドレス</td><td><input type="text" name="email" value="', $user['email'], '"></td></tr>';
     echo '<tr><td>パスワード</td><td><input type="password" name="password" value="', $user['password'], '"></td></tr>';
