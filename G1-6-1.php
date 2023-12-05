@@ -5,20 +5,20 @@ if(empty($_SESSION['Users'])){
 }else{
 echo '<div class="has-text-centered is-size-2" >お気に入り商品</div>';
 $pdo = new PDO($connect, USER, PASS);
-$sql = $pdo->prepare('select pro.product_img, pro.product_name,pro.product_id, pro.description, pro.price from Products AS pro INNER JOIN Favorites AS fav ON pro.product_id = fav.product_id WHERE fav.user_id=?');
+$sql = $pdo->prepare('select pro.* from Products AS pro INNER JOIN Favorites AS fav ON pro.product_id = fav.product_id WHERE fav.user_id=?');
 $sql->execute([$_SESSION['Users']['user_id']]);
 if($sql->rowCount() == 0){
     echo '<div class="has-text-centered">お気に入りに登録した商品がありません。</div>';
 }else{
     echo '<div class="columns">';
-    echo '<div class="column is-two-third is-offset-1">';
+    echo '<div class="column is-two-third">';
     echo '<table class="table is-striped column">';
-    echo '<tr class="has-background-success"><th></th><th>商品名</th><th>説明</th><th>価格</th><th></td><td></th><th></th><th></th></tr>';
+    echo '<tr class="has-background-success" style="height: 60px"><th></th><th class="has-text-centered is-vcentered">商品名</th><th class="has-text-centered is-vcentered">説明</th><th class="has-text-centered is-vcentered">価格</th><th></th><th></th><th></th><th></th></tr>';
 foreach($sql as $row){
-    echo '<tr><td><img src="../image/',$row['product_img'],'" width="100" height="100">';
+    echo '<tr><td><img src="image/',$row['product_img'],'" width="100" height="100">';
     echo '<td class="is-vcentered"><a href="G1-8-1.php?id=',$row['product_id'],'">',$row['product_name'], '</td>';
-    echo '<td class="is-vcentered">', $row['description'],'</td>';
-    echo '<td class="is-vcentered">', $row['price'], '</td>';
+    echo '<td class="textBr is-vcentered">', $row['description'],'</td>';
+    echo '<td class="is-vcentered" style="width: 70px">', $row['price'], '円</td>';
     echo '<td class="is-vcentered">';
     echo '<form action="G1-9-1-insert.php" method="post">';
     echo '<input type="hidden" name=id value="',$row['product_id'], '">';
@@ -27,7 +27,8 @@ foreach($sql as $row){
     echo '<input type="hidden" name=price value="',$row['price'], '">';
     echo '<input type="hidden" name=count value="1">';
     echo '<input type="hidden" name=image value="',$row['product_img'], '">';
-    echo '<button type="submit">カートに追加</button>';
+    echo '<input type="hidden" name=quantity value="',$row['quantity'], '">';
+    echo '<button class="buttonA" type="submit">カートに追加</button>';
     echo '</form>';
     echo '</td>';
     echo '<td></td><td></td><td class="is-vcentered">';
@@ -38,7 +39,8 @@ foreach($sql as $row){
     echo '<input type="hidden" name=price value="',$row['price'], '">';
     echo '<input type="hidden" name=count value="1">';
     echo '<input type="hidden" name=image value="',$row['product_img'], '">';
-    echo '<button type="submit">お気に入りから削除</button>';
+    echo '<input type="hidden" name=quantity value="',$row['quantity'], '">';
+    echo '<button class="buttonB" type="submit">お気に入りから削除</button>';
     echo '</form>';
     echo '</td>';
     echo '</tr>';
@@ -48,6 +50,17 @@ foreach($sql as $row){
 ?>
 <style>
 table{
-    margin: auto 20px auto;
+    margin: auto 100px auto;
+}
+.textBr{
+    width: 300px;
+}
+.buttonA{
+    width: 110px;
+    height: 30px;
+}
+.buttonB{
+    width: 150px;
+    height: 30px;
 }
 </style>

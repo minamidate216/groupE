@@ -24,7 +24,7 @@
         <a href="G1-6-1-show.php">お気に入り</a>
         <a href="G1-7-1.php">注文履歴</a>
         <a href="G1-9-1-show.php">カート</a>
-        <a href="G1-4-2.php">コラム</a>
+        <a href="G1-4-1.php">コラム</a>
         <?php
         if (!isset($_SESSION['Users'])) {
             echo '<a href="G1-2-1.php">ログイン</a>';

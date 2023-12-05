@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
 
 <?php 
@@ -19,6 +19,8 @@ $row = $result->fetch();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <title>商品情報更新画面</title>
     <style>
         body {
@@ -42,7 +44,7 @@ $row = $result->fetch();
         <input type="hidden" name="product_img" value="<?= $row['product_img'] ?>"></p>
         <p>画像 <input type="file" name="product_img" ></p>
         <p>内容量 <input type="text" name="capacity" maxlength="5" value="<?= $row['capacity'] ?>"></p>
-        <p><label for="myComboBox">選択してください：</label>
+        <p><label for="myComboBox">カテゴリー</label>
         <select name="category">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -51,8 +53,8 @@ $row = $result->fetch();
         </p>
         <label for="quantity">在庫数</label>
         <input type="text" name="quantity" maxlength="8" required  value="<?= $row['quantity'] ?>"><br>
-        <a href="G2-2-1.php">保存せず戻る</a>
-        <button type="submit">更新</button>
+        <a href="G2-2-1.php" ><button type="button"class="button is-primary" >保存せず戻る</button></a>
+        <button class="button is-primary">更新</button>
     </form>
 </body>
 </html>
