@@ -25,6 +25,14 @@ echo '<form action="G1-2-6.php" method="post">';
 echo '<input type="submit" name="submit" value="登録する">';
 echo '</form>';
 echo '<form action="G1-2-4.php" method="post">';
-echo '<input type="submit" value="戻る">';
+echo '<input type="button" onclick="history.back()" value="戻る">';
+?>
+<?php
+$backURL = $_SERVER['HTTP_REFERER']; // 前のページのURLを取得
+?>
+
+<!-- 戻るボタン -->
+<a href="<?php echo $backURL; ?>">戻る</a>
+<?php
 echo '</form>';
 ?>

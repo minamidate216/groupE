@@ -3,55 +3,72 @@
 <hr>
 <?php
 $pdo = new PDO($connect, USER, PASS);
-$sql = $pdo->prepare('select * from Products where product_id=?');
-$sql->execute([$_GET['id']]);
-foreach($sql as $row) {
-    echo '<p><img alt="image" src="image/', $row['product_img'], '" style="height:100px;"></p>';
-    // echo '<img alt="image" src="image/', $row['product_img1'], '.jpg" style="height:100px;">
+// お気に入りに登録されているかどうかの確認
+$favoriteSql = $pdo->prepare('select count(*) from Favorites where user_id=? and product_id = ?');
+$favoriteSql->execute([$_SESSION['Users']['user_id'], $_GET['id']]);
+$count = $favoriteSql->fetchColumn();
+if ($count > 0) {
+    $isFavorite = true;
+
+} else {
+    $isFavorite = false;
+}
+
+
+
+
+
+
+// 商品情報の取得
+$productId = $_GET['id'];
+$productSql = $pdo->prepare('select * from Products where product_id=?');
+$productSql->execute([$productId]);
+foreach ($productSql as $row) {
     echo '<form action="G1-9-1-insert.php" method="post">';
-
-    echo '<p>商品説明:',$row['description'],'</p>';
-
-    echo '<p>商品名:',$row['product_name'],'</p>';
-    echo '<p>価格:',$row['price'],'</p>';
-    echo '<p>内容量:',$row['capacity'],'</p>';
-    echo '<p><a href="G1-6-1-insert.php?id=',$row['product_id'],
-    '">お気に入りに追加</a></p>';
+    echo '<div class="columns">';
+    echo '<div class="column is">';
+    echo '<div class="card ml-6 mb-6" style="width: 300px";><div class="card-image"><figure class="image"><img alt="image" src="image/', $row['product_img'], '" style="width:300px";></figure></div></div>';
+    echo '</div>';
+    echo '<div class="column">';
+    echo '<div class="card mb-6 " style="width: 300px";><div class="card-image"><figure class="image"><img alt="image" src="image/', $row['product_sub_img'], '" style="width:300px";></figure></div></div>';
+    
+    echo '<p>商品名:', $row['product_name'], '</p>';
+    echo '<p>価格:', $row['price'], '</p>';
+    echo '<p>内容量:', $row['capacity'], '</p>';
     echo '<p><select name="count">';
-    for ($i=1; $i<= $row['quantity']; $i++) {
-        echo '<option value="', $i, '">',$i,'</option>';
+    for ($i = 1; $i <= $row['quantity']; $i++) {
+        echo '<option value="', $i, '">', $i, '</option>';
     }
     echo '</select>  個</p>';
-}
-    ?>
-    <div id="vueApp">
-    <!-- 商品情報のループ -->
-    <div v-for="product in products" :key="product.id">
-        <p>{{ product.name }}</p>
-        <!-- お気に入りボタン -->
-        <button @click="toggleFavorite(product)">
-            <img :src="product.isFavorited ? 'image/favorited-heart.png' : 'image/not-favorited-heart.png'" alt="お気に入り">
-        </button>
-    </div>
-</div>
-
-    <?php
-    foreach($sql as $row) {
+    echo '</div>';
+    echo '</div>';
     echo '<input type="hidden" name="id" value="', $row['product_id'], '">';
     echo '<input type="hidden" name="name" value="', $row['product_name'], '">';
     echo '<input type="hidden" name="price" value="', $row['price'], '">';
     echo '<input type="hidden" name="description" value="', $row['description'], '">';
     echo '<input type="hidden" name="image" value="', $row['product_img'], '">';
     echo '<input type="hidden" name="quantity" value="', $row['quantity'], '">';
-    echo '<p><input type="submit" value="カートに追加"></p>';
+    echo '<h5 class="subtitle ml-6">', $row['description'], '</h5>';
+    echo '<p><input class="ml-6" type="submit" value="カートに追加"></p>';
     echo '</form>';
 }
-    ?>
 
-<script>var productFromPHP = <?php echo json_encode($_SESSION['product']); ?>;
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./script/script.js"></script>
+
+?>
+<div id="vueApp">
+    <!-- お気に入りボタン -->
+    <i :class="{'fas fa-heart': isFavorite, 'far fa-heart': !isFavorite}" @click="toggleFavorite"></i>
+</div>
+
+
+
+<!-- script.jsに商品とお気に入りの情報を渡す⇩ -->
+<script>
+    var productFromPHP = <?php echo json_encode($productId); ?>;
+    var favoriteFromPHP = <?php echo json_encode($isFavorite); ?>;
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./script/script.js"></script>
 
 <?php require 'footer.php'; ?>
