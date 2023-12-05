@@ -21,13 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // コミット
         $pdo->commit();
-        echo '<table>';
-        echo '<tr><td>ユーザーID</td><td>', $user_id, '</td></tr>';
-        echo '<tr><td>氏名</td><td>', $user_name, '</td></tr>';
-        echo '<tr><td>メールアドレス</td><td>', $email, '</td></tr>';
-        echo '<tr><td>パスワード</td><td>', str_repeat('*', strlen($password)), '</td></tr>';
-        echo '<tr><td>住所</td><td>', $address, '</td></tr>';
-        echo '</table>';
         echo '更新が完了しました。';
         echo '<form action="G1-1-1.php" method="post">';
         echo '<input type="submit" value="トップへ">';
