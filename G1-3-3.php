@@ -21,7 +21,6 @@ if ($user_id) {
             echo 'マイページ';
             echo '<form action="G1-3-4.php" method="post">';
             echo '<table>';
-            echo '<tr><td>ユーザーID</td><td>', $user['user_id'], '</td></tr>';
             echo '<tr><td>氏名</td><td>', $user['user_name'], '</td></tr>';
             echo '<tr><td>メールアドレス</td><td>', $user['email'], '</td></tr>';
             echo '<tr><td>パスワード</td><td>', str_repeat('*', strlen($user['password'])), '</td></tr>';
