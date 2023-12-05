@@ -39,8 +39,11 @@ $row = $result->fetch();
         <input type="hidden" name="post_img" value="<?= $row['post_img'] ?>"></p>
         <p>画像 <input type="file" name="post_img" ></p>
         <p>本文<textarea name="content" maxlength="255" id="" cols="30" rows="10"><?= $row['content'] ?></textarea></p>
-        <a href="G2-3-1.php">保存せず戻る</a>
-        <button type="submit">更新</button>
+        <a href="G2-3-1.php" ><button type="button"class="button is-primary" >保存せず戻る</button></a>
+
+        <button class="button is-primary">更新</button>
     </form>
 </body>
 </html>
+
+

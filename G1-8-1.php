@@ -25,39 +25,48 @@ $productSql = $pdo->prepare('select * from Products where product_id=?');
 $productSql->execute([$productId]);
 foreach ($productSql as $row) {
     echo '<form action="G1-9-1-insert.php" method="post">';
-    echo '<div class="columns">';
-    echo '<div class="column is">';
-    echo '<div class="card ml-6 mb-6" style="width: 300px";><div class="card-image"><figure class="image"><img alt="image" src="image/', $row['product_img'], '" style="width:300px";></figure></div></div>';
+    echo '<div class="columns " style="display:flex; flex-wrap:wrap";>';
+    echo '<div class="column is-4" >';
+    echo '<img alt="image" src="image/', $row['product_img'], '" style="width:400px;
+                                                                        margin-left:40px;
+                                                                        border-radius: 8px";>';
     echo '</div>';
-    echo '<div class="column">';
-    echo '<div class="card mb-6 " style="width: 300px";><div class="card-image"><figure class="image"><img alt="image" src="image/', $row['product_sub_img'], '" style="width:300px";></figure></div></div>';
-    
-    echo '<p>商品名:', $row['product_name'], '</p>';
-    echo '<p>価格:', $row['price'], '</p>';
-    echo '<p>内容量:', $row['capacity'], '</p>';
-    echo '<p><select name="count">';
+    echo '<div class="column is-4">';
+    echo '<img alt="image" src="image/', $row['product_sub_img'], '" style="width:400px;
+                                                                            border-radius: 8px";></div>';
+    echo '<div class="column is-4">';
+    echo '<div class="box" style="border-width: 3px;
+                                    border-style: solid;
+                                    border-color: #f0fff0;
+                                    height: 200px;
+                                    margin-right:30px";>';
+    echo '<h3 class="title has-text-primary-dark">', $row['product_name'], '</h3>';
+    echo '<p class="subtitle has-text-right has-text-primary-dark" >', $row['price'], '円</p><br>';
+    echo '<p class="subtitle has-text-right has-text-primary-dark" >', $row['capacity'], '</p></div>';
+    echo '<div class="select is-medium is-rounded"><select name="count">';
     for ($i = 1; $i <= $row['quantity']; $i++) {
-        echo '<option value="', $i, '">', $i, '</option>';
+        echo '<option value="', $i, '" >', $i, '個</option>';
     }
-    echo '</select>  個</p>';
-    echo '</div>';
-    echo '</div>';
+    echo '</select></div><br>';
+    echo '<input type="submit" value="カートに追加" style="margin: 30px";></div>';
+    echo '<div class="columns is-mobile">';
+    echo '<section class="column is-10-mobile is-10-tablet is-12-desktop is-10-widescreen is-6-fullhd" style="margin:30px;  width:1200px";><h3 class="title">', $row['description'], '</h3></section>';
     echo '<input type="hidden" name="id" value="', $row['product_id'], '">';
     echo '<input type="hidden" name="name" value="', $row['product_name'], '">';
     echo '<input type="hidden" name="price" value="', $row['price'], '">';
     echo '<input type="hidden" name="description" value="', $row['description'], '">';
     echo '<input type="hidden" name="image" value="', $row['product_img'], '">';
     echo '<input type="hidden" name="quantity" value="', $row['quantity'], '">';
-    echo '<h5 class="subtitle ml-6">', $row['description'], '</h5>';
-    echo '<p><input class="ml-6" type="submit" value="カートに追加"></p>';
     echo '</form>';
 }
 
 
 ?>
-<div id="vueApp">
+<div id="vueApp" class="column">
     <!-- お気に入りボタン -->
-    <i :class="{'fas fa-heart': isFavorite, 'far fa-heart': !isFavorite}" @click="toggleFavorite"></i>
+    <i :class="{'fas fa-heart': isFavorite, 'far fa-heart ': !isFavorite}" @click="toggleFavorite"
+        style=font-size:150px;color:#a3ffa3;></i>
+</div>
 </div>
 
 

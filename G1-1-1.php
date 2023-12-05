@@ -49,7 +49,7 @@
     </ul>
     <div class="section">
         <h3 class="title has-text-centered has-text-primary-dark pb-5">PRODUCTS</h3>
-        <ul class="columns" style="display: flex; flex-wrap: wrap;">
+        <ul class="columns" style="display: flex; flex-wrap: wrap";>
             <li class="column p-6">
                 <a class="image is-256x256" href="G1-5-1.php?">
                     <img class="is-rounded pb-5" src="image/0.png" alt="">
@@ -60,9 +60,9 @@
             $pdo = new PDO($connect, USER, PASS);
             $sql = $pdo->query('select * from Category');
             foreach ($sql as $row) {
-                echo '<li class="column p-6"><a class="image is-256x256 href="G1-5-1.php?search=', $row['category_id'], '">';
-                echo '<img class="is-rounded pb-5" src="image/', $row['category_img'], '" alt="">';
-                echo '<p class="subtitle has-text-centered has-text-primary-dark ">', $row['category'], '</p>';
+                echo '<li class="column p-6"><a class="image is-256x256" href="G1-5-1.php?search=', $row['category_id'], '">';
+                echo '<img class="is-rounded pb-5" src="image/', $row['category_img'], '">';
+                echo '<p class="subtitle has-text-centered has-text-primary-dark">', $row['category'], '</p>';
                 echo '</a></li>';
             }
 
@@ -75,7 +75,7 @@
             <?php
             $sql = $pdo->query('select * from Columns');
             foreach ($sql as $row) {
-                echo '<li class="column is-10-mobile is-2-tablet is-3-desktop is-3-widescreen is-4 p-6"><a class="image is-256x256" href="G1-4-1.php?column=', $row['column_id'], '">';
+                echo '<li class="column is-10-mobile is-2-tablet is-3-desktop is-3-widescreen is-4 p-6"><a class="image is-256x256" href="G1-4-2.php?column=', $row['column_id'], '">';
                 echo '<img class="p-5" src="image/', $row['post_img'], '" style="border-radius: 30px";><br>';
                 echo '<p class="subtitle has-text-centered has-text-primary-dark">', $row['column_title'], '</p>';
                 echo '</a></li>';

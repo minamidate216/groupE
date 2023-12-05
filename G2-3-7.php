@@ -35,7 +35,8 @@
 ?>
     <form action="G2-3-1.php" method="post">
         <h3>コラムの更新を完了しました</h3>
-        <button type="submit">コラム管理画面へ</button>
+        <button class="button is-primary">コラム管理画面へ</button>
     </form>
 </body>
 </html>
+

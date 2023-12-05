@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -38,7 +38,7 @@
 ?>
 <form action="G2-2-1.php" method="post">
         <h3>商品情報更新を完了しました</h3>
-        <button type="submit">商品情報管理画面へ</button>
+        <button class="button is-primary">商品更新・削除へ</button>
     </form>
 </body>
 </html>

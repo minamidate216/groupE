@@ -17,13 +17,16 @@ if ($isFavorited) {
     // お気に入り追加
     $stmt = $pdo->prepare("INSERT INTO Favorites (user_id, product_id) VALUES (?, ?)");
     $stmt->execute([$userId, $productId]);
+    $success = 'お気に入りリストに登録しました。';
+    
 } else {
     // お気に入り削除
     $stmt = $pdo->prepare("DELETE FROM Favorites WHERE user_id=? AND product_id=?");
     $stmt->execute([$userId, $productId]);
+    $success = 'お気に入りリストから削除しました。';
 }
 
 // 応答
-echo json_encode(['status' => 'success']);
+echo json_encode(['status' => $result]);
 
 ?>
