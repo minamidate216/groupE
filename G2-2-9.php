@@ -20,7 +20,7 @@ try {
     $stmt->execute();
 
     // 削除完了後、リダイレクト
-    header('Location: G2-3-6.php?delete_success=1&product_id=' . $productId);
+    header('Location: G2-2-1.php?delete_success=1&product_id=' . $productId);
     exit();
 } catch (PDOException $e) {
     die('データベースエラー: ' . $e->getMessage());
