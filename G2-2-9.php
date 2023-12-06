@@ -1,6 +1,7 @@
 <?php
-session_start();
 require 'db-connect.php';
+require 'header.php';
+
 
 // 商品IDが渡されていない場合はエラー表示
 if (!isset($_GET['product_id'])) {
