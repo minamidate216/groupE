@@ -3,7 +3,6 @@ const app = new Vue({
     el:'#vueApp',
     //dataは　vueの中で使われる変数
     data:{
-        message :'',
         // 配列の変数を書いておく
         allData: productFromPHP,
         subTotal : 0,
@@ -30,7 +29,7 @@ const app = new Vue({
         if(this.allData[index].count < quantity){
                 this.allData[index].count++;
             } else {
-                this.message = `商品ID ${id} の在庫が不足しています。`;
+        
             }
         },
         // 商品idが該当する商品の個数を減らす
