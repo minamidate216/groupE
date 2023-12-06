@@ -28,6 +28,26 @@ $row = $result->fetch();
             display: inline-block;
             text-align: left;
         }
+
+        h1 {
+            margin-bottom: 10px; 
+            font-size: 35px;
+        }
+
+        p {
+            color: #4CAF50; /* 薄緑色 */
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0;
+            display: inline-block;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
