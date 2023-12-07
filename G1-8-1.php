@@ -1,12 +1,12 @@
 <?php require 'header.php'; ?>
-<?php require 'db-connect.php'; ?>
+
 <br>
 <br>
 <br>
 <?php
-$pdo = new PDO($connect, USER, PASS);
+$sql = new PDO($connect, USER, PASS);
 // お気に入りに登録されているかどうかの確認
-$favoriteSql = $pdo->prepare('select count(*) from Favorites where user_id=? and product_id = ?');
+$favoriteSql = $sql->prepare('select count(*) from Favorites where user_id=? and product_id = ?');
 $favoriteSql->execute([$_SESSION['Users']['user_id'], $_GET['id']]);
 $count = $favoriteSql->fetchColumn();
 
@@ -20,7 +20,7 @@ if ($count > 0) {
 
 // 商品情報の取得
 $productId = $_GET['id'];
-$productSql = $pdo->prepare('select * from Products where product_id=?');
+$productSql = $sql->prepare('select * from Products where product_id=?');
 $productSql->execute([$productId]);
 echo '<div class="content">';
 echo '<div class="container is-fluid">';
@@ -44,6 +44,9 @@ foreach ($productSql as $row) {
     echo '<p class="subtitle has-text-right has-text-primary-dark" >', $row['price'], '円</p><br>';
     echo '<p class="subtitle has-text-right has-text-primary-dark" >', $row['capacity'], '</p>';
     echo '<div class="select is-medium is-rounded"><select name="count">';
+
+    var_dump($row['quantity']);
+    var_dump($_SESSION['product']);
     for ($i = 1; $i <= $row['quantity']; $i++) {
         echo '<option value="', $i, '" >', $i, '個</option>';
     }
