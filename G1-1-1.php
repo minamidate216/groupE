@@ -75,7 +75,7 @@
             <?php
             $sql = $pdo->query('select * from Columns');
             foreach ($sql as $row) {
-                echo '<li class="column is-10-mobile is-2-tablet is-3-desktop is-3-widescreen is-4 p-6"><a class="image is-256x256" href="G1-4-1.php?column=', $row['column_id'], '">';
+                echo '<li class="column is-10-mobile is-2-tablet is-3-desktop is-3-widescreen is-4 p-6"><a class="image is-256x256" href="G1-4-2.php?column_id=', $row['column_id'], '">';
                 echo '<img class="p-5" src="image/', $row['post_img'], '" style="border-radius: 30px";><br>';
                 echo '<p class="subtitle has-text-centered has-text-primary-dark">', $row['column_title'], '</p>';
                 echo '</a></li>';
