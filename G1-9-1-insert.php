@@ -1,5 +1,4 @@
 <?php require 'header.php'; ?>
-<?php require 'db-connect.php'; ?>
 <?php
 if(empty($_SESSION['Users'])){
     echo '<p class="has-text-centered">ログインしていないためご利用になれません。</p>';
