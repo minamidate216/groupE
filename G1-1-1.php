@@ -54,7 +54,6 @@
                             </a>
                             <hr class="navbar-divider">
                             <a class="navbar-item" href="G1-5-1.php">ALL</a>
-                            <?php require 'db-connect.php'; ?>
                             <?php
                             $pdo = new PDO($connect, USER, PASS);
                             $sql = $pdo->query('select * from Category');
@@ -132,7 +131,7 @@
             $pdo = new PDO($connect, USER, PASS);
             $sql = $pdo->query('select * from Category');
             foreach ($sql as $row) {
-                echo '<li class="column p-6"><a class="image is-256x256 href="G1-5-1.php?search=', $row['category_id'], '">';
+                echo '<li class="column p-6"><a class="image is-256x256" href="G1-5-1.php?search=', $row['category_id'], '">';
                 echo '<img class="is-rounded pb-5" src="image/', $row['category_img'], '" alt="">';
                 echo '<p class="subtitle has-text-centered has-text-primary-dark ">', $row['category'], '</p>';
                 echo '</a></li>';
