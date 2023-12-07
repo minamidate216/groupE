@@ -6,7 +6,7 @@ if(empty($_SESSION['Users'])){
     echo '<a href="G1-2-1.php">ログインへ';
 }else{
 $pdo = new PDO($connect, USER, PASS);
-$sql = $pdo->prepare('SELECT p.description, p.product_img, p.product_id, p.product_name, p.price, o.date, o.order_id, od.quantity FROM Orders AS o JOIN OrdersDetails AS od ON o.order_id = od.order_id LEFT OUTER JOIN Products AS p ON od.product_id = p.product_id WHERE o.user_id = ? and od.order_id=?');
+$sql = $pdo->prepare('SELECT p.*, o.date, o.order_id, od.quantity AS odQuantity FROM Orders AS o JOIN OrdersDetails AS od ON o.order_id = od.order_id LEFT OUTER JOIN Products AS p ON od.product_id = p.product_id WHERE o.user_id = ? and od.order_id=?');
 $sql->execute([$_SESSION['Users']['user_id'],$_POST['orderId']]);
 if($sql->rowCount() > 0){
     $total=0;
@@ -14,14 +14,14 @@ if($sql->rowCount() > 0){
     echo '<tr class="has-background-success"><th>注文番号：',$_POST['orderId'],'</th><th></th><th>購入日：',$_POST['Date'],'</th><th></th><th></th><th></th></tr>';
 foreach($sql as $row){
     $date=date('Y-m-d', strtotime($row['date']));
-    $price = $row['price']*$row['quantity'];
+    $price = $row['price']*$row['odQuantity'];
     $total += $price;
     echo '<tr>';
     echo '<td><a href="G1-8-1.php?id=',$row['product_id'],'">';
     echo '<img alt="image" width="100" height="100" src="image/', $row['product_img'], '"></a></td>';
     echo '<td class="is-vcentered"><a href="G1-8-1.php?id=',$row['product_id'],'">',$row['product_name'],'</a></td>';
     echo '<td class="is-vcentered">',$row['price'],'円</td>';
-    echo '<td class="is-vcentered">',$row['quantity'],'点</td>';
+    echo '<td class="is-vcentered">',$row['odQuantity'],'点</td>';
     echo '<td class="is-vcentered has-text-right">',$price,'円</td>';
     echo '<td class="is-vcentered">';
     echo '<form action="G1-9-1-insert.php" method="post">';
