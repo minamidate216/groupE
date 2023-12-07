@@ -1,5 +1,5 @@
 <?php require 'header.php'; ?>
-<?php require 'db-connect.php'; ?>
+
 <?php
 //フォームの情報を取得
 $user_id = isset($_SESSION['User']['user_id']) ? $_SESSION['User']['user_id'] : '';
