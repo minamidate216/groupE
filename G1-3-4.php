@@ -41,22 +41,22 @@ if ($user_id) {
             // 未入力の項目があるか確認
             if (empty($user_name)) {
                 $errors[] = "氏名を入力してください。";
-            }elseif (mb_strlen($user_name, 'UTF-8') > 20) {
+            }else if (mb_strlen($user_name, 'UTF-8') > 20) {
                 $errors[] = '氏名は20文字以内で入力してください。';
             }
             if (empty($password)) {
                 $errors[] = "パスワードを入力してください。";
-            }elseif (strlen($password) > 20) {
+            }else if (strlen($password) > 20) {
                 $errors[] = 'パスワードは20文字以下で入力してください。';
             }
             if (empty($email)) {
                 $errors[] = "メールアドレスを入力してください。";
-            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $errors[] = "正しい形式のメールアドレスを入力してください。";
             }
             if (empty($address)) {
                 $errors[] = "住所を入力してください。";
-            }elseif (mb_strlen($address, 'UTF-8') > 50) {
+            }else if (mb_strlen($address, 'UTF-8') > 50) {
                 $errors[] = '住所は50文字以内で入力してください。';
             }
 
