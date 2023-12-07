@@ -1,4 +1,3 @@
-<?php require 'db-connect.php'; ?>
 <?php require 'header.php'; ?>
 <?php
 echo '<div class="has-text-centered is-size-2">LOGIN PAGE</div>';
