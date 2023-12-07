@@ -1,36 +1,7 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="ja">
+<?php require 'header.php';?>
+    <hr>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-    <title>注文確認画面</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
 
-</head>
-
-<body>
-    <form action="G1-5-1.php" method="post">
-        <a href="G1-1-1.php"><img src="image/top.png" height="100px" width="100px">miyosi farm</a>
-        <input type="text" name="keyword">
-        <input type="submit" value="検索">
-    </form>
-    <a href="G1-6-1.php">お気に入り</a>
-    <a href="G1-5-1.php">商品</a>
-    <a href="G1-7-1.php">注文履歴</a>
-    <a href="G1-9-1-show.php">カート</a>
-    <a href="G1-4-2.php">コラム</a>
-    <a href="G1-3-3.php">マイページ</a>
-    <?php
-    if (!isset($_SESSION['Users'])) {
-        echo '<a href="G1-2-1.php">ログイン</a>';
-    } else {
-        echo '<a href="G1-2-7.php">ログアウト</a>';
-    }
-    ?>
-    </div>
     <br>
     <br>
     <hr>
@@ -132,7 +103,6 @@
                 <br>
                 <h1>合計金額</h1>
                 <h3>{{ Total }}円</h3>
-                <td>{{ message }}</td>
                 <form action="G1-10-2.php" method="post">
                     <div v-for="product in allData" :key="product.id">
                         <input type="hidden" :name="'productCount[' + product.id + ']'" :value="product.count">
