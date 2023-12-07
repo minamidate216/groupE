@@ -1,5 +1,5 @@
-<?php require 'db-connect.php'; ?>
 <?php require 'header.php'; ?>
+
 <?php
 if(empty($_SESSION['Users'])){
     echo 'ログインしてください。<br>';
