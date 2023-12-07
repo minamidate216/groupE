@@ -31,6 +31,26 @@ $row = $result->fetch();
             display: inline-block;
             text-align: left;
         }
+
+        h1 {
+            margin-bottom: 10px; 
+            font-size: 35px;
+        }
+
+        p {
+            color: #4CAF50; /* 薄緑色 */
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0;
+            display: inline-block;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
@@ -46,9 +66,11 @@ $row = $result->fetch();
         <p>内容量 <input type="text" name="capacity" maxlength="5" value="<?= $row['capacity'] ?>"></p>
         <p><label for="myComboBox">カテゴリー</label>
         <select name="category">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="1">プレーンヨーグルト</option>
+            <option value="2">フルーツヨーグルト</option>
+            <option value="3">低脂肪ヨーグルト</option>
+            <option value="4">飲むヨーグルト</option>
+            <option value="5">健康サポート</option>
         </select>
         </p>
         <label for="quantity">在庫数</label>

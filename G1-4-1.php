@@ -18,7 +18,7 @@ echo '</div></div>';
 ?>
 <style>
 .mar{
-    margin: auto 70px 50px 50px;
+    margin: auto 70px auto 50px;
 }
 </style>
 <?php require 'footer.php'; ?>
