@@ -2,12 +2,7 @@
 
 <?php $pdo = new PDO($connect, USER, PASS); ?>
 
-<form action="G1-5-1.php" method="post">
-    商品検索
-    <input type="text" name="keyword">
-    <input type="submit" value="検索">
 
-</form>
 <hr>
 
 <?php
@@ -74,7 +69,7 @@ function displayProduct($product)
     echo '</figure>';
     echo '<div class="card-content ">';
     echo '<div class="content"><h6 class="has-text-right has-text-primary-dark">' . $product['product_name'] . '</h6><br>';
-    echo '<p class="has-text-right has-text-success-dark">'. $product['price'] . '円</p></div></div>';
+    echo '<p class="has-text-right has-text-success-dark">' . $product['price'] . '円</p></div></div>';
     if (!isset($product['quantity']) || $product['quantity'] <= 0) {
         echo '<p><strong>売り切れ</strong></p>';
     }
