@@ -18,17 +18,27 @@ if (
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <title>Document</title>
 </head>
+<style>
+    @font-face {
+        font-family: 'MyFont';
+        src: url(./ShinRetroMaruGothic/ShinRetroMaruGothic-M.ttf);
+    }
+
+    body {
+        font-family: MyFont;
+    }
+</style>
 
 <body>
     <?php require_once 'db-connect.php'; ?>
-        <nav class="navbar" style="background-color:#336633;">
-            <div class="navbar-brand mr-4">&nbsp;&nbsp;&nbsp;
-                <a href="G1-1-1.php?" class="has-text-light is-size-3">
-                    <span class="icon">
-                        <i class="fas fa-home"></i>
-                    </span>&nbsp;
-                    miyosi farm
-                </a>
+    <nav class="navbar" style="background-color:#336633;">
+        <div class="navbar-brand mr-4">&nbsp;&nbsp;&nbsp;
+            <a href="G1-1-1.php?" class="has-text-light is-size-3">
+                <span class="icon">
+                    <i class="fas fa-home"></i>
+                </span>&nbsp;
+                miyosi farm
+            </a>
 
 
         </div>
