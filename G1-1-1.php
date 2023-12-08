@@ -70,7 +70,7 @@
                         foreach ($sql as $row) {
                             echo '<hr class="navbar-divider">';
                             echo '<a class="navbar-item" href="G1-5-1.php?search=', $row['category_id'], '">';
-                            echo $row['category'],'ヨーグルト';
+                            echo $row['category'], 'ヨーグルト';
                             echo '</a>';
                         } ?>
                     </div>
@@ -111,20 +111,17 @@
                         <span class="icon is-size-3 has-text-light"><i class="fas fa-door-open"></i></span>
                     </a>
                 </div>
-                <div class="navbar-item mr-4 ">
-                    <a>
-                        <?php
-                        if (!isset($_SESSION['Users'])) {
-                            echo '<a href="G1-2-1.php" class="has-text-light">ログイン</a>';
-                        } else {
-                            echo '<a href="G1-2-7.php" class="has-text-light">ログアウト</a>';
-                        }
-                        ?>
-                        <span class="icon is-size-3"><i class="fas fa-exchange-alt"></i></span>
-                    </a>
+                <div class="navbar-item mr-4 has-text-light">
+                    <?php
+                    if (!isset($_SESSION['Users'])) {
+                        echo '<a class="has-text-light" href="G1-2-1.php">ログイン&nbsp;&nbsp;';
+                        echo '<span class="icon is-size-4"><i class="fas fa-sign-in-alt"></i></span></a>';
+                    } else {
+                        echo '<a class="has-text-light" href="G1-2-7.php">ログアウト&nbsp;&nbsp;';
+                        echo '<span class="icon is-size-4"><i class="fas fa-sign-out-alt"></i></span></a>';
+                    }
+                    ?>
                 </div>
-
-
             </div>
         </div>
     </nav>
