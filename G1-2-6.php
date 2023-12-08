@@ -1,6 +1,4 @@
-<?php session_start(); ?>
 <?php require 'header.php'; ?>
-
 <?php
 try {
     // データベースに接続
@@ -18,10 +16,20 @@ try {
     $stmt->execute([$user_name, $email, $password, $address]);
 
     // 登録完了メッセージを表示
-    echo "登録が完了しました。";
+    echo '<div class="content">';
+    echo '<div class="container is-fluid">';
+    echo '<div class="has-text-centered">';
+    echo '<h3>会員登録が完了しました。</h3>';
+    echo '</div>';
+    echo '<br>';
     echo '<form action="G1-1-1.php" method="post">';
-    echo '<input type="submit" value="トップへ">';
+    echo '<div class="has-text-centered">';
+    echo '<input class="button is-primary" type="submit" value="トップへ">';
+    echo '</div>';
     echo '</form>';
+    echo '</div>';
+    echo '</div>';
+
 } catch (PDOException $e) {
     echo "エラー: " . $e->getMessage();
     // データベース接続を閉じる
