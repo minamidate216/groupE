@@ -62,16 +62,17 @@ foreach ($products as $product) {
 // insert文はここまで
 if ($detailStmt) {
     echo '注文詳細のデータ挿入が成功しました。';
+    foreach ($products as $product) {
+        echo '<div class="cart-items">';
+        echo '<img src= "image/', $product['image'], '" style="width: 100px";>';
+        echo '<p>', $product['name'], '</p>';
+        echo '<p>', $product['count'], '個</p>';
+        echo '</div>';
+    
+    }
 } else {
-    echo "注文詳細のデータ挿入が失敗しました。";
-}
-foreach ($products as $product) {
-    echo '<div class="cart-items">';
-    echo '<img src= "image/', $product['image'], '" style="width: 100px";>';
-    echo '<p>', $product['name'], '</p>';
-    echo '<p>', $product['count'], '個</p>';
-    echo '</div>';
 
+    echo "注文詳細のデータ挿入が失敗しました。";
 }
 echo '<h3>ご購入ありがとうございます</h3>';
 unset($_SESSION['product'][$productId]);
