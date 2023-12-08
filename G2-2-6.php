@@ -64,7 +64,6 @@ $row = $result->fetch();
         $product_name = $_POST['product_name'];
         $price = $_POST['price'];
         $description = $_POST['description'];
-        $product_img = $_POST['product_img'];
         $capacity = $_POST['capacity'];
         $category = $_POST['category'];
         $quantity = $_POST['quantity'];
@@ -88,7 +87,7 @@ $row = $result->fetch();
         echo '<p>商品画像: ',$product_img,'</p>';
         echo '<p>画像: <img src="',$product_img, '" alt="商品画像" width="200px"></p>';
         echo '<p>内容量: ',$capacity,'</p>';
-        echo '<p>カテゴリ: ',$row['category'],'</p>';
+        echo '<p>カテゴリ: ',$category,'</p>';
         echo '<p>在庫数: ',$quantity,'</p>';
     }
     echo '<form action="G2-2-7.php" method="post">';
