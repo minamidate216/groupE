@@ -103,17 +103,17 @@ if ($user) {
 
     echo '<div class="column is-half is-offset-3">';
             
-    echo '<label class="label has-text-primary">氏名</label>';
-    echo '<input class="input is-normal is-primary" type="text" placeholder="氏名を入力してください。" name="user_name" value="' , $user['user_name'], '">';
+    echo '<label class="label has-text-primary-dark">氏名</label>';
+    echo '<input class="input is-normal is-primary-dark" type="text" placeholder="氏名を入力してください。" name="user_name" value="' , $user['user_name'], '">';
 
-    echo '<label class="label has-text-primary">メールアドレス</label>';
-    echo '<input class="input is-normal is-primary" type="text" placeholder="メールアドレスを入力してください。" name="email" value="', $user['email'], '">';
+    echo '<label class="label has-text-primary-dark">メールアドレス</label>';
+    echo '<input class="input is-normal is-primary-dark" type="text" placeholder="メールアドレスを入力してください。" name="email" value="', $user['email'], '">';
 
-    echo '<label class="label has-text-primary">パスワード</label>';
-    echo '<input class="input is-normal is-primary" type="password" placeholder="パスワードを入力してください。" name="password" value="', $user['password'], '">';
+    echo '<label class="label has-text-primary-dark">パスワード</label>';
+    echo '<input class="input is-normal is-primary-dark" type="password" placeholder="パスワードを入力してください。" name="password" value="', $user['password'], '">';
 
-    echo '<label class="label has-text-primary">住所</label>';
-    echo '<input class="input is-normal is-primary" type="text" placeholder="住所を入力してください。" name="address" value="', $user['address'], '">';
+    echo '<label class="label has-text-primary-dark">住所</label>';
+    echo '<input class="input is-normal is-primary-dark" type="text" placeholder="住所を入力してください。" name="address" value="', $user['address'], '">';
     
     if (!empty($errors)) {
         echo '<ul style="color: red;">';
@@ -124,8 +124,8 @@ if ($user) {
     }
 
     echo '<div class="has-text-centered">';
-    echo '<label class="label has-text-primary"></label>';
-    echo '<input class="button is-primary" type="submit" value="確認する" name="confirm">';
+    echo '<label class="label has-text-primary-dark"></label>';
+    echo '<input class="button is-primary-dark" type="submit" value="確認する" name="confirm">';
     echo '</div>';
     echo '</div>';
     echo '</div>';
