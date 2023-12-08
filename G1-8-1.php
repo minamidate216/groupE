@@ -8,21 +8,29 @@ if (empty($_SESSION['Users'])) {
     echo 'ログインしてください。<br>';
     echo '<a href="G1-2-1.php">ログインへ';
 } else {
-
+    $isFavorite = false;
     $pdo = new PDO($connect, USER, PASS);
     // お気に入りに登録されているかどうかの確認
     $favoriteSql = $pdo->prepare('select count(*) from Favorites where user_id=? and product_id = ?');
     $favoriteSql->execute([$_SESSION['Users']['user_id'], $_GET['id']]);
     $count = $favoriteSql->fetchColumn();
-    
+    $cartStock;
+    $purchaseStock = 0;
+    $message = '<a href="G1-5-1.php" class="subtitle has-text-danger">売り切れ  商品一覧へ </a>';
+
     if ($count > 0) {
         $isFavorite = true;
-        
-    } else {
-        $isFavorite = false;
     }
-    
-    
+    // カートのセッション情報に表示されている商品と同じものがあれば在庫を取得する。
+    if (!empty($_SESSION['product'])) {
+        foreach ($_SESSION['product'] as $id => $row) {
+            if ($id == $_GET['id']) {
+                $cartStock = $row['count'];
+            }
+        }
+    }
+
+
     // 商品情報の取得
     $productId = $_GET['id'];
     $productSql = $pdo->prepare('select * from Products where product_id=?');
@@ -30,6 +38,19 @@ if (empty($_SESSION['Users'])) {
     echo '<div class="content">';
     echo '<div class="container is-fluid">';
     foreach ($productSql as $row) {
+        $purchaseStock = $row['quantity'];
+        if (!empty($cartStock)) {
+            if (($purchaseStock - $cartStock) > 0 && ($purchaseStock - $cartStock) < 10) {
+                $purchaseStock -= $cartStock;
+                $message = '在庫残り' . $purchaseStock . '個となります。';
+            } elseif (($purchaseStock - $cartStock) >= 10) {
+                $purchaseStock = 10;
+            } elseif (($purchaseStock - $cartStock) <= 0) {
+                $purchaseStock = 0;
+                $message = '<a href="G1-9-1-show.php" class="subtitle has-text-danger">カート内の個数が最終在庫となります。    ＝＞<span class="icon is-size-4"><i
+                class="fas fa-shopping-cart"></i></span></a>';
+            }
+        }
         echo '<form action="G1-9-1-insert.php" method="post">';
         echo '<article class="media">';
         echo '<div class="media-left">';
@@ -48,12 +69,33 @@ if (empty($_SESSION['Users'])) {
         echo '<h3 class="title has-text-primary-dark">', $row['product_name'], '</h3>';
         echo '<p class="subtitle has-text-right has-text-primary-dark" >', $row['price'], '円</p><br>';
         echo '<p class="subtitle has-text-right has-text-primary-dark" >', $row['capacity'], '</p>';
-        echo '<div class="select is-medium is-rounded"><select name="count">';
-        for ($i = 1; $i <= $row['quantity']; $i++) {
-            echo '<option value="', $i, '" >', $i, '個</option>';
+        // echo '<div class="select is-medium is-rounded"><select name="count">';
+        if ($purchaseStock < 10 && $purchaseStock > 0) {
+            // 在庫が10より少ない時
+            echo '<p class="subtitle has-text-danger">', $message, '</p>';
+            echo '<div class="select is-medium is-rounded"><select name="count">';
+            for ($i = 1; $i <= $purchaseStock; $i++) {
+                echo '<option value="', $i, '" >', $i, '個</option>';
+            }
+            echo '</select></div></div><br>';
+            echo '<input class="button is-info is-light" type="submit" value="カートに追加" style="margin: 30px";>';
+        } elseif ($purchaseStock >= 10) {
+            // 在庫がカートの中の商品数を引いても10以上の時
+            echo '<div class="select is-medium is-rounded"><select name="count">';
+            for ($i = 1; $i <= 10; $i++) {
+                echo '<option value="', $i, '" >', $i, '個</option>';
+            }
+            echo '</select></div></div><br>';
+            echo '<input class="button is-info is-light" type="submit" value="カートに追加" style="margin: 30px";>';
+        } elseif ($purchaseStock <= 0) {
+            // 在庫がない,もしくはカートの中に入れている個数で在庫終了の時は、カートに追加ボタンは消しておいて商品一覧とカートへのリンクを表示
+            echo '<div>', $message, '</div></div><br>';
         }
-        echo '</select></div></div><br>';
-        echo '<input class="button is-info is-light" type="submit" value="カートに追加" style="margin: 30px";>';
+        // for ($i = 1; $i <= $row['quantity']; $i++) {
+        //     echo '<option value="', $i, '" >', $i, '個</option>';
+        // }
+        // echo '</select></div></div><br>';
+        // echo '<input class="button is-info is-light" type="submit" value="カートに追加" style="margin: 30px";>';
         echo '<input type="hidden" name="id" value="', $row['product_id'], '">';
         echo '<input type="hidden" name="name" value="', $row['product_name'], '">';
         echo '<input type="hidden" name="price" value="', $row['price'], '">';
@@ -62,27 +104,29 @@ if (empty($_SESSION['Users'])) {
         echo '<input type="hidden" name="quantity" value="', $row['quantity'], '">';
         echo '</form>';
     }
-    
+
     ?>
-<div id="vueApp">
-    <!-- お気に入りボタン -->
-    <i :class="{'fas fa-heart is-right': isFavorite, 'far fa-heart is-right': !isFavorite}" @click="toggleFavorite"
-    style=font-size:150px;color:#a3ffa3;></i>
-</div>
-</article>
-</div>
-</div>
+    <div id="vueApp">
+        <!-- お気に入りボタン -->
+        <i :class="{'fas fa-heart is-right': isFavorite, 'far fa-heart is-right': !isFavorite}" @click="toggleFavorite"
+            style=font-size:80px;color:#a3ffa3;></i>
+    </div>
+    </article>
+    </div>
+    </div>
 
 
 
 
-<!-- script.jsに商品とお気に入りの情報を渡す⇩ -->
-<script>
-    var productFromPHP = <?php echo json_encode($productId); ?>;
-    var favoriteFromPHP = <?php echo json_encode($isFavorite); ?>;
-</script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="./script/script.js"></script>
+    <!-- script.jsに商品とお気に入りの情報を渡す⇩ -->
+    <script>
+        var productFromPHP = <?php echo json_encode($productId); ?>;
+        var favoriteFromPHP = <?php echo json_encode($isFavorite); ?>;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./script/script.js"></script>
 
-<?php require 'footer.php'; }?>
+
+    <?php require 'footer.php';
+} ?>
