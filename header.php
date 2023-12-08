@@ -1,53 +1,112 @@
-<?php 
+<?php
 //セッション開始を確認
-if ((function_exists('session_status')
-    && session_status() !== PHP_SESSION_ACTIVE) || !session_id()) {
-        // セッション開始していなければスタート
+if (
+    (function_exists('session_status')
+        && session_status() !== PHP_SESSION_ACTIVE) || !session_id()
+) {
+    // セッション開始していなければスタート
     session_start();
 }
 ?>
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-<title>Document</title>
-</head>
-<body>
-<div class="has-background-success-dark">
-    <div style="display:inline-block">
-<a href="G1-1-1.php"><img src="image/ranch.png" height="100px" width="100px"><span class="has-text-white">miyosi farm</a>
-<form action="G1-5-1.php" method="post">
-<input type="text" name="keyword">
-<button type="submit"><i class="fas fa-search"></i></button>
-</form>
-</div>
-    <div class="level-right">
-        <div class="mr-6 is-offset-one-third level-item">
-            <a href="G1-6-1-show.php"><span class="has-text-white">お気に入り <div class="icon is-size-4"><i class="far fa-heart"></i></div></span></a>
-        </div>
-        <div class="mr-6 level-item">
-            <a href="G1-7-1.php"><span class="has-text-white">注文履歴 <div class="icon is-size-4"><i class="fas fa-history"></i></div></span></a>
-        </div>
-        <div class="mr-6 level-item">
-            <a href="G1-9-1-show.php"><span class="has-text-white">カート <div class="icon is-size-4"><i class="fas fa-shopping-cart"></i></div></span></a>
-        </div>
-        <div class="mr-6 level-item">
-            <a href="G1-4-1.php"><span class="has-text-white">コラム <div class="icon is-size-4"><i class="fas fa-book-open"></i></div></span></a>
-        </div>
-        <div class="mr-6 level-item">
-            <a href="G1-3-3.php"><span class="has-text-white icon is-size-3"><i class="fab fa-creative-commons-by"></i></span></a>
-        </div>
-        
-        <?php
-            if(!isset($_SESSION['Users'])){
-                echo '<a href="G1-2-1.php"><button type="submit">ログイン</button></a>';
-            }else{
-                echo '<a href="G1-2-7.php"><button type="submit">ログアウト</button></a>';
-            }
-        ?>
-    </div>
-</div>
-<hr>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <title>Document</title>
+    </head>
+    
+    <body>
+    <?php require 'db-connect.php'; ?>
+        <nav class="navbar" style="background-color:#336633;">
+            <div class="navbar-brand mr-4">&nbsp;&nbsp;&nbsp;
+                <a href="G1-1-1.php?" class="has-text-light is-size-3">
+                    <span class="icon">
+                        <i class="fas fa-home"></i>
+                    </span>&nbsp;
+                    miyosi farm
+                </a>
+
+
+            </div>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+            <div id="menu" class="navbar-menu">
+                <div class="navbar-start">
+                    
+
+                </div>
+
+                <div class="navbar-end has-text-light">
+                    <div class="navbar-item has-dropdown is-hoverable mr-6 has-text-light">
+                        <a class="navbar-link has-text-light" style=".navbar-link:hover{color:black;}">
+                            PRODUCT　<span class="icon is-size-4"><i class="fas fa-search"></i></span>　
+                        </a>
+
+                        <div class="navbar-dropdown">
+                            <form class="navbar-item" action="G1-5-1.php" method="post">
+                                <input type="text" name="keyword" placeholder="商品のキーワード">
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                                <a class="navbar-item">
+
+                            </form>
+                            </a>
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" href="G1-5-1.php">ALL</a>
+                            <?php
+                            $headSql = new PDO($connect, USER, PASS);
+                            $sql = $headSql->query('select * from Category');
+                            foreach ($sql as $row) {
+                                echo '<hr class="navbar-divider">';
+                                echo '<a class="navbar-item" href="G1-5-1.php?search=', $row['category_id'], '">';
+                                echo $row['category'];
+                                echo '</a>';
+                            } ?>
+                        </div>
+                    </div>
+                    <div class="navbar-item mr-4 ">
+                        <a href="G1-6-1-show.php" class="has-text-light"><span class="icon is-size-4">
+                                <i class="far fa-heart"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="navbar-item mr-4 ">
+                        <a href="G1-7-1.php" class="has-text-light">注文履歴&nbsp;&nbsp;<span class="icon is-size-4"><i
+                                    class="fas fa-history"></i></span></a>
+                    </div>
+                    <div class="navbar-item mr-4 ">
+                        <a href="G1-9-1-show.php" class="has-text-light">カート<span class="icon is-size-4"><i
+                                    class="fas fa-shopping-cart"></i></span></a>
+                    </div>
+                    <div class="navbar-item mr-4 ">
+                        <a href="G1-4-1.php" class="has-text-light">コラム&nbsp;&nbsp;<span class="icon is-size-4"><i
+                                    class="fas fa-book-open"></i></span></a>
+                    </div>
+                    <div class="navbar-item mr-4">
+                        <a href="G1-3-3.php" class="has-text-light">マイページ&nbsp;<span class="icon is-size-4"><i
+                                    class="fas fa-portrait"></i></span></a>
+                    </div>
+                    <div class="navbar-item mr-4 ">
+                        <a>
+                            <?php
+                            if (!isset($_SESSION['Users'])) {
+                                echo '<a href="G1-2-1.php" class="has-text-light">ログイン</a>';
+                            } else {
+                                echo '<a href="G1-2-7.php" class="has-text-light">ログアウト</a>';
+                            }
+                            ?>
+                            <span class="icon is-size-3"><i class="fas fa-exchange-alt"></i></span>
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </nav>

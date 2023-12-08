@@ -3,6 +3,7 @@ const app = new Vue({
     el:'#vueApp',
     //dataは　vueの中で使われる変数
     data:{
+        message:'',
         // 配列の変数を書いておく
         allData: productFromPHP,
         subTotal : 0,
@@ -45,16 +46,11 @@ const app = new Vue({
             const index = this.allData.indexOf(filteredTodo);
             return index;
         }
-        // subTotal(product){
-        //     return product.price * product.count;
-        // }
     },
     computed:{
         // 合計金額を返す
         Total(){
             return this.allData.reduce((sum, product) => sum + product.price * product.count, 0);
         }
-        //　小計を返す
-        //　計算はここまで
     }
 });

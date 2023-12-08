@@ -1,5 +1,4 @@
 <?php session_start(); ?>
-<?php require 'db-connect.php'; ?>
 <?php
 $user_id = isset($_SESSION['Users']['user_id']) ? $_SESSION['Users']['user_id'] : null;
 $errors = [];

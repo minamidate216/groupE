@@ -1,4 +1,3 @@
-<?php require 'db-connect.php'; ?>
 <?php require 'header.php'; ?>
 <?php
 unset($_SESSION['product'][$_GET['id']]);

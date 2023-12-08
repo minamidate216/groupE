@@ -1,67 +1,9 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="ja">
+<?php require 'header.php';?>
+    <hr>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-    <title>注文確認画面</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-    <style>
-        .product-card {
-            display: flex;
-            align-items: center;
-        }
 
-        .product-image {
-            width: 100px;
-            /* 画像のサイズ調整 */
-            margin-right: 15px;
-        }
-
-        .product-details {
-            flex-grow: 1;
-        }
-
-        .product-price {
-            font-size: 1.5em;
-            color: #3273dc;
-            /* Bulmaのリンク色 */
-        }
-
-        .product-quantity {
-            width: 3em;
-            text-align: center;
-        }
-
-        .summary-box {
-            text-align: right;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-
-<body>
-    <form action="G1-5-1.php" method="post">
-        <a href="G1-1-1.php"><img src="image/top.png" height="100px" width="100px">miyosi farm</a>
-        <input type="text" name="keyword">
-        <input type="submit" value="検索">
-    </form>
-    <a href="G1-6-1.php">お気に入り</a>
-    <a href="G1-5-1.php">商品</a>
-    <a href="G1-7-1.php">注文履歴</a>
-    <a href="G1-9-1-show.php">カート</a>
-    <a href="G1-4-2.php">コラム</a>
-    <a href="G1-3-3.php">マイページ</a>
-    <?php
-    if (!isset($_SESSION['Users'])) {
-        echo '<a href="G1-2-1.php">ログイン</a>';
-    } else {
-        echo '<a href="G1-2-7.php">ログアウト</a>';
-    }
-    ?>
-    </div>
+    <br>
+    <br>
     <hr>
     <hr>
     <?php
@@ -88,6 +30,52 @@
                     <button class="button" @click="decrement(product.id)">-1</button>
                     {{ product.price * product.count }}円
                 </div>
+                <!-- 購入者情報 -->
+                <br>
+                <br>
+                <hr>
+                <div class="card">
+                    <header class="card-header">
+                        <span class="icon">
+                            <i class="far fa-id-card" aria-hidden="true"></i>
+                        </span>
+                        <p class="card-header-title">
+                            購入者情報
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <strong>
+                                <?php if (isset($_SESSION['Users'])) {
+                                    echo '<div>';
+                                    echo '<h3>名前：', $_SESSION['Users']['user_name'], '</h3>';
+                                    echo '<h3>住所：', $_SESSION['Users']['address'], '</h3>';
+                                    echo '<h3>連絡先：', $_SESSION['Users']['email'], '</h3>';
+                                    echo '<div>';
+                                }
+                                ?>
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br>
+            </section>
+            <div class="has-text-right">
+                <br>
+                <br>
+                <h1>合計金額</h1>
+                <h3>{{ Total }}円</h3>
+                <form action="G1-10-2.php" method="post">
+                    <div v-for="product in allData" :key="product.id">
+                        <input type="hidden" :name="'productCount[' + product.id + ']'" :value="product.count">
+                        <input type="hidden" :name="'productId[' + product.id + ']'" :value="product.id">
+                        <input type="hidden" :name="'productName[' + product.id + ']'" :value="product.name">
+                        <input type="hidden" :name="'productPrice[' + product.id + ']'" :value="product.price">
+                        <input type="hidden" :name="'productImage[' + product.id + ']'" :value="product.image">
+                    </div>
+                    <input class="button is-dark" type="submit" value="購入">
+                </form>
             </div>
 
             <div class="field">

@@ -1,4 +1,3 @@
-<?php require 'db-connect.php'; ?>
 <?php require 'header.php'; ?>
 <?php
 if(isset($_SESSION['Users'])){
