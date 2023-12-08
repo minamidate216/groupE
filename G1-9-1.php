@@ -6,7 +6,7 @@ if(empty($_SESSION['Users'])){
 }else{
 if(!empty($_SESSION['product'])){
     echo '<div class="columns is-vcentered">';
-    echo '<div class="column is-two-third is-offset-1">';
+    echo '<div class="column is-two-third">';
     echo '<table class="table is-striped column">';
     echo '<tr class="has-background-success"><th></th><th class="has-text-centered is-vcentered">商品名</th><th class="has-text-centered is-vcentered">説明</th><th class="has-text-centered is-vcentered">数量</th><th class="has-text-centered is-vcentered">価格</th><th></th><th></th></tr>';
     $total=0;
@@ -35,10 +35,10 @@ if(!empty($_SESSION['product'])){
 ?>
 <style>
     table{
-        margin: auto 60px auto;
+        margin: auto 100px auto;
     }
     .button_cart{
-        margin: auto 460px auto;
+        margin: auto 520px auto;
     }
     .desBr{
         width: 300px;
