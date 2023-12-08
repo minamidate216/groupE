@@ -24,10 +24,10 @@ echo '<div class="content">';
             echo '</div>';
 
         echo '<table>';
-        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">名前　　　　　　</td><td>', $user_name, '</td></tr>';
-        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">パスワード　　　</td><td>', $password, '</td></tr>';
-        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">メールアドレス　</td><td>', $email, '</td></tr>';
-        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">住所　　　　　　</td><td>', $address, '</td></tr>';
+        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">名前　　　　　　</td><td>', $user_name, '</td></tr>';
+        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">パスワード　　　</td><td>', $password, '</td></tr>';
+        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">メールアドレス　</td><td>', $email, '</td></tr>';
+        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">住所　　　　　　</td><td>', $address, '</td></tr>';
         echo '</table>';
         ?>
     <div class="has-text-centered">
@@ -38,9 +38,9 @@ echo '<div class="content">';
     ?>
     <form action="G1-2-6.php" method="post">
             <div class="has-text-centered">
-            <a class="button is-primary" href="<?php echo $backURL; ?>">　戻る　</a>
+            <a class="button is-primary-dark" href="<?php echo $backURL; ?>">　戻る　</a>
             　　　　　　
-            <input class="button is-primary" type="submit" value="登録する">
+            <input class="button is-primary-dark" type="submit" value="登録する">
             </form>
             </div> 
         </div>        
