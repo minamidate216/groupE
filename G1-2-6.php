@@ -14,7 +14,8 @@ try {
     // プリペアドステートメントを使用してデータベースに挿入
     $stmt = $pdo->prepare("INSERT INTO Users (user_name, email, password, address) VALUES (?, ?, ?, ?)");
     $stmt->execute([$user_name, $email, $password, $address]);
-
+    echo '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">';
+    echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">';
     // 登録完了メッセージを表示
     echo '<div class="content">';
     echo '<div class="container is-fluid">';
