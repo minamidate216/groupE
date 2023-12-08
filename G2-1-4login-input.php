@@ -50,7 +50,7 @@
     <div class="input">
         <form action="G2-1-4login-output.php" method="post">
             <input type="text" placeholder="ID"name="admin_id"><br>
-            パスワード<input type="password"  placeholder="パスワード" name="password"><br>
+            <input type="password"  placeholder="パスワード" name="password"><br>
             <div class="miyo">
                 <button class="button is-primary">ログイン</button>
             </div>
