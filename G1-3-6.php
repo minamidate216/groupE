@@ -20,10 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // コミット
         $pdo->commit();
-        echo '更新が完了しました。';
+        echo '<div class="content">';
+        echo '<div class="container is-fluid">';
+        echo '<div class="has-text-centered">';
+        echo '<h3>更新が完了しました。</h3>';
+        echo '</div>';
+        echo '<br>';
         echo '<form action="G1-1-1.php" method="post">';
-        echo '<input type="submit" value="トップへ">';
+        echo '<div class="has-text-centered">';
+        echo '<input class="button is-primary" type="submit" value="トップへ">';
+        echo '</div>';
         echo '</form>';
+        echo '</div>';
+        echo '</div>';
 
     } catch (PDOException $e) {
         // エラーが発生するとロールバック
