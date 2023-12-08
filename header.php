@@ -20,25 +20,6 @@ if (
 </head>
 
 <body>
-    <?php require 'db-connect.php'; ?>
-    <nav class="navbar" style="background-color:#336633;">
-        <div class="navbar-brand mr-4">&nbsp;&nbsp;&nbsp;
-            <a href="G1-1-1.php?" class="has-text-light is-size-3">
-                <span class="icon">
-                    <i class="fas fa-home"></i>
-                </span>&nbsp;
-                miyosi farm
-            </a>
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-        <title>Document</title>
-    </head>
-    
-    <body>
     <?php require_once 'db-connect.php'; ?>
         <nav class="navbar" style="background-color:#336633;">
             <div class="navbar-brand mr-4">&nbsp;&nbsp;&nbsp;
