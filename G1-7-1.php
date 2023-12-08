@@ -27,7 +27,7 @@ foreach($sql as $row){
     echo '</td>'; 
     echo '<td></td>'; 
     echo '<td class="is-vcentered">';
-    echo '<form action="G1-7-2.php" method="post">';
+    echo '<form action="G1-7-2.php" method="get">';
     echo '<input type="hidden" name=orderId value="',$row['order_id'], '">';
     echo '<input type="hidden" name=Date value="',$date, '">';
     echo '<button type="submit">詳細を表示</button>';

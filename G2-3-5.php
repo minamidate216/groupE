@@ -54,11 +54,15 @@ $row = $result->fetch();
     <form action="G2-3-6.php" method="post" enctype="multipart/form-data" >
         <input type="hidden" name="column_id" value="<?= $row['column_id'] ?>">
         <h1>コラム更新</h1>
-        <p>コラムタイトル <input type="text" name="column_title" maxlength="40" value="<?= $row['column_title'] ?>"></p>
-        <p><img src="<?= $row['post_img'] ?>" alt="コラム画像" width="200px">
-        <input type="hidden" name="post_img" value="<?= $row['post_img'] ?>"></p>
-        <p>画像 <input type="file" name="post_img" ></p>
-        <p>本文<textarea name="content" maxlength="255" id="" cols="30" rows="10"><?= $row['content'] ?></textarea></p>
+        <p><label for="column_title">商品名</label>
+        <input type="text" name="column_title" maxlength="30" value="<?= $row['column_title'] ?>" required></p>
+
+        <p><label for="post_img">画像</label>
+        <p><img src="<?= $row['post_img'] ?>" alt="商品画像" width="200px">
+        <input type="file" name="post_img" required></p>
+
+        <p><label for="content">商品説明</label>
+        <textarea name="content" id="" cols="30" rows="10" required><?= $row['content'] ?></textarea></p>
         <a href="G2-3-1.php" ><button type="button"class="button is-primary" >保存せず戻る</button></a>
 
         <button class="button is-primary">更新</button>

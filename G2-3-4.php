@@ -1,4 +1,4 @@
-<?php require 'header.php'; ?>
+<?php require 'header_admin.php'; ?>
 <?php require 'db-connect.php';
 // データベースに接続
 $pdo=new PDO($connect,USER,PASS);
@@ -36,9 +36,25 @@ if ($image_data && $image_type) {
         // データベースへの保存が完了したら、不要になったセッション変数を削除する
         unset($_SESSION['column']);
 
+        echo '<div class="content">';
+        echo '<div class="container">';
+        echo '<nav class="level">';
+        // <!-- 中央揃え -->
+        echo '<div class="level-item">';
+        
         // データベースへの保存が完了したことをユーザーに表示するなどの処理を行う
         echo "コラムの登録を完了しました";
+
+        echo '</div>';
+        echo '</nav>';
     }
 }
 ?>
+<nav class="level">
+<!-- 中央揃え -->
+<div class="level-item">
 <p><button onclick = "location.href='G2-3-1.php'">コラム管理画面へ</button></p>
+</div>
+</nav>
+</div>
+</diV>

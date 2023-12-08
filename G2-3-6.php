@@ -1,5 +1,10 @@
 <?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>コラム更新確認</title>
     <style>
         body {
@@ -50,7 +55,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $column_id = $_POST["column_id"];
         $column_title = $_POST["column_title"];
-        $post_img=$_POST["post_img"];
         if(!empty($_FILES['post_img'])){
             //ファイルの保存先
             $upload = './uploads/'.$_FILES['post_img']['name']; 

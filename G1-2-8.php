@@ -1,11 +1,12 @@
 <?php require 'header.php'; ?>
 <?php
+echo '<h1 class="has-text-centered is-size-2">LOG OUT</h1>';
 if(isset($_SESSION['Users'])){
     unset($_SESSION['Users']);
     unset($_SESSION['product']);
-    echo 'ログアウトしました。';
+    echo '<div class="is-size-4 has-text-centered">ログアウトしました。</div>';
     echo '<form action="G1-1-1.php">';
-    echo '<button type="submit">トップへ</button>';
+    echo '<div class="has-text-centered" style="margin: 30px"><button type="submit">トップへ</button></div>';
     echo '</form>';
 } else {
     echo 'すでにログアウトしています。';

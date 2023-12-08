@@ -1,10 +1,5 @@
 <?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>商品情報更新確認画面</title>
     <style>
         body {
@@ -55,6 +50,13 @@
 </head>
 <body>
 <?php
+// データベース接続
+$conn = new PDO($connect, USER, PASS);
+// Categoryテーブルからデータ取得
+$sql = "SELECT * FROM Category WHERE category_id = ?";
+$result = $conn->prepare($sql);
+$result->execute([$_POST['category']]);
+$row = $result->fetch();
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
@@ -62,7 +64,6 @@
         $product_name = $_POST['product_name'];
         $price = $_POST['price'];
         $description = $_POST['description'];
-        $product_img = $_POST['product_img'];
         $capacity = $_POST['capacity'];
         $category = $_POST['category'];
         $quantity = $_POST['quantity'];
