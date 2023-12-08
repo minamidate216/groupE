@@ -20,7 +20,7 @@ if (
     </head>
     
     <body>
-    <?php require 'db-connect.php'; ?>
+    <?php require_once 'db-connect.php'; ?>
         <nav class="navbar" style="background-color:#336633;">
             <div class="navbar-brand mr-4">&nbsp;&nbsp;&nbsp;
                 <a href="G1-1-1.php?" class="has-text-light is-size-3">
