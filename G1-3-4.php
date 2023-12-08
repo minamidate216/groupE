@@ -78,7 +78,10 @@ if ($user_id) {
 }
 ?>
 <?php require 'header.php';?>
+
 <?php
+        echo '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">';
+        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">';
 if ($user) {
     // 更新前のユーザー情報を表示
     echo '<div class="content">';
