@@ -1,4 +1,4 @@
-<?php require 'header_admin.php';
+<?php require 'header.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // フォームから送信された情報をセッションに一時保存する
     $_SESSION['column']=[];
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <p><?php echo isset($_SESSION['column']['content']) ? $_SESSION['column']['content'] : ''; ?></p>
     <!-- 登録ボタン -->
     <p>登録しますか？</p>
-    <p><input class="button has-background-success-dark has-text-white" type="submit" value="登録">
-    <a href="G2-3-1.php"><button class="button has-background-success-dark has-text-white" type="button">戻る</button></a>
+    <p><input type="submit" value="登録">
+    <a href="G2-3-1.php"><button type="button">戻る</button></a>
 </form>
 <?php require 'footer.php'; ?>

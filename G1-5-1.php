@@ -1,5 +1,5 @@
 <?php require 'header.php'; ?>
-<?php require 'db-connect.php'; ?>
+
 <?php $pdo = new PDO($connect, USER, PASS); ?>
 
 <form action="G1-5-1.php" method="post">

@@ -15,6 +15,22 @@
             display: inline-block;
             text-align: left;
         }
+
+        h1 {
+            margin-bottom: 10px; 
+            font-size: 35px;
+        }
+
+        h3 {
+            color: #4CAF50; /* 薄緑色 */
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>

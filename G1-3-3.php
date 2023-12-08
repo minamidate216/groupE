@@ -1,6 +1,5 @@
 <?php
 require 'header.php';
-require 'db-connect.php';
 
 // セッションからユーザーIDを取得
 $user_id = isset($_SESSION['Users']['user_id']) ? $_SESSION['Users']['user_id'] : null;

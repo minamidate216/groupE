@@ -1,5 +1,4 @@
 <?php session_start(); ?>
-<?php require 'db-connect.php'; ?>
 <?php
 $errors = [];
 $user_name='';
@@ -15,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = $_POST['address'];
 
     // 入力項目のチェック
+    require 'db-connect.php';
     $pdo = new PDO($connect, USER, PASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //名前の重複チェック

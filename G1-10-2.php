@@ -1,5 +1,4 @@
 <?php require 'header.php'; ?>
-<?php require 'db-connect.php'; ?>
 <?php
 $pdo = new PDO($connect, USER, PASS);
 

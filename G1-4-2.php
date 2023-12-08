@@ -1,4 +1,5 @@
 <?php require 'header.php'; ?>
+
 <?php
 echo '<h1 class="has-text-centered is-size-2">Miyoshi Columns</h1><br><br>';
 $pdo = new PDO($connect, USER, PASS);

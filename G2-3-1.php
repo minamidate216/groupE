@@ -1,5 +1,6 @@
-<?php require 'header_admin.php'; ?>
+<?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
+
 <?php
 // データベース接続
 $conn = new PDO($connect,USER, PASS);
@@ -14,20 +15,17 @@ $sql = "SELECT c.column_id, c.column_title, a.admin_name, c.post_data, c.admin_i
         FROM Columns c
         INNER JOIN Admins a ON c.admin_id = a.admin_id";
 $result = $conn->query($sql);
-echo '<div class="content">';
-echo '<div class="container">';
-echo '<h3 class="title is-3 has-text-centered">コラム一覧</h3>';
 
 if ($result->rowCount() > 0) {
     // テーブルヘッダー
-    echo '<table class="table is-fullwidth">
-            <tr class="has-background-success-dark">
-                <th class="has-text-light">コラム名</th>
-                <th class="has-text-light">追加者</th>
-                <th class="has-text-light">更新日時</th>
+    echo "<table border='1'>
+            <tr>
+                <th>コラム名</th>
+                <th>追加者</th>
+                <th>更新日時</th>
                 <th></th>
                 <th></th>
-            </tr>';
+            </tr>";
 
     // データ表示
     $data = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -44,15 +42,8 @@ if ($result->rowCount() > 0) {
 } else {
     echo "データがありません";
 }
+
 $conn=null;
 ?>
-<nav class="level">
-  <!-- 中央揃え -->
-  <div class="level-item">
-<form action="G2-3-2.php" method="post">
-<input class="button has-background-success-dark has-text-white " type="submit" value="新規登録">
-</form>
-</div>
-</div>
-</div>
-</nav>
+
+<button onclick="location.href='G2-3-2.php'">登録</button>

@@ -1,5 +1,4 @@
 <?php require 'header.php'; ?>
-<?php require 'db-connect.php'; ?>
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
