@@ -12,6 +12,16 @@
     <!-- <link rel="stylesheet" href="css/top.css"> -->
     <title>Document</title>
 </head>
+<style>
+    @font-face {
+        font-family: 'MyFont';
+        src: url(./ShinRetroMaruGothic/ShinRetroMaruGothic-M.ttf);
+    }
+
+    body {
+        font-family: MyFont;
+    }
+</style>
 
 <body>
     <?php require 'db-connect.php'; ?>
@@ -60,7 +70,7 @@
                         foreach ($sql as $row) {
                             echo '<hr class="navbar-divider">';
                             echo '<a class="navbar-item" href="G1-5-1.php?search=', $row['category_id'], '">';
-                            echo $row['category'];
+                            echo $row['category'],'ヨーグルト';
                             echo '</a>';
                         } ?>
                     </div>
@@ -148,6 +158,7 @@
                 echo '<li class="column p-6"><a class="image is-256x256" href="G1-5-1.php?search=', $row['category_id'], '">';
                 echo '<img class="is-rounded pb-5" src="image/', $row['category_img'], '" alt="">';
                 echo '<p class="subtitle has-text-centered has-text-primary-dark ">', $row['category'], '</p>';
+                echo '<p class="subtitle has-text-centered has-text-primary-dark ">ヨーグルト</p>';
                 echo '</a></li>';
             }
 
