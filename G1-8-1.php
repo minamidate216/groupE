@@ -16,7 +16,7 @@ if (empty($_SESSION['Users'])) {
     $count = $favoriteSql->fetchColumn();
     $cartStock;
     $purchaseStock = 0;
-    $message = '<a href="G1-5-1.php" class="subtitle has-text-danger">売り切れ  商品一覧へ </a>';
+    $message = '<a href="G1-5-1.php" class="subtitle has-text-danger">売り切れ   商品一覧へ<i class="fas fa-reply"></i></a>';
 
     if ($count > 0) {
         $isFavorite = true;
