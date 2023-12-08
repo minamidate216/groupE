@@ -71,7 +71,7 @@ function displayProduct($product)
     echo '<div class="content"><h6 class="has-text-right has-text-primary-dark">' . $product['product_name'] . '</h6><br>';
     echo '<p class="has-text-right has-text-success-dark">' . $product['price'] . '円</p></div></div>';
     if (!isset($product['quantity']) || $product['quantity'] <= 0) {
-        echo '<p><strong>売り切れ</strong></p>';
+        echo '<p><strong class="subtitle has-text-danger">売り切れ</strong></p>';
     }
     echo '</a>';
     echo '</li>';
