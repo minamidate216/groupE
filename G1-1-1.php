@@ -152,7 +152,7 @@
             $pdo = new PDO($connect, USER, PASS);
             $sql = $pdo->query('select * from Category');
             foreach ($sql as $row) {
-                echo '<li class="column p-6"><a class="image is-256x256" href="G1-5-1.php?search=', $row['category_id'], '">';
+                echo '<li class="column is-10-mobile is-2-tablet is-3-desktop is-3-widescreen is-4 p-6"><a class="image is-256x256" href="G1-5-1.php?search=', $row['category_id'], '">';
                 echo '<img class="is-rounded pb-5" src="image/', $row['category_img'], '" alt="">';
                 echo '<p class="subtitle has-text-centered has-text-primary-dark ">', $row['category'], '</p>';
                 echo '<p class="subtitle has-text-centered has-text-primary-dark ">ヨーグルト</p>';
