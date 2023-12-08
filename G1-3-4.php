@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php require_once 'db-connect.php'; ?>
 <?php
 $user_id = isset($_SESSION['Users']['user_id']) ? $_SESSION['Users']['user_id'] : null;
 $errors = [];
@@ -77,11 +78,43 @@ if ($user_id) {
 }
 ?>
 <?php require 'header.php';?>
+
 <?php
+        echo '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">';
+        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">';
 if ($user) {
     // 更新前のユーザー情報を表示
-    echo 'マイページ情報変更';
+    echo '<div class="content">';
+    echo '<div class="container is-fluid">';
+        
+    echo '<div class="has-text-centered">';
+    echo '<h3>登録情報変更</h3>';
+    echo '</div>';
     echo '<form action="" method="post">';
+    
+
+
+        echo '<div class="field is-grouped-centered">';
+            echo '<form action="" method="post">';
+            
+            echo '<input type="hidden" name="user_id" value="', $user_id, '">';
+            
+            echo '<div class="box">';
+
+    echo '<div class="column is-half is-offset-3">';
+            
+    echo '<label class="label has-text-primary-dark">氏名</label>';
+    echo '<input class="input is-normal is-primary-dark" type="text" placeholder="氏名を入力してください。" name="user_name" value="' , $user['user_name'], '">';
+
+    echo '<label class="label has-text-primary-dark">メールアドレス</label>';
+    echo '<input class="input is-normal is-primary-dark" type="text" placeholder="メールアドレスを入力してください。" name="email" value="', $user['email'], '">';
+
+    echo '<label class="label has-text-primary-dark">パスワード</label>';
+    echo '<input class="input is-normal is-primary-dark" type="password" placeholder="パスワードを入力してください。" name="password" value="', $user['password'], '">';
+
+    echo '<label class="label has-text-primary-dark">住所</label>';
+    echo '<input class="input is-normal is-primary-dark" type="text" placeholder="住所を入力してください。" name="address" value="', $user['address'], '">';
+    
     if (!empty($errors)) {
         echo '<ul style="color: red;">';
         foreach ($errors as $error) {
@@ -89,16 +122,18 @@ if ($user) {
         }
         echo '</ul>';
     }
-    echo '<table>';
-    echo '<input type="hidden" name="user_id" value="', $user_id, '">';
-    echo '<tr><td>氏名</td><td><input type="text" name="user_name" value="', $user['user_name'], '"></td></tr>';
-    echo '<tr><td>メールアドレス</td><td><input type="text" name="email" value="', $user['email'], '"></td></tr>';
-    echo '<tr><td>パスワード</td><td><input type="password" name="password" value="', $user['password'], '"></td></tr>';
-    echo '<tr><td>住所</td><td><input type="text" name="address" value="', $user['address'], '"></td></tr>';
-    echo '</table>';
 
-    echo '<input type="submit" value="確認する" name="confirm">';
+    echo '<div class="has-text-centered">';
+    echo '<label class="label has-text-primary-dark"></label>';
+    echo '<input class="button is-primary-dark" type="submit" value="確認する" name="confirm">';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
     echo '</form>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
 } else {
     echo 'ユーザーが見つかりません。';
 }

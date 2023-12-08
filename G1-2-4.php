@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = $_POST['address'];
 
     // 入力項目のチェック
-    require 'db-connect.php';
+    require_once 'db-connect.php';
     $pdo = new PDO($connect, USER, PASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //名前の重複チェック
@@ -69,31 +69,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 <?php
 echo '<div class="content">';
-    echo '<div class="container">';
-        echo '<div class="field is-grouped is-grouped-centered">';
+    echo '<div class="container is-fluid">';
+        
+        echo '<div class="field is-grouped-centered">';
             echo '<form action="" method="post">';
+            
+            echo '<input type="hidden" name="user_id" value="', $user_id, '">';
+            
+            echo '<div class="box">';
             echo '<div class="has-text-centered">';
             echo '<h3>会員登録</h3>';
             echo '</div>';
-            echo '<input class="is-primary is-expanded" type="hidden" name="user_id" value="', $user_id, '">';
-            echo '<table>';
-            echo '<tr>';
-            echo '<td>氏名</td>';
-            echo '<td><input type="text" name="user_name" value="' . $user_name . '"></td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<td>メールアドレス</td>';
-            echo '<td><input type="text" name="email" value="' . $email . '"></td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<td>パスワード</td>';
-            echo '<td><input type="password" name="password" value="' . $password . '"></td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<td>住所</td>';
-            echo '<td><input type="text" name="address" value="' . $address . '"></td>';
-            echo '</tr>';
-            echo '</table>';
+            echo '<div class="column is-half is-offset-3">';
+            
+            echo '<label class="label has-text-primary-dark">氏名</label>';
+            echo '<input class="input is-normal is-primary-dark" type="text" placeholder="氏名を入力してください。" name="user_name" value="' . $user_name . '">';
+
+            echo '<label class="label has-text-primary-dark">メールアドレス</label>';
+            echo '<input class="input is-normal is-primary-dark" type="text" placeholder="メールアドレスを入力してください。" name="email" value="', $email, '">';
+
+            echo '<label class="label has-text-primary-dark">パスワード</label>';
+            echo '<input class="input is-normal is-primary-dark" type="password" placeholder="パスワードを入力してください。" name="password" value="', $password, '">';
+
+            echo '<label class="label has-text-primary-dark">住所</label>';
+            echo '<input class="input is-normal is-primary-dark" type="text" placeholder="住所を入力してください。" name="address" value="', $address, '">';
 
             if (!empty($errors)) {
                 echo '<ul style="color: red;">';
@@ -103,8 +102,12 @@ echo '<div class="content">';
                 echo '</ul>';
             }
                 echo '<div class="has-text-centered">';
-                echo '<input class="button is-primary" type="submit" name="submit" value="　　確認へ　　" ></button>';
+                echo '<label class="label has-text-primary-dark"></label>';
+                echo '<input class="button is-primary-dark" type="submit" name="submit" value="　確認へ　" ></button>';
                 echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
             echo '</form>';
             echo '</div>';
     echo '</div>';
