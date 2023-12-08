@@ -2,7 +2,7 @@
 <?php require 'db-connect.php'; ?>
 
 <?php 
-if(!isset($_GET['id'])){
+if(!isset($_GET['product_id'])){
     echo "不正なアクセスです";
     exit();
 }
@@ -11,8 +11,13 @@ $conn = new PDO($connect, USER, PASS);
 // Columnsテーブルからデータ取得
 $sql = "SELECT * FROM Products WHERE product_id = ?";
 $result = $conn->prepare($sql);
-$result->execute([$_GET['id']]);
+$result->execute([$_GET['product_id']]);
 $row = $result->fetch();
+// Categoryテーブルからデータ取得
+$sql = "SELECT * FROM Category";
+$result = $conn->prepare($sql);
+$result->execute();
+$Category = $result->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -64,15 +69,32 @@ $row = $result->fetch();
         <input type="hidden" name="product_img" value="<?= $row['product_img'] ?>"></p>
         <p>画像 <input type="file" name="product_img" ></p>
         <p>内容量 <input type="text" name="capacity" maxlength="5" value="<?= $row['capacity'] ?>"></p>
-        <p><label for="myComboBox">カテゴリー</label>
-        <select name="category">
-            <option value="1">プレーンヨーグルト</option>
-            <option value="2">フルーツヨーグルト</option>
-            <option value="3">低脂肪ヨーグルト</option>
-            <option value="4">飲むヨーグルト</option>
-            <option value="5">健康サポート</option>
+        <label for="category">カテゴリー</label>
+        <select name="category" id="category" onchange="checkOtherOption(this)">
+        <?php
+        var_dump($Category);
+        foreach($Category as $value){
+            echo '<option value="', $value['category_id'], '">', $value['category'], '</option>';
+        }
+        ?>
         </select>
-        </p>
+        <!--
+        <input type="text" name="otherCategory" id="otherCategory" placeholder="その他のカテゴリ" style="display: none;">
+        <script>
+            function checkOtherOption(select) {
+                var otherCategoryInput = document.getElementById("otherCategory");
+
+                // 選択されたオプションが「その他」の場合、入力欄を表示
+                if (select.value === "other") {
+                    otherCategoryInput.style.display = "inline-block";
+                    otherCategoryInput.required = true;
+                } else {
+                    otherCategoryInput.style.display = "none";
+                    otherCategoryInput.required = false;
+                }
+            }
+        </script>
+        -->
         <label for="quantity">在庫数</label>
         <input type="text" name="quantity" maxlength="8" required  value="<?= $row['quantity'] ?>"><br>
         <a href="G2-2-1.php" ><button type="button"class="button is-primary" >保存せず戻る</button></a>
@@ -80,3 +102,7 @@ $row = $result->fetch();
     </form>
 </body>
 </html>
+
+
+
+

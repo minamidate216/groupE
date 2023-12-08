@@ -1,10 +1,5 @@
 <?php require 'header.php'; ?>
 <?php require 'db-connect.php'; ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>商品情報更新確認画面</title>
     <style>
         body {
@@ -55,6 +50,13 @@
 </head>
 <body>
 <?php
+// データベース接続
+$conn = new PDO($connect, USER, PASS);
+// Categoryテーブルからデータ取得
+$sql = "SELECT * FROM Category WHERE category_id = ?";
+$result = $conn->prepare($sql);
+$result->execute([$_POST['category']]);
+$row = $result->fetch();
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
@@ -86,7 +88,7 @@
         echo '<p>商品画像: ',$product_img,'</p>';
         echo '<p>画像: <img src="',$product_img, '" alt="商品画像" width="200px"></p>';
         echo '<p>内容量: ',$capacity,'</p>';
-        echo '<p>カテゴリ: ',$category,'</p>';
+        echo '<p>カテゴリ: ',$row['category'],'</p>';
         echo '<p>在庫数: ',$quantity,'</p>';
     }
     echo '<form action="G2-2-7.php" method="post">';
