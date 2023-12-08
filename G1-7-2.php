@@ -10,6 +10,7 @@ $sql = $pdo->prepare('SELECT p.*, o.date, o.order_id, od.quantity AS odQuantity 
 $sql->execute([$_SESSION['Users']['user_id'],$_POST['orderId']]);
 if($sql->rowCount() > 0){
     $total=0;
+    echo '<hr>';
     echo '<table class="table is-striped ">';
     echo '<tr class="has-background-success"><th>注文番号：',$_POST['orderId'],'</th><th></th><th>購入日：',$_POST['Date'],'</th><th></th><th></th><th></th></tr>';
 foreach($sql as $row){
