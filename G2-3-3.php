@@ -1,4 +1,4 @@
-<?php require 'header.php';
+<?php require 'header_admin.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // フォームから送信された情報をセッションに一時保存する
     $_SESSION['column']=[];
@@ -21,14 +21,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        $img_type = $_SESSION['column']['post_img_type'];
        $base64_img = 'data:' . $img_type . ';base64,' . base64_encode($img_data);
     // 画像を表示し、widthとheight属性でサイズを指定する
+    echo '<div class="content">';
+    echo '<div class="container">';
+    echo '<nav class="level">';
+    // <!-- 中央揃え -->
+    echo '<div class="level-item">';
        echo '<img src="' . $base64_img . '" alt="Uploaded Image" width="300" height="200">';
     }
+    echo '</div>';
+    echo '</nav>';
 ?>
-    <p><?php echo isset($_SESSION['column']['column_title']) ? $_SESSION['column']['column_title'] : ''; ?></p>
-    <p><?php echo isset($_SESSION['column']['content']) ? $_SESSION['column']['content'] : ''; ?></p>
+    <p class="has-text-centered"><?php echo isset($_SESSION['column']['column_title']) ? $_SESSION['column']['column_title'] : ''; ?></p>
+    <p class="has-text-centered"><?php echo isset($_SESSION['column']['content']) ? $_SESSION['column']['content'] : ''; ?></p>
     <!-- 登録ボタン -->
-    <p>登録しますか？</p>
-    <p><input type="submit" value="登録">
-    <a href="G2-3-1.php"><button type="button">戻る</button></a>
+    <p class="has-text-centered">登録しますか？</p>
+    <nav class="level">
+    <!-- 中央揃え -->
+    <div class="level-item">
+    <p><input class="button has-background-success-dark has-text-white" type="submit" value="登録">
+    <a href="G2-3-1.php"><button class="button has-background-success-dark has-text-white" type="button">戻る</button></a>
+    </div>
+    </nav>
 </form>
+</div>
+</diV>
 <?php require 'footer.php'; ?>
