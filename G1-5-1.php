@@ -35,7 +35,7 @@ function displayCategoryProducts($pdo, $categoryId)
     $products = $sql->fetchAll();
 
     if (count($products) > 0) {
-        echo '<h2 class="title has-text-centered has-text-primary-dark">' . $products[0]['category'] . '</h2>';
+        echo '<h2 class="title has-text-centered has-text-primary-dark">' . $products[0]['category'] . 'ヨーグルト</h2>';
         echo '<ul style="display: flex; flex-wrap: wrap;">';
         foreach ($products as $product) {
             displayProduct($product);
