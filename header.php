@@ -9,7 +9,7 @@ if (
 }
 ?>
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="has-background-white-ter ">
 
 <head>
     <meta charset="UTF-8">
