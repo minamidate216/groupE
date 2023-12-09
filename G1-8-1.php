@@ -80,7 +80,7 @@ if (empty($_SESSION['Users'])) {
                 echo '<option value="', $i, '" >', $i, '個</option>';
             }
             echo '</select></div></div><br>';
-            echo '<input class="button is-info is-light" type="submit" value="カートに追加" style="margin: 30px";>';
+            echo '<input class="button is-success is-light" type="submit" value="カートに追加" style="display: block; margin-left: auto";>';
         } elseif ($purchaseStock >= 10) {
             // 在庫がカートの中の商品数を引いても10以上の時
             echo '<div class="select is-medium is-rounded"><select name="count">';
@@ -88,7 +88,7 @@ if (empty($_SESSION['Users'])) {
                 echo '<option value="', $i, '" >', $i, '個</option>';
             }
             echo '</select></div></div><br>';
-            echo '<input class="button is-info is-light" type="submit" value="カートに追加" style="margin: 30px";>';
+            echo '<input class="button is-success is-light" type="submit" value="カートに追加" style="display: block; margin-left: auto";>';
         } elseif ($purchaseStock <= 0) {
             // 在庫がない,もしくはカートの中に入れている個数で在庫終了の時は、カートに追加ボタンは消しておいて商品一覧とカートへのリンクを表示
             echo '<div>', $message, '</div></div><br>';
@@ -110,8 +110,8 @@ if (empty($_SESSION['Users'])) {
     ?>
     <div id="vueApp">
         <!-- お気に入りボタン -->
-        <i :class="{'fas fa-heart is-right': isFavorite, 'far fa-heart is-right': !isFavorite}" @click="toggleFavorite"
-            style=font-size:80px;color:#a3ffa3;></i>
+        <i :class="{'fas fa-heart': isFavorite, 'far fa-heart': !isFavorite}" @click="toggleFavorite"
+            style=font-size:80px;color:#00533f;text-align:right;></i>
     </div>
     </article>
     <?php echo '<h3 class="sub-title" style="width:820px; margin-right:10px";>', $description, '</h3>';?>
