@@ -8,6 +8,7 @@ if (empty($_SESSION['Users'])) {
     echo 'ログインしてください。<br>';
     echo '<a href="G1-2-1.php">ログインへ';
 } else {
+    $description="";
     $isFavorite = false;
     $pdo = new PDO($connect, USER, PASS);
     // お気に入りに登録されているかどうかの確認
@@ -39,6 +40,7 @@ if (empty($_SESSION['Users'])) {
     echo '<div class="container is-fluid">';
     foreach ($productSql as $row) {
         $purchaseStock = $row['quantity'];
+        $description = $row['description'];
         if (!empty($cartStock)) {
             if (($purchaseStock - $cartStock) > 0 && ($purchaseStock - $cartStock) < 10) {
                 $purchaseStock -= $cartStock;
@@ -55,14 +57,14 @@ if (empty($_SESSION['Users'])) {
         echo '<article class="media">';
         echo '<div class="media-left">';
         //  左側の写真と説明
-        echo '<img alt="image" src="image/', $row['product_img'], '" style="width:450px; padding-left: 20px;
-        padding-bottom: 20px; border-radius: 8px";>';
-        echo '<h3 class="title"  style="width:500px";>', $row['description'], '</h3>';
+        echo '<img alt="image" src="image/', $row['product_img'], '" style="width:400px; margin-left: 15px;
+                                                                         border-radius: 10px";>';
+        // echo '<h3 class="sub-title" style="width:390px; margin-right:10px";>', $row['description'], '</h3>';
         echo '</div>';
         echo '<div class="media-content">';
         // 中央の写真
         echo '<img alt="image" src="image/', $row['product_sub_img'], '" 
-        style="width:450px; border-radius: 8px";></div>';
+        style="width:400px; border-radius: 8px";></div>';
         echo '<div class="media-right" style="width:30%; margin-right:20px";>';
         // 右側の商品情報とカートボタンとハートボタン
         echo '<div class="box">';
@@ -112,6 +114,7 @@ if (empty($_SESSION['Users'])) {
             style=font-size:80px;color:#a3ffa3;></i>
     </div>
     </article>
+    <?php echo '<h3 class="sub-title" style="width:820px; margin-right:10px";>', $description, '</h3>';?>
     </div>
     </div>
 
