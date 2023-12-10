@@ -27,7 +27,7 @@
     <?php require 'db-connect.php'; ?>
     <nav class="navbar" style="background-color:#336633;">
         <div class="navbar-brand mr-4">&nbsp;&nbsp;&nbsp;
-            <a href="G1-1-1.php?" class="has-text-light is-size-3">
+            <a href="G1-1-1.php" class="has-text-light is-size-3">
                 <span class="icon">
                     <i class="fas fa-home"></i>
                 </span>&nbsp;
