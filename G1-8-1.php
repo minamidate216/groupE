@@ -71,7 +71,6 @@ if (empty($_SESSION['Users'])) {
         echo '<h3 class="title has-text-primary-dark">', $row['product_name'], '</h3>';
         echo '<p class="subtitle has-text-right has-text-primary-dark" >', $row['price'], '円</p><br>';
         echo '<p class="subtitle has-text-right has-text-primary-dark" >', $row['capacity'], '</p>';
-        // echo '<div class="select is-medium is-rounded"><select name="count">';
         if ($purchaseStock < 10 && $purchaseStock > 0) {
             // 在庫が10より少ない時
             echo '<p class="subtitle has-text-danger">', $message, '</p>';
@@ -80,7 +79,8 @@ if (empty($_SESSION['Users'])) {
                 echo '<option value="', $i, '" >', $i, '個</option>';
             }
             echo '</select></div></div><br>';
-            echo '<input class="button is-success is-light" type="submit" value="カートに追加" style="display: block; margin-left: auto";>';
+            echo '<input class="button is-success is-light" type="submit" value="カートに追加" style="display: block; margin-left: auto";><br><br>';
+            echo '<a class="button is-primary is-dark" href="G1-8-2.php?id=',$productId,'" style="width:30%; display: block; margin-left: auto";>定期購入</a>';
         } elseif ($purchaseStock >= 10) {
             // 在庫がカートの中の商品数を引いても10以上の時
             echo '<div class="select is-medium is-rounded"><select name="count">';
@@ -88,7 +88,8 @@ if (empty($_SESSION['Users'])) {
                 echo '<option value="', $i, '" >', $i, '個</option>';
             }
             echo '</select></div></div><br>';
-            echo '<input class="button is-success is-light" type="submit" value="カートに追加" style="display: block; margin-left: auto";>';
+            echo '<input class="button is-success is-light" type="submit" value="カートに追加" style="display: block; margin-left: auto";><br><br>';
+            echo '<a class="button is-primary is-dark" href="G1-8-2.php?id=',$productId,'" style="width:30%; display: block; margin-left: auto";>定期購入</a>';
         } elseif ($purchaseStock <= 0) {
             // 在庫がない,もしくはカートの中に入れている個数で在庫終了の時は、カートに追加ボタンは消しておいて商品一覧とカートへのリンクを表示
             echo '<div>', $message, '</div></div><br>';
