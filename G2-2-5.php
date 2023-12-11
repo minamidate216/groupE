@@ -49,7 +49,8 @@ $Category = $result->fetchAll();
 
         input[type="text"],
         textarea,
-        select {
+        select,
+        input[type="number"] {
             width: 100%;
             padding: 8px;
             margin: 4px 0;
@@ -62,14 +63,23 @@ $Category = $result->fetchAll();
 <form action="G2-2-6.php" method="post" enctype="multipart/form-data" >
         <h1>商品情報更新画面</h1>
         <input type="hidden" name="product_id" value="<?= $row['product_id'] ?>">
-        <p>商品名 <input type="text" name="product_name" maxlength="30" value="<?= $row['product_name'] ?>"></p>
-        <p>商品価格 <input type="text" name="price" maxlength="10" value="<?= $row['price'] ?>"></p>
-        <p>商品説明<textarea name="description" id="" cols="30" rows="10"><?= $row['description'] ?></textarea></p>
+        <p><label for="product_name">商品名</label>
+        <input type="text" name="product_name" maxlength="30" value="<?= $row['product_name'] ?>" required></p>
+
+        <p><label for="price">商品価格</label>
+        <input type="number" name="price" maxlength="10" min="0" value="<?= $row['price'] ?>" required ></p>
+
+        <p><label for="description">商品説明</label>
+        <textarea name="description" id="" cols="30" rows="10" required><?= $row['description'] ?></textarea></p>
+
+        <p><label for="product_img">画像</label>
         <p><img src="<?= $row['product_img'] ?>" alt="商品画像" width="200px">
-        <input type="hidden" name="product_img" value="<?= $row['product_img'] ?>"></p>
-        <p>画像 <input type="file" name="product_img" ></p>
-        <p>内容量 <input type="text" name="capacity" maxlength="5" value="<?= $row['capacity'] ?>"></p>
-        <label for="category">カテゴリー</label>
+        <input type="file" name="product_img" required></p>
+
+        <p><label for="capacity">内容量</label>
+        <input type="number" name="capacity" maxlength="5" min="0" value="<?= $row['capacity'] ?>" required ></p>
+
+        <p><label for="category">カテゴリー</label>
         <select name="category" id="category" onchange="checkOtherOption(this)">
         <?php
         var_dump($Category);
@@ -77,32 +87,12 @@ $Category = $result->fetchAll();
             echo '<option value="', $value['category_id'], '">', $value['category'], '</option>';
         }
         ?>
-        </select>
-        <!--
-        <input type="text" name="otherCategory" id="otherCategory" placeholder="その他のカテゴリ" style="display: none;">
-        <script>
-            function checkOtherOption(select) {
-                var otherCategoryInput = document.getElementById("otherCategory");
-
-                // 選択されたオプションが「その他」の場合、入力欄を表示
-                if (select.value === "other") {
-                    otherCategoryInput.style.display = "inline-block";
-                    otherCategoryInput.required = true;
-                } else {
-                    otherCategoryInput.style.display = "none";
-                    otherCategoryInput.required = false;
-                }
-            }
-        </script>
-        -->
-        <label for="quantity">在庫数</label>
-        <input type="text" name="quantity" maxlength="8" required  value="<?= $row['quantity'] ?>"><br>
+        </select></p>
+        <p><label for="quantity">在庫数</label>
+        <input type="number" name="quantity" maxlength="8" required min="0"  value="<?= $row['quantity'] ?>"><br></p>
         <a href="G2-2-1.php" ><button type="button"class="button is-primary" >保存せず戻る</button></a>
         <button class="button is-primary">更新</button>
     </form>
 </body>
 </html>
-
-
-
 

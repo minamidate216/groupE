@@ -16,10 +16,10 @@ echo '<div class="content">';
         echo '<h3>マイページ情報更新確認</h3>';
         echo '</div>';
         echo '<table>';
-        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">氏名　　　　　　</td><td>', $user_name, '</td></tr>';
-        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">メールアドレス　</td><td>', $email, '</td></tr>';
-        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">パスワード　　　</td><td>', str_repeat('*', strlen($password)), '</td></tr>';
-        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">住所　　　　　　</td><td>', $address, '</td></tr>';
+        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">氏名　　　　　　</td><td>', $user_name, '</td></tr>';
+        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">メールアドレス　</td><td>', $email, '</td></tr>';
+        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">パスワード　　　</td><td>', str_repeat('*', strlen($password)), '</td></tr>';
+        echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">住所　　　　　　</td><td>', $address, '</td></tr>';
         echo '</table>';
 
             echo '<div class="has-text-centered">';
@@ -37,9 +37,9 @@ echo '</div>';
     ?>
     <form action="G1-3-6.php" method="post">
         <div class="has-text-centered">
-        <a class="button is-primary" href="<?php echo $backURL; ?>">　戻る　</a>
+        <a class="button is-primary-dark" href="<?php echo $backURL; ?>">　戻る　</a>
         　　　　　　
-        <input class="button is-primary" type="submit" value="変更する">
+        <input class="button is-primary-dark" type="submit" value="変更する">
         </form>
         </div> 
     </div> 

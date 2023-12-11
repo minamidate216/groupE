@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo '<br>';
         echo '<form action="G1-1-1.php" method="post">';
         echo '<div class="has-text-centered">';
-        echo '<input class="button is-primary" type="submit" value="トップへ">';
+        echo '<input class="button is-primary-dark" type="submit" value="トップへ">';
         echo '</div>';
         echo '</form>';
         echo '</div>';
