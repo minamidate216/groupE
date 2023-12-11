@@ -4,8 +4,9 @@
 
 
 <hr>
+<div class="content">
 
-<?php
+    <?php
 
 
 if (isset($_GET['search'])) {
@@ -33,7 +34,7 @@ function displayCategoryProducts($pdo, $categoryId)
         where p.category_id = ?');
     $sql->execute([$categoryId]);
     $products = $sql->fetchAll();
-
+    
     if (count($products) > 0) {
         echo '<h2 class="title has-text-centered has-text-primary-dark">' . $products[0]['category'] . 'ヨーグルト</h2>';
         echo '<ul style="display: flex; flex-wrap: wrap;">';
@@ -61,21 +62,23 @@ function displayKeywordProducts($pdo, $keyword)
 // 商品を表示する関数
 function displayProduct($product)
 {
-    echo '<li class="card m-6 " style="border-radius: 40px";>';
+    
+    echo '<li class="card m-6 has-background-white-ter" style="width:300px; display:block; border-radius: 20px";>';
     echo '<a href="G1-8-1.php?id=', $product['product_id'], '">';
-    echo '<div class="card-image">';
-    echo '<figure class="image">';
-    echo '<img src="image/' . $product['product_img'] . '" style="width: 250px; border-radius: 40px 40px 0px 0px"; ><br>';
+    echo '<div class="card-image"><br>';
+    echo '<figure class="image" style="max-width: 100%";>';
+    echo '<img src="image/' . $product['product_img'] . '" style="max-width: 100%; border-radius: 10px 10px 10px 10px"; ><br>';
     echo '</figure>';
     echo '<div class="card-content ">';
-    echo '<div class="content"><h6 class="has-text-right has-text-primary-dark">' . $product['product_name'] . '</h6><br>';
+    echo '<div class="content"><h5 class="has-text-right has-text-primary-dark subtitle">' . $product['product_name'] . '</h5>';
     echo '<p class="has-text-right has-text-success-dark">' . $product['price'] . '円</p></div></div>';
     if (!isset($product['quantity']) || $product['quantity'] <= 0) {
-        echo '<p><strong class="subtitle has-text-danger">売り切れ</strong></p>';
+        echo '<p><strong class="has-text-danger help">売り切れ</strong></p>';
     }
     echo '</a>';
     echo '</li>';
 }
 
 ?>
+</div>
 <?php require 'footer.php'; ?>
