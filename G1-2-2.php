@@ -31,9 +31,9 @@ if(!empty($_POST['email'])){
         // エラーがなければ次の処理へ
         if (empty($errors)) {
             $_SESSION['User']['email'] = $email;
-            echo 'ご入力いただいたメールアドレス宛に<br/>ID・パスワード変更のメールを送信いたしました。<br>';
+            echo '<div class="has-text-centered is-size-4">ご入力いただいたメールアドレス宛に<br/>ID・パスワード変更のメールを送信いたしました。</div><br>';
             echo '<form action="G1-2-1.php">';
-            echo '<button type="submit">ログインへ</button>';
+            echo '<button type="submit" class="btn">ログインへ</button>';
             echo '</form>';
             $a=1;
         }
