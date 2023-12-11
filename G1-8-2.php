@@ -15,12 +15,7 @@ $maxDateTime = date('Y-m-d', strtotime('+30 days'));
 // 画面に表示させるもの
 $product_name = "";
 $product_img = "";
-// 商品・定期購入テーブルから一致するものを取得する
-// $subScriptionProductSql = $pdo->prepare('SELECT * FROM Products 
-//                           INNER JOIN subscription_orders 
-//                           ON Products.product_id = subscription_orders.product_id 
-//                           WHERE Products.product_id = ?');
-// $subScriptionProductSql->execute([$productId]);
+
 
 // 商品テーブルから一致するものを取得する
 $ProductSql = $pdo->prepare('SELECT * FROM Products
@@ -100,82 +95,4 @@ echo '    </div>';
 echo '</div>';
 ?>
 
-
-
-<!-- 
-
-<div class="content">
-    <div class="conteiner is-fluid">
-        <h1>定期購入</h1>
-        <form action="G1-8-3.php" method="post">
-            <div class="card">
-                <header class="card-header">
-                    <button class="card-header-icon" aria-label="アイコン">
-                        <span class="icon">
-                            <i class="far fa-id-card" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                    <p class="card-header-title">
-                        ここに商品名
-                    </p>
-                    <button class="card-header-icon" aria-label="アイコン">
-                        <span class="icon">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                </header>
-                <div class="card-image">
-                    <figure class="image is-128x128" >
-                        <img src="image/', $row['product_img'],'" alt="イメージ">
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        <div class="field">
-                            <label class="label"><strong>定期購入間隔</strong></label>
-                            <div class="control">
-                                <input type="number" name="interval" list="dateList">
-                                <datalist id="dateList">
-                                    <option value=10></option>
-                                    <option value=20></option>
-                                    <option value=30></option>
-                                </datalist>
-                            </div>
-                            <p class="help is-success">10日間隔でお選びいただけます</p>
-                        </div>
-                        <div class="field">
-                            <label class="label"><strong>定期購入開始日</strong></label>
-                            <div class="control">
-                                <input type="date" name="next_order_date" min="$minDateTime" max="$maxDateTime">
-                            </div>
-                            <p class="help is-success">10日間隔でお選びいただけます</p>
-                        </div>
-                        <br><br>
-                        <div class="field">
-                            <label class="label"><strong>定期購入個数</strong></label>
-                            <div class="control">
-                                <input type="number" name="order_count" min=5 max=10>
-                            </div>
-                            <p class="help is-success">5〜10個まで選択できます</p>
-                        </div>
-                        <br><br>
-                        <div class="field is-grouped">
-                            <div class="control">
-                                <button class="button is-link">申し込む</button>
-                            </div>
-                            <div class="control">
-                                <button class="button is-danger is-light"><a href="G1-5-1.php">キャンセル</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <footer class="card-footer">
-                    <a href="G1-5-1.php" class="card-footer-item">商品一覧へ戻る<span class="icon is-small"><i
-                                class="fas fa-shopping-cart"></i></span></a>
-                    <a href="G1-1-1.php" class="card-footer-item">サイトトップへ戻る<span class="icon">
-                            <i class="fas fa-home"></i></span></a>
-                </footer>
-            </div>
-        </form>
-    </div>
-</div> -->
+<?php require 'footer.php' ?>
