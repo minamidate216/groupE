@@ -120,7 +120,7 @@ foreach ($orders as $order_id => $order) {
     echo '</div>';
     echo '</div>';
     echo '<h3>',$_SESSION['Users']['user_name'],'さん、ご購入ありがとうございます</h3>';
-    echo '<a class="button is-success is-light is-medium" href="G1-1-1.php">サイトトップへ</a></div>';
+    echo '<a class="button is-success is-outlined is-medium" href="G1-1-1.php">サイトトップへ</a></div>';
     echo '</div>';
     unset($_SESSION['product']);
 }
