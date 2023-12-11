@@ -88,15 +88,13 @@ echo '                            <p class="help is-success">申し込みをキ�
 echo '                    </div>';
 echo '                </div>';
 echo '                <footer class="card-footer">';
-echo '                    <button class="card-footer-item">申し込む<span class="icon is-small"><i';
+echo '                    <button class="card-footer-item">申込確認へ<span class="icon is-small"><i';
 echo '                                class="fas fa-shopping-cart"></i></span></button>';
 echo '                </footer>';
 echo '            </div>';
 echo                '<input type="hidden" name="id" value="',$productId,'">';
 echo                '<input type="hidden" name="name" value="',$product_name,'">';
 echo                '<input type="hidden" name="img" value="',$product_img,'">';
-echo                '<input type="hidden" name="" value="">';
-echo                '<input type="hidden" name="" value="">';
 echo '        </form>';
 echo '    </div>';
 echo '</div>';
