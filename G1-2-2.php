@@ -59,10 +59,12 @@ if($a!=1){
         margin: 60px auto 50px;
 }
 .text{
-    margin: 30px 400px 50px 540px 
+    display: block;
+    margin: 70px auto 30px; 
 }
 .btn{
-    margin: auto 600px 30px;
+    display: block;
+    margin: auto auto 30px;
 }
 </style>
 <?php require 'footer.php'; ?>
