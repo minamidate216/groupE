@@ -7,7 +7,7 @@
 
 <?php
 $pdo = new PDO($connect, USER, PASS);
-$productId = $_GET['id'];
+$productId =$_GET['id'];
 // 日付の変数
 $currentDateTime = date('Y-m-d H:i:s');
 $minDateTime = date('Y-m-d', strtotime('+2 days'));
@@ -31,13 +31,13 @@ foreach($ProductSql as $row){
 }
 echo '<div class="content">';
 echo '<div class="has-text-centered">';
-echo '        <h1>定期購入</h1>';
+echo '        <h1>定期購入申込</h1>';
 echo '        <form action="G1-8-3.php" method="POST" class="box" style="margin: 0 auto; width: 30%";>';
 echo '            <div class="card">';
 echo '                <header class="card-header has-text-centered">';
 echo '                    <span class="card-header-icon"><i class="fas fa-cube"></i>';
 echo '                        </span>';
-echo '                    <p class="card-header-title">';
+echo '                    <p class="card-header-title ">';
 echo                            $product_name;
 echo '                    </p>';
 echo '                </header>';
@@ -76,10 +76,10 @@ echo '                            </div>';
 echo '                            <p class="help is-success">5〜10個まで選択できます</p>';
 echo '                        </div>';
 echo '                        <br><br>';
-echo '                            <p class="help is-success">申し込みをキャンセルされる方は<br>
+echo '                            <p class="help has-text-warning-dark">申し込みをキャンセルされる方は<br>
                                                             下記の商品一覧のリンクをクリックして下さい</p>';
-                            echo ' <a href="G1-5-1.php">商品一覧へ<span class="icon">';
-                            echo '                            <i class="fas fa-home"></i></span></a>';
+echo                            ' <a class="help has-text-success-dark" href="G1-5-1.php">商品一覧へ<span class="icon">';
+echo                            '<i class="fas fa-reply"></i></span></a>';
 echo '                    </div>';
 echo '                </div>';
 echo '                <footer class="card-footer">';
