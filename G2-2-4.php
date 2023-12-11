@@ -3,7 +3,13 @@ require 'db-connect.php';
 require 'header.php';
 
 $connect = new PDO($connect, USER, PASS);
-
+if(!isset($_SESSION['admin'])){
+    echo '<h1 style="text-align:center" class=has-text-primary-dark>ログインしてください<h1>';
+    echo '<div class="has-text-centered">
+    <a href="G2-1-4-login-input.php"><button type="button" class="button is-primary">ログイン画面へ</button></a>
+    </div>';
+    exit();
+}
 // Validate form inputs
 if (empty($_POST['product_name']) || empty($_POST['price']) || empty($_POST['description']) || empty($_POST['product_img']) || empty($_POST['capacity']) || empty($_POST['category']) || empty($_POST['quantity'])) {
     die("Please fill out all required fields.");
@@ -50,3 +56,4 @@ $result->execute([$product_name, $price, $product_img, $description, $category_i
 </form>
 </body>
 </html>
+<?php require 'footer.php'; ?>
