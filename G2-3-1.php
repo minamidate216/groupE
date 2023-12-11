@@ -1,14 +1,14 @@
 <?php require 'header_admin.php'; ?>
 <?php require 'db-connect.php'; ?>
 <?php
+if(!isset($_SESSION['admin'])){
+    echo 'ログインしてください<br>';
+    echo '<a href="G2-1-4-input.php">ログイン</a>';
+    exit();
+}
+// 接続確認
 // データベース接続
 $conn = new PDO($connect,USER, PASS);
-
-// 接続確認
-if (!$conn) {
-    die("データベース接続エラー: " );
-}
-
 // Columnsテーブルからデータ取得
 $sql = "SELECT c.column_id, c.column_title, a.admin_name, c.post_data, c.admin_id
         FROM Columns c

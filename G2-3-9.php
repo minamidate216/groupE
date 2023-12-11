@@ -1,6 +1,11 @@
 <?php require 'header_admin.php'; ?>
 <?php require 'db-connect.php';
 
+if(!isset($_SESSION['admin'])){
+    echo 'ログインしてください<br>';
+    echo '<a href="G2-1-4-input.php">ログイン</a>';
+    exit();
+}
 // データベース接続
 $conn = new PDO($connect, USER, PASS);
 

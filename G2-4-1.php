@@ -1,6 +1,13 @@
-<?php require 'header.php'; ?>
-
+<?php require 'header_admin.php'; ?>
+<?php require 'db-connect.php'; ?>
 <?php
+
+if(!isset($_SESSION['admin'])){
+    echo 'ログインしてください<br>';
+    echo '<a href="G2-1-4-input.php">ログイン</a>';
+    exit();
+}
+
 $pdo = new PDO($connect, USER, PASS);
 
 // 注文日、ユーザーネーム、注文番号、注文詳細番号、商品名、商品画像、価格,個数
@@ -35,7 +42,7 @@ foreach ($results as $row) {
 
 foreach ($orders as $order_id => $order) {
     echo '<div class="content">';
-    echo '<div class="container">';
+    // echo '<div class="container">';
     echo '<div style="display: flex; flex-wrap: wrap";>';
     echo '<div class="card" style="width:100%";>';
     echo '<header class="card-header has-background-warning-light">';
@@ -58,7 +65,7 @@ foreach ($orders as $order_id => $order) {
     echo '</div>';
     echo '</div>';
     echo '</div>';
-    echo '</div>';
+    // echo '</div>';
     echo '</div>';
 }
 

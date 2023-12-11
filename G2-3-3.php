@@ -1,4 +1,14 @@
-<?php require 'header_admin.php';
+<?php require 'header_admin.php';?>
+<?php require 'db-connect.php'; ?>
+<?php
+if(!isset($_SESSION['admin'])){
+    echo 'ログインしてください<br>';
+    echo '<a href="G2-1-4-input.php">ログイン</a>';
+    exit();
+}
+// 接続確認
+// データベース接続
+$conn = new PDO($connect,USER, PASS);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // フォームから送信された情報をセッションに一時保存する
     $_SESSION['column']=[];

@@ -1,4 +1,15 @@
 <?php require 'header_admin.php'; ?>
+<?php require 'db-connect.php'; ?>
+<?php
+if(!isset($_SESSION['admin'])){
+    echo 'ログインしてください<br>';
+    echo '<a href="G2-1-4-input.php">ログイン</a>';
+    exit();
+}
+// 接続確認
+// データベース接続
+$conn = new PDO($connect,USER, PASS);
+?>
 <h3 class="title is-3 has-text-centered">コラム登録</h3>
 <div class="content">
 <div class="container">

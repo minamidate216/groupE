@@ -1,8 +1,9 @@
 <?php require 'header_admin.php'; ?>
 <?php require 'db-connect.php'; ?>
 <?php 
-if(!isset($_GET['column_id'])){
-    echo "不正なアクセスです";
+if(!isset($_SESSION['admin'])){
+    echo 'ログインしてください<br>';
+    echo '<a href="G2-1-4-input.php">ログイン</a>';
     exit();
 }
 // データベース接続
