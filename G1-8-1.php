@@ -5,8 +5,14 @@
 <br>
 <?php
 if (empty($_SESSION['Users'])) {
-    echo 'ログインしてください。<br>';
-    echo '<a href="G1-2-1.php">ログインへ';
+    echo '<div class="content">';
+    echo '<div class="container is-fluid">';
+    echo '<div class="box" style="text-align: center";>';
+    echo '<a class="button is-success is-light is-large" href="G1-2-1.php" style="text-align: center";>ログインしてください。</a><br><br><br>';
+    echo '<a class="button is-success is-light is-large" href="G1-2-4.php" style="text-align: center";> 会員登録がまだの方はこちら</a>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
 } else {
     $description = "";
     $productId = $_GET['id'];
@@ -41,14 +47,13 @@ if (empty($_SESSION['Users'])) {
         $maxPurchaseStock = $purchaseStock;
         if ($cartStock > 0) {
             $maxPurchaseStock = $purchaseStock - $cartStock;
-        if ($maxPurchaseStock > 0 && $maxPurchaseStock < 10) {
-            $message = '在庫残り' . $maxPurchaseStock . '個となります。';
-            echo $message;
-        } elseif ($maxPurchaseStock >= 10) {
-            $maxPurchaseStock = 10;
-        } elseif ($maxPurchaseStock <= 0) {
-            $maxPurchaseStock = 0;
-            $message = '<a href="G1-9-1-show.php" class="subtitle has-text-danger">カート内の個数が最終在庫となります。<span class="icon is-size-4"><i
+            if ($maxPurchaseStock > 0 && $maxPurchaseStock < 10) {
+                $message = '在庫残り' . $maxPurchaseStock . '個となります。';
+            } elseif ($maxPurchaseStock >= 10) {
+                $maxPurchaseStock = 10;
+            } elseif ($maxPurchaseStock <= 0) {
+                $maxPurchaseStock = 0;
+                $message = '<a href="G1-9-1-show.php" class="subtitle has-text-danger">カート内の個数が最終在庫となります。<span class="icon is-size-4"><i
                 class="fas fa-shopping-cart"></i></span></a>';
             }
         }
@@ -117,8 +122,8 @@ if (empty($_SESSION['Users'])) {
 
     <!-- script.jsに商品とお気に入りの情報を渡す⇩ -->
     <script>
-            var productFromPHP = <?php echo json_encode($productId); ?>;
-            var favoriteFromPHP = <?php echo json_encode($isFavorite); ?>;
+        var productFromPHP = <?php echo json_encode($productId); ?>;
+        var favoriteFromPHP = <?php echo json_encode($isFavorite); ?>;
     </script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
