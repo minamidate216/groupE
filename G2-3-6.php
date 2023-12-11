@@ -51,6 +51,13 @@
 </head>
 <body>
 <?php
+if(!isset($_SESSION['admin'])){
+    echo '<h2 style="text-align:center" class=has-text-primary-dark>ログインしてください<h2>';
+    echo '<div class="has-text-centered">
+    <a href="G2-1-4-login-input.php"><button type="button" class="button is-primary">ログイン画面へ</button></a>
+    </div>';
+    exit();
+}
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $column_id = $_POST["column_id"];

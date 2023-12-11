@@ -52,6 +52,14 @@
 <?php
 // データベース接続
 $conn = new PDO($connect, USER, PASS);
+
+if(!isset($_SESSION['admin'])){
+        echo '<h2 style="text-align:center" class=has-text-primary-dark>ログインしてください<h2>';
+        echo '<div class="has-text-centered">
+        <a href="G2-1-4-login-input.php"><button type="button" class="button is-primary">ログイン画面へ</button></a>
+        </div>';
+        exit();
+    }
 // Categoryテーブルからデータ取得
 $sql = "SELECT * FROM Category WHERE category_id = ?";
 $result = $conn->prepare($sql);
