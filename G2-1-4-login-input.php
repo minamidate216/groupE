@@ -48,7 +48,7 @@
 <body>
     <h1>管理者ログイン</h1>
     <div class="input">
-        <form action="G2-1-4login-output.php" method="post">
+        <form action="G2-1-4-login-output.php" method="post">
             <input type="text" placeholder="ID"name="admin_id"><br>
             <input type="password"  placeholder="パスワード" name="password"><br>
             <div class="miyo">

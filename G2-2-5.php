@@ -2,12 +2,15 @@
 <?php require 'db-connect.php'; ?>
 
 <?php 
-if(!isset($_GET['product_id'])){
-    echo "不正なアクセスです";
-    exit();
-}
 // データベース接続
 $conn = new PDO($connect, USER, PASS);
+if(!isset($_SESSION['admin'])){
+    echo '<h1 style="text-align:center" class=has-text-primary-dark>ログインしてください<h1>';
+    echo '<div class="has-text-centered">
+    <a href="G2-1-4-login-input.php"><button type="button" class="button is-primary">ログイン画面へ</button></a>
+    </div>';
+    exit();
+}
 // Columnsテーブルからデータ取得
 $sql = "SELECT * FROM Products WHERE product_id = ?";
 $result = $conn->prepare($sql);

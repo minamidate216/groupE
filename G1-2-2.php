@@ -31,9 +31,9 @@ if(!empty($_POST['email'])){
         // エラーがなければ次の処理へ
         if (empty($errors)) {
             $_SESSION['User']['email'] = $email;
-            echo 'ご入力いただいたメールアドレス宛に<br/>ID・パスワード変更のメールを送信いたしました。<br>';
+            echo '<div class="has-text-centered is-size-4">ご入力いただいたメールアドレス宛に<br/>ID・パスワード変更のメールを送信いたしました。</div><br>';
             echo '<form action="G1-2-1.php">';
-            echo '<button type="submit">ログインへ</button>';
+            echo '<button type="submit" class="btn">ログインへ</button>';
             echo '</form>';
             $a=1;
         }
@@ -59,10 +59,12 @@ if($a!=1){
         margin: 60px auto 50px;
 }
 .text{
-    margin: 30px 400px 50px 540px 
+    display: block;
+    margin: 70px auto 30px; 
 }
 .btn{
-    margin: auto 600px 30px;
+    display: block;
+    margin: auto auto 30px;
 }
 </style>
 <?php require 'footer.php'; ?>

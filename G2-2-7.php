@@ -37,6 +37,13 @@
 <?php
     // データベース接続
     $pdo = new PDO($connect, USER, PASS);
+    if(!isset($_SESSION['admin'])){
+        echo '<h2 style="text-align:center" class=has-text-primary-dark>ログインしてください<h2>';
+        echo '<div class="has-text-centered">
+        <a href="G2-1-4-login-input.php"><button type="button" class="button is-primary">ログイン画面へ</button></a>
+        </div>';
+        exit();
+    }
         $product_id = $_POST['product_id'];
         $product_name = $_POST['product_name'];
         $price = $_POST['price'];

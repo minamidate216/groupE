@@ -3,6 +3,13 @@ require 'db-connect.php';
 require 'header.php'; ?>
 
 <?php
+if(!isset($_SESSION['admin'])){
+    echo '<h1 style="text-align:center" class=has-text-primary-dark>ログインしてください<h1>';
+    echo '<div class="has-text-centered">
+    <a href="G2-1-4-login-input.php"><button type="button" class="button is-primary">ログイン画面へ</button></a>
+    </div>';
+    exit();
+}
 try {
     $connect = new PDO($connect, USER, PASS);
     $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -85,3 +92,4 @@ $categories = $result->fetchAll(PDO::FETCH_ASSOC);
     </form>
 </body>
 </html>
+<?php require 'footer.php'; ?>
