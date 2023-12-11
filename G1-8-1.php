@@ -16,28 +16,15 @@ if (empty($_SESSION['Users'])) {
     $favoriteSql = $pdo->prepare('select count(*) from Favorites where user_id=? and product_id = ?');
     $favoriteSql->execute([$_SESSION['Users']['user_id'], $_GET['id']]);
     $count = $favoriteSql->fetchColumn();
-    // if(empty($_SESSION['product'])){
-    //     $cartStock = 0;
-    // } elseif(!empty($_SESSION['product'])){
-    //     foreach($_SESSION['product'] as $id => $product){
-    //         if()
-    //     }
-    // }
+
     $purchaseStock = 0;
     $cartStock = 0;
     $message = '<a href="G1-5-1.php" class="subtitle has-text-danger">売り切れ   商品一覧へ<i class="fas fa-reply"></i></a>';
     if ($count > 0) {
         $isFavorite = true;
     }
-    // カートのセッション情報に表示されている商品と同じものがあれば在庫を取得する。
+    // カートのセッション情報の商品と同じものがあればカート在庫を取得する。
     if (isset($_SESSION['product'][$productId])) {
-        /*
-        foreach ($_SESSION['product'] as $id => $row) {
-            if ($id == $productId) {
-                $cartStock = $row['count'];
-            }
-        }
-        */
         $cartStock = $_SESSION['product'][$productId]['count'];
     }
 
@@ -50,6 +37,7 @@ if (empty($_SESSION['Users'])) {
     foreach ($productSql as $row) {
         $purchaseStock = $row['quantity'];
         $description = $row['description'];
+        // MAX在庫がfor文の中で使えるように定義＆初期値はDBの個数
         $maxPurchaseStock = $purchaseStock;
         if ($cartStock > 0) {
             $maxPurchaseStock = $purchaseStock - $cartStock;
@@ -60,7 +48,7 @@ if (empty($_SESSION['Users'])) {
             $maxPurchaseStock = 10;
         } elseif ($maxPurchaseStock <= 0) {
             $maxPurchaseStock = 0;
-            $message = '<a href="G1-9-1-show.php" class="subtitle has-text-danger">カート内の個数が最終在庫となります。    <span class="icon is-size-4"><i
+            $message = '<a href="G1-9-1-show.php" class="subtitle has-text-danger">カート内の個数が最終在庫となります。<span class="icon is-size-4"><i
                 class="fas fa-shopping-cart"></i></span></a>';
             }
         }
@@ -70,7 +58,6 @@ if (empty($_SESSION['Users'])) {
         //  左側の写真と説明
         echo '<img alt="image" src="image/', $row['product_img'], '" style="width:400px; margin-left: 15px;
                                                                          border-radius: 10px";>';
-        // echo '<h3 class="sub-title" style="width:390px; margin-right:10px";>', $row['description'], '</h3>';
         echo '</div>';
         echo '<div class="media-content">';
         // 中央の写真
@@ -105,11 +92,6 @@ if (empty($_SESSION['Users'])) {
             // 在庫がない,もしくはカートの中に入れている個数で在庫終了の時は、カートに追加ボタンは消しておいて商品一覧とカートへのリンクを表示
             echo '<div>', $message, '</div></div><br>';
         }
-        // for ($i = 1; $i <= $row['quantity']; $i++) {
-        //     echo '<option value="', $i, '" >', $i, '個</option>';
-        // }
-        // echo '</select></div></div><br>';
-        // echo '<input class="button is-info is-light" type="submit" value="カートに追加" style="margin: 30px";>';
         echo '<input type="hidden" name="id" value="', $row['product_id'], '">';
         echo '<input type="hidden" name="name" value="', $row['product_name'], '">';
         echo '<input type="hidden" name="price" value="', $row['price'], '">';
