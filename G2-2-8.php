@@ -3,6 +3,13 @@
 require 'db-connect.php';
 require 'header.php';
 
+if(!isset($_SESSION['admin'])){
+    echo '<h1 style="text-align:center" class=has-text-primary-dark>ログインしてください<h1>';
+    echo '<div class="has-text-centered">
+    <a href="G2-1-4-login-input.php"><button type="button" class="button is-primary">ログイン画面へ</button></a>
+    </div>';
+    exit();
+}
 // 商品IDが渡されていない場合はエラー表示
 if (!isset($_GET['product_id'])) {
     die('商品IDが指定されていません。');
