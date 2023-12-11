@@ -35,7 +35,7 @@ foreach ($results as $row) {
 
 foreach ($orders as $order_id => $order) {
     echo '<div class="content">';
-    // echo '<div class="container">';
+    echo '<div class="container">';
     echo '<div style="display: flex; flex-wrap: wrap";>';
     echo '<div class="card" style="width:100%";>';
     echo '<header class="card-header has-background-warning-light">';
@@ -58,7 +58,7 @@ foreach ($orders as $order_id => $order) {
     echo '</div>';
     echo '</div>';
     echo '</div>';
-    // echo '</div>';
+    echo '</div>';
     echo '</div>';
 }
 

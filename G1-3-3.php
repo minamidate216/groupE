@@ -18,34 +18,48 @@ if ($user_id) {
             // ユーザー情報を表示
             echo '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">';
             echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">';
-echo '<div class="content">';
-    echo '<div class="container">';
-        echo '<div class="has-text-centered">';
+            echo '<div class="content">';
+            echo '<div class="container">';
+            echo '<div class="has-text-centered">';
             echo '<h3>マイページ</h3>';
-        echo '</div>';
+            echo '</div>';
             echo '<form action="G1-3-4.php" method="post">';
             echo '<table>';
-            echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">氏名　　　　　　</td><td>', $user['user_name'], '</td></tr>';
-            echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">メールアドレス　</td><td>', $user['email'], '</td></tr>';
-            echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">パスワード　　　</td><td>', str_repeat('*', strlen($user['password'])), '</td></tr>';
-            echo '<tr class="column is-half is-offset-4"><td class="has-text-primary">住所　　　　　　</td><td>', $user['address'], '</td></tr>';
-            
+            echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">氏名　　　　　　</td><td>', $user['user_name'], '</td></tr>';
+            echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">メールアドレス　</td><td>', $user['email'], '</td></tr>';
+            echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">パスワード　　　</td><td>', str_repeat('*', strlen($user['password'])), '</td></tr>';
+            echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">住所　　　　　　</td><td>', $user['address'], '</td></tr>';
+
             echo '</table>';
             echo '<div class="has-text-centered">';
-            echo '<input class="button is-primary" type="submit" value="登録内容をを変更する">';
+            echo '<input class="button is-primary-dark" type="submit" value="登録内容をを変更する">';
             echo '</div>';
             echo '</form>';
-        echo '</div>';
-    echo '</div>';
-echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
         } else {
-            echo 'ログインしてください。';
+            echo '<div class="content">';
+            echo '<div class="container is-fluid">';
+            echo '<div class="box" style="text-align: center";>';
+            echo '<a class="button is-success is-light is-large" href="G1-2-1.php" style="text-align: center";>ログインしてください。</a><br><br><br>';
+            echo '<a class="button is-success is-light is-large" href="G1-2-4.php" style="text-align: center";> 会員登録がまだの方はこちら</a>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
         }
 
     } catch (PDOException $e) {
         echo "エラー: " . $e->getMessage();
     }
 } else {
-    echo 'ログインしてください。';
+    echo '<div class="content">';
+    echo '<div class="container is-fluid">';
+    echo '<div class="box" style="text-align: center";>';
+    echo '<a class="button is-success is-light is-large" href="G1-2-1.php" style="text-align: center";>ログインしてください。</a><br><br><br>';
+    echo '<a class="button is-success is-light is-large" href="G1-2-4.php" style="text-align: center";> 会員登録がまだの方はこちら</a>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
 }
 ?>

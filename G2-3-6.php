@@ -55,7 +55,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $column_id = $_POST["column_id"];
         $column_title = $_POST["column_title"];
-        $post_img=$_POST["post_img"];
         if(!empty($_FILES['post_img'])){
             //ファイルの保存先
             $upload = './uploads/'.$_FILES['post_img']['name']; 

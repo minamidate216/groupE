@@ -5,9 +5,9 @@ if(empty($_SESSION['Users'])){
     echo '<a href="G1-2-1.php">ログインへ';
 }else{
 if(!empty($_SESSION['product'])){
-    echo '<div class="columns is-vcentered">';
+    echo '<div class="columns is-vcentered has-background-white-ter">';
     echo '<div class="column is-two-third has-text-centered">';
-    echo '<table class="table is-striped column">';
+    echo '<table class="table is-striped column has-background-white-ter">';
     echo '<tr class="has-background-success"><th></th><th class="has-text-centered is-vcentered">商品名</th><th class="has-text-centered is-vcentered">説明</th><th class="has-text-centered is-vcentered">数量</th><th class="has-text-centered is-vcentered">価格</th><th></th><th></th></tr>';
     $total=0;
         foreach($_SESSION['product'] as $id=>$product){
