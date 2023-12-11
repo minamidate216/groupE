@@ -20,12 +20,14 @@
 
     body {
         font-family: MyFont;
+
     }
 </style>
 
 <body>
     <?php require 'db-connect.php'; ?>
-    <nav class="navbar" style="background-color:#336633;">
+    <nav class="navbar" style="position: fixed; top: 0; width: 100%;
+                                background-color: rgba(0, 83, 63, 0.9);">
         <div class="navbar-brand mr-4">&nbsp;&nbsp;&nbsp;
             <a href="G1-1-1.php" class="has-text-light is-size-3">
                 <span class="icon">
@@ -125,7 +127,9 @@
             </div>
         </div>
     </nav>
+    <br><br>
     <hr>
+    <br><br>
     <ul class="slider">
         <li><img src="slide_img/0.png" alt="" style="width: 70vw;"></li>
         <li><img src="slide_img/1.png" alt=""></li>
