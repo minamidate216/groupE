@@ -40,19 +40,29 @@ if(!empty($_POST['email'])){
     }
 }
 if($a!=1){
-    echo '<h1>メールアドレスを入力してください</h1>';
-    echo '<div id="app">';
+    echo '<h1 class="title has-text-centered is-size-3">メールアドレスを入力してください</h1>';
     echo '<form action="G1-2-2.php" method="post">';
     if (!empty($errors)) {
         echo '<ul style="color: red;">';
         foreach ($errors as $error) {
-            echo '<li>', $error, '</li>';
+            echo '<li style="has-text-danger has-text-centered">', $error, '</li>';
         }
         echo '</ul>';
     }
-    echo '<input type="email" name="email"><br>';
-    echo '<button type="submit">送信</button>';
+    echo '<input type="email" name="email" class="text"><br>';
+    echo '<button type="submit" class="btn">送信</button>';
     echo '</form>';
 }
 ?>
+<style>
+.title{
+        margin: 60px auto 50px;
+}
+.text{
+    margin: 30px 400px 50px 540px 
+}
+.btn{
+    margin: auto 600px 30px;
+}
+</style>
 <?php require 'footer.php'; ?>

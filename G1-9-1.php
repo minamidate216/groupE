@@ -35,7 +35,7 @@ if(!empty($_SESSION['product'])){
 ?>
 <style>
     table{
-        margin: auto 100px auto 200px;
+        margin: auto 100px auto 170px;
     }
     .button_cart{
         margin: auto 520px auto;
