@@ -5,9 +5,9 @@ if(empty($_SESSION['Users'])){
     echo '<a href="G1-2-1.php">ログインへ';
 }else{
 if(!empty($_SESSION['product'])){
-    echo '<div class="columns is-vcentered has-background-white-ter">';
-    echo '<div class="column is-two-third has-text-centered">';
-    echo '<table class="table is-striped column has-background-white-ter">';
+    echo '<div class="columns is-vcentered">';
+    echo '<div class="test has-text-centered">';
+    echo '<table class="table is-striped column">';
     echo '<tr class="has-background-success"><th></th><th class="has-text-centered is-vcentered">商品名</th><th class="has-text-centered is-vcentered">説明</th><th class="has-text-centered is-vcentered">数量</th><th class="has-text-centered is-vcentered">価格</th><th></th><th></th></tr>';
     $total=0;
         foreach($_SESSION['product'] as $id=>$product){
@@ -26,19 +26,19 @@ if(!empty($_SESSION['product'])){
             echo '</tr>';
         }
         echo '<tr><td></td><td></td><td></td><td></td><td class="has-text-right"><b>合計金額：</b></td><td><b>',$total,'円</b></td></tr>';
-        echo '</table>';
-        echo '<div class="button_cart"><a href="G1-10-1.php" class="button is-rounded is-success has-text-centered">お会計に進む</a></div></div></div>';
+        echo '</table></div></div>';
+        echo '<div class="button_cart has-text-centered"><a href="G1-10-1.php" class="button is-rounded is-success has-text-centered">お会計に進む</a></div>';
 }else{
     echo '<h1 class="has-text-centered">カートに商品がありません。</h1>';
 }
 }
 ?>
 <style>
-    table{
-        margin: auto 100px auto 170px;
+    .test{
+        margin: 40px auto;
     }
     .button_cart{
-        margin: auto 520px auto;
+        margin: 30px auto;
     }
     .desBr{
         width: 300px;
