@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = "商品画像を選択してください。";
     } else {
         // ファイルの保存先
-        $upload = './uploads/' . $_FILES['product_img']['name'];
+        $upload = './image/' . $_FILES['product_img']['name'];
         // アップロードが正しく完了したかチェック
         if (move_uploaded_file($_FILES['product_img']['tmp_name'], $upload)) {
             $product_img = $upload;
