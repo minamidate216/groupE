@@ -1,4 +1,4 @@
-<?php require 'header.php'; ?>
+<?php require 'header_admin.php'; ?>
 <?php require 'db-connect.php'; ?>
 
 <?php 
