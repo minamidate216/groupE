@@ -1,7 +1,7 @@
 <?php
 
 require 'db-connect.php';
-require 'header.php';
+require 'header_admin.php';
 
 if(!isset($_SESSION['admin'])){
     echo '<h1 style="text-align:center" class=has-text-primary-dark>ログインしてください<h1>';

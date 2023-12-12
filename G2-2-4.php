@@ -1,6 +1,6 @@
 <?php
 require 'db-connect.php';
-require 'header.php';
+require 'header_admin.php';
 
 $connect = new PDO($connect, USER, PASS);
 if(!isset($_SESSION['admin'])){
