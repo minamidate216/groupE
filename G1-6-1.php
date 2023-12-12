@@ -11,8 +11,8 @@ if($sql->rowCount() == 0){
     echo '<div class="has-text-centered">お気に入りに登録した商品がありません。</div>';
 }else{
     echo '<div class="columns">';
-    echo '<div class="column is-two-third">';
-    echo '<table class="table is-striped column has-background-white-ter">';
+    echo '<div class="test has-text-centered">';
+    echo '<table class="table is-striped column">';
     echo '<tr class="has-background-success" style="height: 60px"><th></th><th class="has-text-centered is-vcentered">商品名</th><th class="has-text-centered is-vcentered">説明</th><th class="has-text-centered is-vcentered">価格</th><th></th><th></th><th></th><th></th></tr>';
 foreach($sql as $row){
     echo '<tr><td><img src="image/',$row['product_img'],'" width="100" height="100">';
@@ -49,8 +49,8 @@ foreach($sql as $row){
 }
 ?>
 <style>
-table{
-    margin: auto 100px auto;
+.test{
+    margin: auto ;
 }
 .textBr{
     width: 300px;
