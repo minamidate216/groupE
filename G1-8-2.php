@@ -62,7 +62,7 @@ echo '                            <p class="help is-success">10日間隔でお�
 echo '                        </div>';
 echo '                        <div class="field">';
 echo '                            <label class="label"><strong>定期購入開始日</strong></label>';
-echo '                            <div class="control" style="style="margin: 0 auto";>';
+echo '                            <div class="control" style="margin: 0 auto";>';
 echo '                                <input type="date" style="width:120px"; name="next_order_date" min=',$minDateTime,' max=',$maxDateTime,'>';
 echo '                            </div>';
 echo '                            <p class="help is-success">2日後からお選びいただけます</p>';
