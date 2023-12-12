@@ -58,14 +58,14 @@ echo '                                    <option value=20></option>';
 echo '                                    <option value=30></option>';
 echo '                                </datalist>';
 echo '                            </div>';
-echo '                            <p class="help is-success">10日間隔でお選びいただけます</p>';
+echo '                            <p class="help has-text-success-dark">10日間隔でお選びいただけます</p>';
 echo '                        </div>';
 echo '                        <div class="field">';
 echo '                            <label class="label"><strong>定期購入開始日</strong></label>';
 echo '                            <div class="control" style="margin: 0 auto";>';
 echo '                                <input type="date" style="width:120px"; name="next_order_date" min=',$minDateTime,' max=',$maxDateTime,'>';
 echo '                            </div>';
-echo '                            <p class="help is-success">2日後からお選びいただけます</p>';
+echo '                            <p class="help has-text-success-dark">2日後からお選びいただけます</p>';
 echo '                        </div>';
 echo '                        <br><br>';
 echo '                        <div class="field">';
@@ -73,7 +73,7 @@ echo '                            <label class="label"><strong>定期購入個�
 echo '                            <div class="control">';
 echo '                                <input type="number" name="order_count" min=5 max=10>';
 echo '                            </div>';
-echo '                            <p class="help is-success">5〜10個まで選択できます</p>';
+echo '                            <p class="help has-text-success-dark">5〜10個まで選択できます</p>';
 echo '                        </div>';
 echo '                        <br><br>';
 echo '                            <p class="help has-text-warning-dark">申し込みをキャンセルされる方は<br>
