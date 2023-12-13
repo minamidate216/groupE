@@ -31,13 +31,11 @@ $Category = $result->fetchAll();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <title>商品情報更新画面</title>
     <style>
-        body {
-            text-align: center;
-        }
  
         form {
-            display: inline-block;
-            text-align: left;
+            text-align: center;
+            width: 400px;
+            margin:0 auto;
         }
 
         h1 {
