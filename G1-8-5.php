@@ -99,8 +99,8 @@ $subscriptionSql->execute([$_SESSION['Users']['user_id']]);
                 echo '<td valign="bottom">' . $row['price'] . '円</td>';
                 echo '<td>' . $row['next_order_date'] . '</td>';
                 echo '<td>' . $row['interval_days'] . '日ごと</td>';
-                echo '<td><button type="submit" name="action" value="update">更新</button></td>';
-                echo '<td><button type="submit" name="action" value="delete">削除</button></td>';
+                echo '<td><button class="button is-success is-outlined" type="submit" name="action" value="update">更新</button></td>';
+                echo '<td><button class="button is-outlined" type="submit" name="action" value="delete">削除</button></td>';
                 echo '</tr>';
 
                 // 画面表示及びデータベース用
