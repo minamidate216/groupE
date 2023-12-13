@@ -71,9 +71,9 @@ if (empty($_SESSION['Users'])) {
         echo '<div class="media-right" style="width:30%; margin-right:20px";>';
         // 右側の商品情報とカートボタンとハートボタン
         echo '<div class="box">';
-        echo '<h3 class="title has-text-primary-dark">', $row['product_name'], '</h3>';
-        echo '<p class="subtitle has-text-right has-text-primary-dark" >', $row['price'], '円</p><br>';
-        echo '<p class="subtitle has-text-right has-text-primary-dark" >', $row['capacity'], '</p>';
+        echo '<p class="title has-text-primary-dark">', $row['product_name'], '</p>';
+        echo '<p class="subtitle has-text-right has-text-primary-dark" >価格：&nbsp;', $row['price'], '円</p><hr class="">';
+        echo '<p class="has-text-right has-text-primary-dark" >内容量：&nbsp;', $row['capacity'], '</p>';
         if ($maxPurchaseStock < 10 && $maxPurchaseStock > 0) {
             // 在庫が10より少ない時
             echo '<p class="subtitle has-text-danger">商品の残り在庫は、', $maxPurchaseStock, '個です。</p>';
@@ -82,7 +82,7 @@ if (empty($_SESSION['Users'])) {
                 echo '<option value="', $i, '" >', $i, '個</option>';
             }
             echo '</select></div></div><br>';
-            echo '<input class="button is-success is-outlined" type="submit" value="カートに追加" style="display: block; margin-left: auto";><br><br>';
+            echo '<input class="button is-success is-outlined" type="submit" value="カートに追加" style="display: block; margin-left: auto";>';
             echo '<a class="button is-link is-outlined" href="G1-8-2.php?id=',$productId,'" style="width:30%; display: block; margin-left: auto";>定期購入</a>';
         } elseif ($maxPurchaseStock >= 10) {
             // 在庫がカートの中の商品数を引いても10以上の時
@@ -91,11 +91,11 @@ if (empty($_SESSION['Users'])) {
                 echo '<option value="', $i, '" >', $i, '個</option>';
             }
             echo '</select></div></div><br>';
-            echo '<input class="button is-success is-outlined" type="submit" value="カートに追加" style="display: block; margin-left: auto";><br><br>';
+            echo '<input class="button is-success is-outlined" type="submit" value="カートに追加" style="display: block; margin-left: auto";><hr>';
             echo '<a class="button is-link is-outlined" href="G1-8-2.php?id=',$productId,'" style="width:30%; display: block; margin-left: auto";>定期購入</a>';
         } elseif ($maxPurchaseStock <= 0) {
             // 在庫がない,もしくはカートの中に入れている個数で在庫終了の時は、カートに追加ボタンは消しておいて商品一覧とカートへのリンクを表示
-            echo '<div>', $message, '</div></div><br>';
+            echo '<div></div></div><br>', $message,'<br>';
         }
         echo '<input type="hidden" name="id" value="', $row['product_id'], '">';
         echo '<input type="hidden" name="name" value="', $row['product_name'], '">';
@@ -107,6 +107,7 @@ if (empty($_SESSION['Users'])) {
     }
 
     ?>
+    <br>
     <div id="vueApp">
         <!-- お気に入りボタン -->
         <i :class="{'fas fa-heart': isFavorite, 'far fa-heart': !isFavorite}" @click="toggleFavorite"

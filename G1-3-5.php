@@ -13,7 +13,7 @@ echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/
 echo '<div class="content">';
     echo '<div class="container">';
         echo '<div class="has-text-centered">';
-        echo '<h3>マイページ情報更新確認</h3>';
+        echo '<h3>登録情報更新確認</h3>';
         echo '</div>';
         echo '<table>';
         echo '<tr class="column is-half is-offset-4"><td class="has-text-primary-dark">氏名　　　　　　</td><td>', $user_name, '</td></tr>';
