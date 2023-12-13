@@ -55,10 +55,6 @@
             $interval = $_POST['interval'];
             $next_order_date = $_POST['next_order_date'];
             $order_count = $_POST['order_count'];
-            echo $subscription_id,'<br>';
-            echo $interval,'<br>';
-            echo $next_order_date,'<br>';
-            echo $order_count,'<br>';
 
             $sql = 'UPDATE subscription_orders SET 
             interval_days = ?, next_order_date = ?, order_count = ?
