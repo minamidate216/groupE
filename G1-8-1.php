@@ -95,7 +95,7 @@ if (empty($_SESSION['Users'])) {
             echo '<a class="button is-link is-outlined" href="G1-8-2.php?id=',$productId,'" style="width:30%; display: block; margin-left: auto";>定期購入</a>';
         } elseif ($maxPurchaseStock <= 0) {
             // 在庫がない,もしくはカートの中に入れている個数で在庫終了の時は、カートに追加ボタンは消しておいて商品一覧とカートへのリンクを表示
-            echo '<div>', $message, '</div></div><br>';
+            echo '<div></div></div><br>', $message,'<br>';
         }
         echo '<input type="hidden" name="id" value="', $row['product_id'], '">';
         echo '<input type="hidden" name="name" value="', $row['product_name'], '">';
@@ -107,6 +107,7 @@ if (empty($_SESSION['Users'])) {
     }
 
     ?>
+    <br>
     <div id="vueApp">
         <!-- お気に入りボタン -->
         <i :class="{'fas fa-heart': isFavorite, 'far fa-heart': !isFavorite}" @click="toggleFavorite"
