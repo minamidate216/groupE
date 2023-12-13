@@ -6,11 +6,11 @@ if(empty($_SESSION['Users'])){
 }else{
 $pdo = new PDO($connect, USER, PASS);
 $sql = $pdo->prepare('SELECT p.*, o.date, o.order_id, od.quantity AS odQuantity FROM Orders AS o JOIN OrdersDetails AS od ON o.order_id = od.order_id LEFT OUTER JOIN Products AS p ON od.product_id = p.product_id WHERE o.user_id = ? and od.order_id=?');
-$sql->execute([$_SESSION['Users']['user_id'],$_POST['orderId']]);
+$sql->execute([$_SESSION['Users']['user_id'],$_GET['orderId']]);
 if($sql->rowCount() > 0){
     $total=0;
     echo '<table class="table is-striped ">';
-    echo '<tr class="has-background-success"><th>注文番号：',$_POST['orderId'],'</th><th></th><th>購入日：',$_POST['Date'],'</th><th></th><th></th><th></th></tr>';
+    echo '<tr class="has-background-success"><th>注文番号：',$_GET['orderId'],'</th><th></th><th>購入日：',$_GET['Date'],'</th><th></th><th></th><th></th></tr>';
 foreach($sql as $row){
     $date=date('Y-m-d', strtotime($row['date']));
     $price = $row['price']*$row['odQuantity'];
@@ -40,7 +40,7 @@ echo '<tr><th></th><th></th><th></th><th></th><th>お買い上げ金額：',$tot
 echo '</table>';
 }
 else{
-    echo $_POST['orderId'];
+    echo $_GET['orderId'];
 }
 }
 ?>

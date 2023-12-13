@@ -14,8 +14,8 @@ foreach($sql as $row){
     echo '<div class="columns">';
     echo '<div class="test has-text-centered">';
     echo '<table class="table is-striped column">';
-    echo '<tr class="b-noBottom has-background-success"><th style="width: 30%">注文番号：',$row['order_id'],'</th><th></th><th style="width: 42%">購入日：',$date,'</th><th></th><th style="width: 28%"></th></tr>';
-    echo '<tr class="b-noTop">';
+    echo '<tr class="has-background-success"><th style="width: 30%">注文番号：',$row['order_id'],'</th><th></th><th style="width: 42%">購入日：',$date,'</th><th></th><th style="width: 28%"></th></tr>';
+    echo '<tr">';
     echo '<td>';
     echo '<img alt="image" width="100" height="100" src="image/', $row['product_img'], '"></a></td>';
     echo '<td></td>';
@@ -26,7 +26,7 @@ foreach($sql as $row){
     echo '</td>'; 
     echo '<td></td>'; 
     echo '<td class="is-vcentered">';
-    echo '<form action="G1-7-2.php" method="post">';
+    echo '<form action="G1-7-2.php" method="get">';
     echo '<input type="hidden" name=orderId value="',$row['order_id'], '">';
     echo '<input type="hidden" name=Date value="',$date, '">';
     echo '<button type="submit">詳細を表示</button>';
@@ -45,16 +45,6 @@ else{
     .test{
         margin: 20px auto ;
     }
-.b-noBottom{
-    border-right: 2px solid #adffad; 
-    border-top: 2px solid #adffad; 
-    border-left: 2px solid #adffad; 
-}
-.b-noTop {
-    border-right: 2px solid #adffad; 
-    border-bottom: 2px solid #adffad; 
-    border-left: 2px solid #adffad; 
-}
 .textBr{
     width: 320px;
 }
