@@ -1,5 +1,6 @@
 <?php require 'header.php' ?>
-
+<!-- 定期購入のアイコン -->
+<i class="fas fa-sync-alt"></i>
 <br>
 <br>
 <?php
@@ -103,7 +104,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete') {
     echo '<input type="hidden" name="next_order_date" value="', $next_order_date, '">';
     echo '<input type="hidden" name="count" value="', $order_count, '">';
     echo '<input type="hidden" name="u_id" value="', $user_id, '">';
-    echo '<input type="hidden" name="s_id" value="', $subscritpion_id, '">';
+    echo '<input type="hidden" name="s_id" value="', $subscription_id, '">';
     echo '    </div>';
     echo '</div>';
 } elseif (isset($_POST['action']) && $_POST['action'] === 'update') {
@@ -166,11 +167,8 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete') {
     echo '<input type="hidden" name="p_id" value="', $product_id, '">';
     echo '<input type="hidden" name="name" value="', $product_name, '">';
     echo '<input type="hidden" name="img" value="', $product_img, '">';
-    echo '<input type="hidden" name="interval" value="', $interval, '">';
-    echo '<input type="hidden" name="next_order_date" value="', $next_order_date, '">';
-    echo '<input type="hidden" name="count" value="', $order_count, '">';
     echo '<input type="hidden" name="u_id" value="', $user_id, '">';
-    echo '<input type="hidden" name="s_id" value="', $subscritpion_id, '">';
+    echo '<input type="hidden" name="s_id" value="', $subscription_id, '">';
     echo '        </form>';
     echo '    </div>';
     echo '</div>';
