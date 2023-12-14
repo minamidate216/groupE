@@ -23,13 +23,11 @@ $row = $result->fetch();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>コラム更新画面</title>
     <style>
-        body {
-            text-align: center;
-        }
  
         form {
-            display: inline-block;
-            text-align: left;
+            text-align: center;
+            width: 400px;
+            margin:0 auto;
         }
 
         h1 {

@@ -7,13 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>コラム更新完了画面</title>
     <style>
-        body {
-            text-align: center;
-        }
  
         form {
-            display: inline-block;
-            text-align: left;
+            text-align: center;
+            width: 400px;
+            margin:0 auto;
         }
 
         h1 {
@@ -21,10 +19,15 @@
             font-size: 35px;
         }
 
-        h3 {
+        h2 {
             color: #4CAF50; /* 薄緑色 */
             margin-bottom: 20px;
             font-size: 24px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
         }
 
         

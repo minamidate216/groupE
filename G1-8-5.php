@@ -18,121 +18,133 @@ $product_img = "";
 $total = 0;
 $totalCount = 0;
 
+if (empty($_SESSION['Users'])) {
+    echo '<div class="content">';
+    echo '<div class="container is-fluid">';
+    echo '<div class="box" style="text-align: center";>';
+    echo '<a class="button is-success is-light is-large" href="G1-2-1.php" style="text-align: center";>ログインしてください。</a><br><br><br>';
+    echo '<a class="button is-success is-light is-large" href="G1-2-4.php" style="text-align: center";> 会員登録がまだの方はこちら</a>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+} else {
 
 
-// 商品テーブルから一致するものを取得する
-$subscriptionSql = $pdo->prepare('SELECT 
-s.subscription_id,
-s.user_id,
-s.product_id,
-s.interval_days,
-s.next_order_date,
-s.order_count,
-p.product_name,
-p.product_img,
-p.price
-FROM 
-subscription_orders s
-JOIN 
-Products p ON s.product_id = p.product_id
-WHERE 
-s.user_id = ?');
-$subscriptionSql->execute([$_SESSION['Users']['user_id']]);
+    // 商品テーブルから一致するものを取得する
+    $subscriptionSql = $pdo->prepare('SELECT 
+        s.subscription_id,
+        s.user_id,
+        s.product_id,
+        s.interval_days,
+        s.next_order_date,
+        s.order_count,
+        p.product_name,
+        p.product_img,
+        p.price
+        FROM 
+        subscription_orders s
+        JOIN 
+        Products p ON s.product_id = p.product_id
+        WHERE 
+        s.user_id = ?');
+    $subscriptionSql->execute([$_SESSION['Users']['user_id']]);
 
-// // 商品情報表示のための変数に格納
+    // // 商品情報表示のための変数に格納
 // foreach ($subscriptionSql as $row) {
-//     $product_name =$row['product_name'];
-//     $product_img =$row['product_img'];
-//     $interval =$row['interval_days'];
-//     $next_order_date =$row['next_order_date'];
-//     $order_count =$row['order_count'];
-//     $price =$row['price'];
-//     $user_id =$row['user_id'];
-//     $subscritpion_id =$row['subscription_id'];
-//     $product_id =$row['product_id'];
-//     // 確認用出力
-//     echo $product_img;
-//     echo $product_name;
-//     echo $product_id;
-//     echo '<br><p>定期ID',$subscritpion_id,'</p>';
-//     echo '<p>間隔',$interval,'</p>';
-//     echo '<p>日付',$next_order_date,'</p>';
-//     echo '<p>価格',$price,'</p>';
-?>
+    //     $product_name =$row['product_name'];
+    //     $product_img =$row['product_img'];
+    //     $interval =$row['interval_days'];
+    //     $next_order_date =$row['next_order_date'];
+    //     $order_count =$row['order_count'];
+    //     $price =$row['price'];
+    //     $user_id =$row['user_id'];
+    //     $subscritpion_id =$row['subscription_id'];
+    //     $product_id =$row['product_id'];
+    //     // 確認用出力
+    //     echo $product_img;
+    //     echo $product_name;
+    //     echo $product_id;
+    //     echo '<br><p>定期ID',$subscritpion_id,'</p>';
+    //     echo '<p>間隔',$interval,'</p>';
+    //     echo '<p>日付',$next_order_date,'</p>';
+    //     echo '<p>価格',$price,'</p>';
+    ?>
 
-<div class="content">
-    <div class="container is-max-desktop">
-        <form action="G1-8-6.php" method="post">
-            <?php
-            echo '<table class="table has-background-white-ter is-hoverable">';
-            echo '<thead class="has-background-success-light">';
-            echo '<tr>';
-            echo '<th>商品画像</th>';
-            echo '<th>商品名</th>';
-            echo '<th>購入個数</th>';
-            echo '<th>単価</th>';
-            echo '<th>次回注文日</th>';
-            echo '<th>購入間隔</th>';
-            echo '<th>編集</th>';
-            echo '<th>削除</th>';
-            echo '</tr>';
-            echo '</thead>';
-            echo '<tbody>';
-
-            foreach ($subscriptionSql as $row) {
-                $product_name = $row['product_name'];
-                $product_img = $row['product_img'];
-                $interval = $row['interval_days'];
-                $next_order_date = $row['next_order_date'];
-                $order_count = $row['order_count'];
-                $price = $row['price'];
-                $user_id = $row['user_id'];
-                $subscritpion_id = $row['subscription_id'];
-                $product_id = $row['product_id'];
-                $total += $price * $order_count;
-                $totalCount += $order_count;
-                
-                echo '<tr valign="bottom" align="center">';
-                echo '<td><img src="image/' . $row['product_img'] . '" style="width:50px; height:auto;"></td>';
-                echo '<td align="left">' . $row['product_name'] . '</td>';
-                echo '<td>' . $row['order_count'] . '個</td>';
-                echo '<td valign="bottom">' . $row['price'] . '円</td>';
-                echo '<td>' . $row['next_order_date'] . '</td>';
-                echo '<td>' . $row['interval_days'] . '日ごと</td>';
-                echo '<td><button type="submit" name="action" value="update">更新</button></td>';
-                echo '<td><button type="submit" name="action" value="delete">削除</button></td>';
+    <div class="content">
+        <div class="container is-max-desktop">
+            <form action="G1-8-6.php" method="post">
+                <?php
+                echo '<table class="table has-background-white-ter is-hoverable">';
+                echo '<thead class="has-background-success-light">';
+                echo '<tr>';
+                echo '<th>商品画像</th>';
+                echo '<th>商品名</th>';
+                echo '<th>購入個数</th>';
+                echo '<th>単価</th>';
+                echo '<th>次回注文日</th>';
+                echo '<th>購入間隔</th>';
+                echo '<th>変更</th>';
+                echo '<th>削除</th>';
                 echo '</tr>';
+                echo '</thead>';
+                echo '<tbody>';
 
-                // 画面表示及びデータベース用
-                echo '<input type="hidden" name="p_id" value="', $product_id, '">';
-                echo '<input type="hidden" name="name" value="', $product_name, '">';
-                echo '<input type="hidden" name="img" value="', $product_img, '">';
-                echo '<input type="hidden" name="interval" value="', $interval, '">';
-                echo '<input type="hidden" name="next_order_date" value="', $next_order_date, '">';
-                echo '<input type="hidden" name="count" value="', $order_count, '">';
-                echo '<input type="hidden" name="u_id" value="', $user_id, '">';
-                echo '<input type="hidden" name="s_id" value="', $subscritpion_id, '">';
-            }
+                foreach ($subscriptionSql as $row) {
+                    $product_name = $row['product_name'];
+                    $product_img = $row['product_img'];
+                    $interval = $row['interval_days'];
+                    $next_order_date = $row['next_order_date'];
+                    $order_count = $row['order_count'];
+                    $price = $row['price'];
+                    $user_id = $row['user_id'];
+                    $subscritpion_id = $row['subscription_id'];
+                    $product_id = $row['product_id'];
+                    $total += $price * $order_count;
+                    $totalCount += $order_count;
 
-            echo '<tfoot>';
-            // 合計金額と個数の表示
-            echo '<tr valign="bottom" align="left">';
-            echo '<td></td>';
-            echo '<td>定期購入中の合計</td>';
-            echo '<td>', $totalCount, '個の商品</td>';
-            echo '<td>', $total, '円</td>';
-            echo '<td></td>';
-            echo '<td></td>';
-            echo '<td></td>';
-            echo '<td></td>';
-            echo '</tr>';
-            echo '</tfoot>';
-            echo '</tbody>';
-            echo '</table>';
-            ?>
+                    echo '<tr valign="bottom" align="center">';
+                    echo '<td><img src="image/' . $row['product_img'] . '" style="width:50px; height:auto;"></td>';
+                    echo '<td align="left">' . $row['product_name'] . '</td>';
+                    echo '<td>' . $row['order_count'] . '個</td>';
+                    echo '<td valign="bottom">' . $row['price'] . '円</td>';
+                    echo '<td>' . $row['next_order_date'] . '</td>';
+                    echo '<td>' . $row['interval_days'] . '日ごと</td>';
+                    echo '<td><button class="button is-success is-outlined" type="submit" name="action" value="update">変更</button></td>';
+                    echo '<td><button class="button is-outlined" type="submit" name="action" value="delete">削除</button></td>';
+                    echo '</tr>';
 
-        </form>
+                    // 画面表示及びデータベース用
+                    echo '<input type="hidden" name="p_id" value="', $product_id, '">';
+                    echo '<input type="hidden" name="name" value="', $product_name, '">';
+                    echo '<input type="hidden" name="img" value="', $product_img, '">';
+                    echo '<input type="hidden" name="interval" value="', $interval, '">';
+                    echo '<input type="hidden" name="next_order_date" value="', $next_order_date, '">';
+                    echo '<input type="hidden" name="count" value="', $order_count, '">';
+                    echo '<input type="hidden" name="u_id" value="', $user_id, '">';
+                    echo '<input type="hidden" name="s_id" value="', $subscritpion_id, '">';
+                }
+
+                echo '<tfoot>';
+                // 合計金額と個数の表示
+                echo '<tr valign="bottom" align="left">';
+                echo '<td></td>';
+                echo '<td>定期購入中の合計</td>';
+                echo '<td>', $totalCount, '個の商品</td>';
+                echo '<td>', $total, '円</td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '</tr>';
+                echo '</tfoot>';
+                echo '</tbody>';
+                echo '</table>';
+
+                ?>
+
+            </form>
+        </div>
     </div>
-</div>
 
-<?php require 'footer.php' ?>
+<?php }
+require 'footer.php' ?>

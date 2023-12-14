@@ -97,8 +97,8 @@ if (
                                 class="fas fa-shopping-cart"></i></span></a>
                 </div>
                 <div class="navbar-item mr-4 ">
-                    <a href="G1-4-1.php" class="has-text-light">コラム&nbsp;&nbsp;<span class="icon is-size-4"><i
-                                class="fas fa-book-open"></i></span></a>
+                    <a href="G1-8-5.php" class="has-text-light">定期&nbsp;<span class="icon is-size-4"><i 
+                    class="fas fa-sync-alt"></i></span></a>
                 </div>
                 <div class="navbar-item mr-4">
                     <a href="G1-3-3.php" class="has-text-light">マイページ&nbsp;<span class="icon is-size-4"><i

@@ -1,5 +1,5 @@
 <?php require 'header.php' ?>
-
+<!-- 定期購入のアイコン -->
 <br>
 <br>
 <?php
@@ -28,23 +28,23 @@ if ($minDateTime > $next_order_date) {
 }
 
 
-echo '<p>画面表示</p>';
-echo '<p>ID:' . $product_id . '</p>';
-echo '<p>S_ID:' . $subscription_id . '</p>';
-echo '<p>U_ID:' . $user_id . '</p>';
-echo '<p>名前: ' . $product_name . '</p>';
-echo '<p>画像: <img src="image/' . $product_img . '" alt="画像" style="width: 100px";></p>';
-// 画面表示に使う変数
+// echo '<p>画面表示</p>';
+// echo '<p>ID:' . $product_id . '</p>';
+// echo '<p>S_ID:' . $subscription_id . '</p>';
+// echo '<p>U_ID:' . $user_id . '</p>';
+// echo '<p>名前: ' . $product_name . '</p>';
+// echo '<p>画像: <img src="image/' . $product_img . '" alt="画像" style="width: 100px";></p>';
+// // 画面表示に使う変数
 
 
 
 
 
-echo '<p>データベース用</p>';
-echo '<p>ユーザーID: ' . $user_id . '</p>';
-echo '<p>間隔: ' . $interval . '</p>';
-echo '<p>次の注文日: ' . $next_order_date . '</p>';
-echo '<p>注文数: ' . $order_count . '</p>';
+// echo '<p>データベース用</p>';
+// echo '<p>ユーザーID: ' . $user_id . '</p>';
+// echo '<p>間隔: ' . $interval . '</p>';
+// echo '<p>次の注文日: ' . $next_order_date . '</p>';
+// echo '<p>注文数: ' . $order_count . '</p>';
 
 echo '<div class="content">';
 echo '<div class="has-text-centered">';
@@ -103,7 +103,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete') {
     echo '<input type="hidden" name="next_order_date" value="', $next_order_date, '">';
     echo '<input type="hidden" name="count" value="', $order_count, '">';
     echo '<input type="hidden" name="u_id" value="', $user_id, '">';
-    echo '<input type="hidden" name="s_id" value="', $subscritpion_id, '">';
+    echo '<input type="hidden" name="s_id" value="', $subscription_id, '">';
     echo '    </div>';
     echo '</div>';
 } elseif (isset($_POST['action']) && $_POST['action'] === 'update') {
@@ -127,7 +127,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete') {
     echo '                        <div class="field">';
     echo '                            <label class="label"><strong>定期購入間隔</strong></label>';
     echo '                            <div class="control">';
-    echo '                                <input type="text" name="interval" list="dateList" placeholder="', $interval, '">';
+    echo '                                <input type="text" name="interval" list="dateList" required>';
     echo '                                <datalist id="dateList">';
     echo '                                    <option value=10></option>';
     echo '                                    <option value=20></option>';
@@ -139,7 +139,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete') {
     echo '                        <div class="field">';
     echo '                            <label class="label"><strong>定期購入開始日</strong></label>';
     echo '                            <div class="control" style="margin: 0 auto";>';
-    echo '                                <input type="date" style="width:120px"; name="next_order_date" min=', $minDateTime, ' max=', $maxDateTime, '>';
+    echo '                                <input type="date" style="width:120px"; name="next_order_date" min=', $minDateTime, ' max=', $maxDateTime, ' required>';
     echo '                            </div>';
     echo '                            <p class="help has-text-success-dark">2日後もしくは次回配送日以降からお選びいただけます</p>';
     echo '                        </div>';
@@ -147,7 +147,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete') {
     echo '                        <div class="field">';
     echo '                            <label class="label"><strong>定期購入個数</strong></label>';
     echo '                            <div class="control">';
-    echo '                                <input type="number" name="order_count" min=5 max=10 placeholder="', $order_count, '">';
+    echo '                                <input type="number" name="order_count" min=5 max=10 required>';
     echo '                            </div>';
     echo '                            <p class="help has-text-success-dark">5〜10個まで選択できます</p>';
     echo '                        </div>';
@@ -166,11 +166,8 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete') {
     echo '<input type="hidden" name="p_id" value="', $product_id, '">';
     echo '<input type="hidden" name="name" value="', $product_name, '">';
     echo '<input type="hidden" name="img" value="', $product_img, '">';
-    echo '<input type="hidden" name="interval" value="', $interval, '">';
-    echo '<input type="hidden" name="next_order_date" value="', $next_order_date, '">';
-    echo '<input type="hidden" name="count" value="', $order_count, '">';
     echo '<input type="hidden" name="u_id" value="', $user_id, '">';
-    echo '<input type="hidden" name="s_id" value="', $subscritpion_id, '">';
+    echo '<input type="hidden" name="s_id" value="', $subscription_id, '">';
     echo '        </form>';
     echo '    </div>';
     echo '</div>';
