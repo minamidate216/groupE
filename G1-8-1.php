@@ -82,7 +82,7 @@ if (empty($_SESSION['Users'])) {
                 echo '<option value="', $i, '" >', $i, '個</option>';
             }
             echo '</select></div></div><br>';
-            echo '<input class="button is-success is-outlined" type="submit" value="カートに追加" style="display: block; margin-left: auto";>';
+            echo '<input class="button is-success is-outlined" type="submit" value="カートに追加" style="display: block; margin-left: auto";><br>';
             echo '<a class="button is-link is-outlined" href="G1-8-2.php?id=',$productId,'" style="width:30%; display: block; margin-left: auto";>定期購入</a>';
         } elseif ($maxPurchaseStock >= 10) {
             // 在庫がカートの中の商品数を引いても10以上の時
