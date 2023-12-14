@@ -12,7 +12,7 @@ foreach($sql as $row){
     echo '<br>';
     echo '<div class="column has-text-centered">',$row['content'],'</div></div>';
 }
-echo '<div class="btn"><a href="G1-4-1.php" class="button is-rounded is-success has-text-centered">コラム一覧に戻る</a></div>';
+echo '<div class="btn has-text-centered"><a href="G1-4-1.php" class="button is-rounded is-success has-text-centered">コラム一覧に戻る</a></div>';
 ?>
 <style>
     .column{
@@ -22,7 +22,8 @@ echo '<div class="btn"><a href="G1-4-1.php" class="button is-rounded is-success 
         margin: auto 80px;
     }
     .btn{
-        margin: auto 555px 50px;
+        display: block;
+        margin: 50px auto;
     }
 </style>
 <?php require 'footer.php'; ?>
