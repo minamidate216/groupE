@@ -37,8 +37,12 @@
                                             }}個</button>
                                         <button class="button" @click="decrement(product.id)">-1</button>
                                     </div>
+                                    <div class="help has-text-success-dark" v-if="product.count == 0">{{ product.name }}の<br>注文をキャンセルします</div>
+                                    <div class="help has-text-success-dark" v-else-if="product.quantity == product.count">これ以上は<br>在庫がありません</div>
+                                    <div class="help has-text-success-dark" v-else-if="product.count == 10">注文は一度に<br>10個までとなります</div>
                                 </th>
-                                <th>{{ product.price * product.count }}円</th>
+                                <th>{{ product.price * product.count }}円
+                                </th>
                             </tr>
                         </tbody>
                     </table>
